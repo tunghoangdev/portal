@@ -1,23 +1,16 @@
-# TanStack Start - Tailwind CSS v4 Example
+# TanStack Start - Basic Auth Example
 
-This site is built with TanStack Router and Tailwind CSS v4!
+A TanStack Start example demonstrating authentication patterns and protected routes.
 
 - [TanStack Router Docs](https://tanstack.com/router)
-- [Tailwind CSS Docs](https://tailwindcss.com/docs)
 
 ## Start a new project based on this example
 
 To start a new project based on this example, run:
 
 ```sh
-npx gitpick TanStack/router/tree/main/examples/react/start-tailwind-v4 start-tailwind-v4
+npx gitpick TanStack/router/tree/main/examples/react/start-basic-auth start-basic-auth
 ```
-
-## Deployment
-
-It's deployed automagically with Netlify!
-
-- [Netlify](https://netlify.com/)
 
 ## Getting Started
 
@@ -28,18 +21,21 @@ pnpm install
 pnpm dev
 ```
 
+This starts your app in development mode, rebuilding assets on file changes.
+
 ## Build
 
-Build for production:
+To build the app for production:
 
 ```sh
 pnpm build
 ```
 
-## About This Example
+## Authentication Features
 
 This example demonstrates:
 
-- Tailwind CSS v4 integration
-- Styling with TanStack Start
-- CSS configuration
+- User authentication flow
+- Protected routes
+- Login/logout functionality
+- Redirect after authentication

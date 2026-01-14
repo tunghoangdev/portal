@@ -9,32 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as LogoutRouteImport } from './routes/logout'
 import { Route as LoginRouteImport } from './routes/login'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as AuthRouteImport } from './routes/_auth'
+import { Route as AuthedRouteImport } from './routes/_authed'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthDashboardRouteImport } from './routes/_auth/dashboard'
-import { Route as AuthDashboardIndexRouteImport } from './routes/_auth/dashboard/index'
-import { Route as AuthDashboardUsersRouteImport } from './routes/_auth/dashboard/users'
+import { Route as AuthedPostsRouteRouteImport } from './routes/_authed/posts.route'
+import { Route as AuthedPostsIndexRouteImport } from './routes/_authed/posts.index'
+import { Route as AuthedPostsPostIdRouteImport } from './routes/_authed/posts.$postId'
 
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LogoutRoute = LogoutRouteImport.update({
+  id: '/logout',
+  path: '/logout',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/_auth',
+const AuthedRoute = AuthedRouteImport.update({
+  id: '/_authed',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -42,84 +42,98 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthDashboardRoute = AuthDashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => AuthRoute,
+const AuthedPostsRouteRoute = AuthedPostsRouteRouteImport.update({
+  id: '/posts',
+  path: '/posts',
+  getParentRoute: () => AuthedRoute,
 } as any)
-const AuthDashboardIndexRoute = AuthDashboardIndexRouteImport.update({
+const AuthedPostsIndexRoute = AuthedPostsIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => AuthDashboardRoute,
+  getParentRoute: () => AuthedPostsRouteRoute,
 } as any)
-const AuthDashboardUsersRoute = AuthDashboardUsersRouteImport.update({
-  id: '/users',
-  path: '/users',
-  getParentRoute: () => AuthDashboardRoute,
+const AuthedPostsPostIdRoute = AuthedPostsPostIdRouteImport.update({
+  id: '/$postId',
+  path: '/$postId',
+  getParentRoute: () => AuthedPostsRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/contact': typeof ContactRoute
   '/login': typeof LoginRoute
-  '/dashboard': typeof AuthDashboardRouteWithChildren
-  '/dashboard/users': typeof AuthDashboardUsersRoute
-  '/dashboard/': typeof AuthDashboardIndexRoute
+  '/logout': typeof LogoutRoute
+  '/signup': typeof SignupRoute
+  '/posts': typeof AuthedPostsRouteRouteWithChildren
+  '/posts/$postId': typeof AuthedPostsPostIdRoute
+  '/posts/': typeof AuthedPostsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/contact': typeof ContactRoute
   '/login': typeof LoginRoute
-  '/dashboard/users': typeof AuthDashboardUsersRoute
-  '/dashboard': typeof AuthDashboardIndexRoute
+  '/logout': typeof LogoutRoute
+  '/signup': typeof SignupRoute
+  '/posts/$postId': typeof AuthedPostsPostIdRoute
+  '/posts': typeof AuthedPostsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/_auth': typeof AuthRouteWithChildren
-  '/about': typeof AboutRoute
-  '/contact': typeof ContactRoute
+  '/_authed': typeof AuthedRouteWithChildren
   '/login': typeof LoginRoute
-  '/_auth/dashboard': typeof AuthDashboardRouteWithChildren
-  '/_auth/dashboard/users': typeof AuthDashboardUsersRoute
-  '/_auth/dashboard/': typeof AuthDashboardIndexRoute
+  '/logout': typeof LogoutRoute
+  '/signup': typeof SignupRoute
+  '/_authed/posts': typeof AuthedPostsRouteRouteWithChildren
+  '/_authed/posts/$postId': typeof AuthedPostsPostIdRoute
+  '/_authed/posts/': typeof AuthedPostsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/about'
-    | '/contact'
     | '/login'
-    | '/dashboard'
-    | '/dashboard/users'
-    | '/dashboard/'
+    | '/logout'
+    | '/signup'
+    | '/posts'
+    | '/posts/$postId'
+    | '/posts/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/login' | '/dashboard/users' | '/dashboard'
+  to: '/' | '/login' | '/logout' | '/signup' | '/posts/$postId' | '/posts'
   id:
     | '__root__'
     | '/'
-    | '/_auth'
-    | '/about'
-    | '/contact'
+    | '/_authed'
     | '/login'
-    | '/_auth/dashboard'
-    | '/_auth/dashboard/users'
-    | '/_auth/dashboard/'
+    | '/logout'
+    | '/signup'
+    | '/_authed/posts'
+    | '/_authed/posts/$postId'
+    | '/_authed/posts/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AuthRoute: typeof AuthRouteWithChildren
-  AboutRoute: typeof AboutRoute
-  ContactRoute: typeof ContactRoute
+  AuthedRoute: typeof AuthedRouteWithChildren
   LoginRoute: typeof LoginRoute
+  LogoutRoute: typeof LogoutRoute
+  SignupRoute: typeof SignupRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/logout': {
+      id: '/logout'
+      path: '/logout'
+      fullPath: '/logout'
+      preLoaderRoute: typeof LogoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -127,25 +141,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_auth': {
-      id: '/_auth'
+    '/_authed': {
+      id: '/_authed'
       path: ''
       fullPath: ''
-      preLoaderRoute: typeof AuthRouteImport
+      preLoaderRoute: typeof AuthedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -155,60 +155,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_auth/dashboard': {
-      id: '/_auth/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof AuthDashboardRouteImport
-      parentRoute: typeof AuthRoute
+    '/_authed/posts': {
+      id: '/_authed/posts'
+      path: '/posts'
+      fullPath: '/posts'
+      preLoaderRoute: typeof AuthedPostsRouteRouteImport
+      parentRoute: typeof AuthedRoute
     }
-    '/_auth/dashboard/': {
-      id: '/_auth/dashboard/'
+    '/_authed/posts/': {
+      id: '/_authed/posts/'
       path: '/'
-      fullPath: '/dashboard/'
-      preLoaderRoute: typeof AuthDashboardIndexRouteImport
-      parentRoute: typeof AuthDashboardRoute
+      fullPath: '/posts/'
+      preLoaderRoute: typeof AuthedPostsIndexRouteImport
+      parentRoute: typeof AuthedPostsRouteRoute
     }
-    '/_auth/dashboard/users': {
-      id: '/_auth/dashboard/users'
-      path: '/users'
-      fullPath: '/dashboard/users'
-      preLoaderRoute: typeof AuthDashboardUsersRouteImport
-      parentRoute: typeof AuthDashboardRoute
+    '/_authed/posts/$postId': {
+      id: '/_authed/posts/$postId'
+      path: '/$postId'
+      fullPath: '/posts/$postId'
+      preLoaderRoute: typeof AuthedPostsPostIdRouteImport
+      parentRoute: typeof AuthedPostsRouteRoute
     }
   }
 }
 
-interface AuthDashboardRouteChildren {
-  AuthDashboardUsersRoute: typeof AuthDashboardUsersRoute
-  AuthDashboardIndexRoute: typeof AuthDashboardIndexRoute
+interface AuthedPostsRouteRouteChildren {
+  AuthedPostsPostIdRoute: typeof AuthedPostsPostIdRoute
+  AuthedPostsIndexRoute: typeof AuthedPostsIndexRoute
 }
 
-const AuthDashboardRouteChildren: AuthDashboardRouteChildren = {
-  AuthDashboardUsersRoute: AuthDashboardUsersRoute,
-  AuthDashboardIndexRoute: AuthDashboardIndexRoute,
+const AuthedPostsRouteRouteChildren: AuthedPostsRouteRouteChildren = {
+  AuthedPostsPostIdRoute: AuthedPostsPostIdRoute,
+  AuthedPostsIndexRoute: AuthedPostsIndexRoute,
 }
 
-const AuthDashboardRouteWithChildren = AuthDashboardRoute._addFileChildren(
-  AuthDashboardRouteChildren,
-)
+const AuthedPostsRouteRouteWithChildren =
+  AuthedPostsRouteRoute._addFileChildren(AuthedPostsRouteRouteChildren)
 
-interface AuthRouteChildren {
-  AuthDashboardRoute: typeof AuthDashboardRouteWithChildren
+interface AuthedRouteChildren {
+  AuthedPostsRouteRoute: typeof AuthedPostsRouteRouteWithChildren
 }
 
-const AuthRouteChildren: AuthRouteChildren = {
-  AuthDashboardRoute: AuthDashboardRouteWithChildren,
+const AuthedRouteChildren: AuthedRouteChildren = {
+  AuthedPostsRouteRoute: AuthedPostsRouteRouteWithChildren,
 }
 
-const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
+const AuthedRouteWithChildren =
+  AuthedRoute._addFileChildren(AuthedRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AuthRoute: AuthRouteWithChildren,
-  AboutRoute: AboutRoute,
-  ContactRoute: ContactRoute,
+  AuthedRoute: AuthedRouteWithChildren,
   LoginRoute: LoginRoute,
+  LogoutRoute: LogoutRoute,
+  SignupRoute: SignupRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -4,21 +4,65 @@ import {
   Link,
   Outlet,
   Scripts,
-  createRootRoute,
   createRootRouteWithContext,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import * as React from "react";
+import { DefaultCatchBoundary } from "~/components/DefaultCatchBoundary.js";
+import { NotFound } from "~/components/NotFound.js";
+import type { AuthState } from "~/store/auth";
 import appCss from "~/styles/app.css?url";
-import type { AuthContext } from "@/auth";
-interface MyRouterContext {
-  auth: AuthContext;
-}
+import { seo } from "~/utils/seo.js";
 
-export const Route = createRootRouteWithContext<MyRouterContext>()({
+export const Route = createRootRouteWithContext<{
+  auth: AuthState;
+}>()({
   head: () => ({
-    links: [{ rel: "stylesheet", href: appCss }],
+    meta: [
+      {
+        charSet: "utf-8",
+      },
+      {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1",
+      },
+      ...seo({
+        title:
+          "TanStack Start | Type-Safe, Client-First, Full-Stack React Framework",
+        description: `TanStack Start is a type-safe, client-first, full-stack React framework. `,
+      }),
+    ],
+    links: [
+      { rel: "stylesheet", href: appCss },
+      {
+        rel: "apple-touch-icon",
+        sizes: "180x180",
+        href: "/apple-touch-icon.png",
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        href: "/favicon-32x32.png",
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        href: "/favicon-16x16.png",
+      },
+      { rel: "manifest", href: "/site.webmanifest", color: "#fffff" },
+      { rel: "icon", href: "/favicon.ico" },
+    ],
   }),
+  errorComponent: (props) => {
+    return (
+      <RootDocument>
+        <DefaultCatchBoundary {...props} />
+      </RootDocument>
+    );
+  },
+  notFoundComponent: () => <NotFound />,
   component: RootComponent,
 });
 
@@ -31,6 +75,8 @@ function RootComponent() {
 }
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const { auth } = Route.useRouteContext() as { auth: AuthState };
+
   return (
     <html>
       <head>
@@ -46,24 +92,27 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             activeOptions={{ exact: true }}
           >
             Home
-          </Link>
+          </Link>{" "}
           <Link
-            to="/about"
+            to="/posts"
             activeProps={{
               className: "font-bold",
             }}
           >
-            About
+            Posts
           </Link>
-          <Link
-            to="/contact"
-            activeProps={{
-              className: "font-bold",
-            }}
-          >
-            Contact
-          </Link>
+          <div className="ml-auto">
+            {auth?.isAuthenticated && auth.user ? (
+              <>
+                <span className="mr-2">{auth.user.email}</span>
+                <Link to="/logout">Logout</Link>
+              </>
+            ) : (
+              <Link to="/login">Login</Link>
+            )}
+          </div>
         </div>
+
         <hr />
         {children}
         <TanStackRouterDevtools position="bottom-right" />
