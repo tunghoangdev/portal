@@ -1,0 +1,34 @@
+# --- Cấu trúc cơ bản của Node ---
+node_modules
+.pnpm-store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+
+# --- TanStack Start / Nitro / Vinxi ---
+# Thư mục chứa kết quả build
+.output
+.vinxi
+dist
+
+# Các file dữ liệu tạm của server engine
+.nitro
+.data
+
+# --- TanStack Router Generated Files ---
+# LƯU Ý: Có 2 luồng quan điểm về việc ignore routeTree.gen.ts
+# 1. Nếu bạn muốn CI/CD tự tạo lại file này: Bỏ comment dòng dưới
+# 2. Nếu bạn muốn file này luôn đi kèm code để tránh lỗi build: Hãy giữ nó (không ignore)
+# routeTree.gen.ts
+
+# --- Biến môi trường ---
+.env
+.env*.local
+
+# --- Các công cụ phát triển khác ---
+.DS_Store
+*.local
+.vscode/*
+!.vscode/extensions.json
+.idea/
