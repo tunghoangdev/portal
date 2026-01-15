@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { RouterProvider } from "@tanstack/react-router";
-import { useAuthStore } from "../store/auth";
+import { useAuthStore } from "../stores/auth-store";
 import type { getRouter } from "../router";
 
 export function InnerApp({ router }: { router: ReturnType<typeof getRouter> }) {

@@ -11,6 +11,8 @@ yarn-error.log*
 .output
 .vinxi
 dist
+/beta
+/prod
 
 # Các file dữ liệu tạm của server engine
 .nitro
@@ -25,6 +27,11 @@ dist
 # --- Biến môi trường ---
 .env
 .env*.local
+.env.development
+.env.beta
+.env.prod
+# Giữ file example để team biết cần config gì
+!.env.example
 
 # --- Các công cụ phát triển khác ---
 .DS_Store

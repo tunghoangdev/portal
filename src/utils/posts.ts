@@ -8,30 +8,27 @@ export type PostType = {
   body: string
 }
 
-export const fetchPost = createServerFn({ method: 'GET' })
-  .inputValidator((postId: string) => postId)
-  .handler(async ({ data }) => {
-    console.info(`Fetching post with id ${data}...`)
+// Client-side fetch functions (Dùng cho IIS SPA mode)
+export const fetchPost = async (postId: string) => {
+  console.info(`Fetching post with id ${postId}...`)
+  try {
     const post = await axios
-      .get<PostType>(`https://jsonplaceholder.typicode.com/posts/${data}`)
+      .get<PostType>(`https://jsonplaceholder.typicode.com/posts/${postId}`)
       .then((r) => r.data)
-      .catch((err) => {
-        console.error(err)
-        if (err.status === 404) {
-          throw notFound()
-        }
-        throw err
-      })
-
     return post
-  })
+  } catch (err: any) {
+    console.error(err)
+    if (err.status === 404) {
+      throw notFound()
+    }
+    throw err
+  }
+}
 
-export const fetchPosts = createServerFn({ method: 'GET' }).handler(
-  async () => {
-    console.info('Fetching posts...')
-    await new Promise((r) => setTimeout(r, 1000))
-    return axios
-      .get<Array<PostType>>('https://jsonplaceholder.typicode.com/posts')
-      .then((r) => r.data.slice(0, 10))
-  },
-)
+export const fetchPosts = async () => {
+  console.info('Fetching posts...')
+  // await new Promise((r) => setTimeout(r, 1000))
+  return axios
+    .get<Array<PostType>>('https://jsonplaceholder.typicode.com/posts')
+    .then((r) => r.data.slice(0, 10))
+}

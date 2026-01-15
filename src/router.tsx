@@ -3,19 +3,19 @@ import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query
 import { DefaultCatchBoundary } from "./components/DefaultCatchBoundary";
 import { NotFound } from "./components/NotFound";
 import { routeTree } from "./routeTree.gen";
-import { type AuthState, useAuthStore } from "./store/auth";
+import { useAuthStore } from "./stores/auth-store";
 import { QueryClient } from "@tanstack/react-query";
 
 export function getRouter() {
   const queryClient = new QueryClient();
   const router = createRouter({
     routeTree,
-    defaultPreload: "intent",
+    defaultPreload: false,
     defaultErrorComponent: DefaultCatchBoundary,
     defaultNotFoundComponent: () => <NotFound />,
     scrollRestoration: true,
     context: {
-      auth: useAuthStore.getState(), // Initialize with current state (safe for SSR)
+      auth: useAuthStore.getState(), // Use the real store state
     },
   });
   setupRouterSsrQueryIntegration({

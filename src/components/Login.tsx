@@ -1,10 +1,10 @@
-import { useRouter } from "@tanstack/react-router";
+import { useNavigate, useRouter } from "@tanstack/react-router";
 import * as React from "react";
-import { useAuthStore } from "../store/auth";
+import { useAuthStore } from "../stores/auth-store";
 
 export function Login() {
-  const router = useRouter();
-  const login = useAuthStore((state) => state.login);
+  const navigate = useNavigate();
+  const loginAction = useAuthStore((state) => state.loginAction);
   const [error, setError] = React.useState("");
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -17,10 +17,9 @@ export function Login() {
       return;
     }
 
-    // Client-side login simulation
-    login(email);
-    router.invalidate();
-    router.navigate({ to: "/" });
+    // Client-side login simulation using real store action
+    loginAction({ email } as any, "dummy-token");
+    navigate({ to: "/" });
   };
 
   return (

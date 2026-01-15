@@ -7,7 +7,7 @@ export const Route = createFileRoute("/signup")({
 });
 
 function SignupComp() {
-  const router = useRouter();
+  const navigate = useNavigate();
   const login = useAuthStore((state) => state.login);
   const [error, setError] = React.useState("");
 
@@ -24,7 +24,7 @@ function SignupComp() {
     // Client-side signup (same as login)
     login(email);
     router.invalidate();
-    router.navigate({ to: "/" });
+    router.navigate({ to: "/" } });
   };
 
   return (

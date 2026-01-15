@@ -8,9 +8,14 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import * as React from "react";
+import AuthGuard from "~/components/auth/auth-guard";
 import { DefaultCatchBoundary } from "~/components/DefaultCatchBoundary.js";
 import { NotFound } from "~/components/NotFound.js";
-import type { AuthState } from "~/store/auth";
+import { SidebarProvider, ThemeProvider } from "~/context";
+import { MediaQueryProvider, NextUiProvider, QueryProvider } from "~/providers";
+import { ProcessProvider } from "~/providers/process-provider";
+import { useAuthStore } from "~/stores/auth-store";
+import type { AuthState } from "~/stores/auth-store"; // Ensure you use the correct type from the new store
 import appCss from "~/styles/app.css?url";
 import { seo } from "~/utils/seo.js";
 
@@ -28,8 +33,8 @@ export const Route = createRootRouteWithContext<{
       },
       ...seo({
         title:
-          "TanStack Start | Type-Safe, Client-First, Full-Stack React Framework",
-        description: `TanStack Start is a type-safe, client-first, full-stack React framework. `,
+          "Samtek - Nâng tầm kênh phân phối",
+        description: `Samtek Portal là nền tảng công nghệ số hóa kênh phân phối, tối ưu chi phí và hiệu suất bán hàng từ nhóm nhỏ đến doanh nghiệp, linh hoạt mọi lĩnh vực.`,
       }),
     ],
     links: [
@@ -78,43 +83,28 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   const { auth } = Route.useRouteContext() as { auth: AuthState };
 
   return (
-    <html>
+    <html lang="vi">
       <head>
         <HeadContent />
+        <meta name="google" content="notranslate" />
       </head>
       <body>
-        <div className="p-2 flex gap-2 text-lg">
-          <Link
-            to="/"
-            activeProps={{
-              className: "font-bold",
-            }}
-            activeOptions={{ exact: true }}
-          >
-            Home
-          </Link>{" "}
-          <Link
-            to="/posts"
-            activeProps={{
-              className: "font-bold",
-            }}
-          >
-            Posts
-          </Link>
-          <div className="ml-auto">
-            {auth?.isAuthenticated && auth.user ? (
-              <>
-                <span className="mr-2">{auth.user.email}</span>
-                <Link to="/logout">Logout</Link>
-              </>
-            ) : (
-              <Link to="/login">Login</Link>
-            )}
-          </div>
-        </div>
-
-        <hr />
-        {children}
+       <NextUiProvider>
+					<ThemeProvider>
+						<QueryProvider>
+							<MediaQueryProvider>
+								<AuthGuard>
+								{/* <Loading /> */}
+								<ProcessProvider>
+									{/* <AppLoader> */}
+									<SidebarProvider>{children}</SidebarProvider>
+									{/* </AppLoader> */}
+								</ProcessProvider>
+								</AuthGuard>
+							</MediaQueryProvider>
+						</QueryProvider>
+					</ThemeProvider>
+				</NextUiProvider>
         <TanStackRouterDevtools position="bottom-right" />
         <Scripts />
       </body>
