@@ -1,9 +1,9 @@
-import { RouterProvider, createRouter } from "@tanstack/react-router";
+import { createRouter } from "@tanstack/react-router";
 import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query";
 import { DefaultCatchBoundary } from "./components/DefaultCatchBoundary";
 import { NotFound } from "./components/NotFound";
 import { routeTree } from "./routeTree.gen";
-import { useAuthStore, type AuthState } from "./store/auth";
+import { type AuthState, useAuthStore } from "./store/auth";
 import { QueryClient } from "@tanstack/react-query";
 
 export function getRouter() {
@@ -15,7 +15,7 @@ export function getRouter() {
     defaultNotFoundComponent: () => <NotFound />,
     scrollRestoration: true,
     context: {
-      auth: undefined! as AuthState, // This will be set in RouterProvider
+      auth: useAuthStore.getState(), // Initialize with current state (safe for SSR)
     },
   });
   setupRouterSsrQueryIntegration({
@@ -25,13 +25,9 @@ export function getRouter() {
   return router;
 }
 
-export function InnerApp({ router }: { router: ReturnType<typeof getRouter> }) {
-  const auth = useAuthStore();
-  return <RouterProvider router={router} context={{ auth }} />;
-}
-
 declare module "@tanstack/react-router" {
   interface Register {
     router: ReturnType<typeof getRouter>;
   }
 }
+
