@@ -5,8 +5,8 @@ import {
   ModalContent as HeroModalContent,
   ModalFooter as HeroModalFooter,
   ModalHeader as HeroModalHeader,
-  useDisclosure as useDisclosureHero,
   ModalProps as HeroModalProps,
+  useDisclosure as useDisclosureHero,
 } from "@heroui/react";
 
 export const Modal = extendVariants(HeroMoal, {
@@ -15,9 +15,9 @@ export const Modal = extendVariants(HeroMoal, {
     closeButton: "*:text-xl",
   },
 });
-export const ModalHeader = extendVariants(HeroModalHeader, {});
-export const ModalFooter = extendVariants(HeroModalFooter, {});
-export const ModalBody = extendVariants(HeroModalBody, {});
-export const ModalContent = extendVariants(HeroModalContent, {});
+export const ModalHeader = HeroModalHeader;
+export const ModalFooter = HeroModalFooter;
+export const ModalBody = HeroModalBody;
+export const ModalContent = HeroModalContent;
 export type ModalProps = HeroModalProps;
 export const useDisclosure = useDisclosureHero;

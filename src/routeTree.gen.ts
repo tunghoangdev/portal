@@ -8,25 +8,118 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as SignupRouteImport } from './routes/signup'
-import { Route as LogoutRouteImport } from './routes/logout'
-import { Route as LoginRouteImport } from './routes/login'
-import { Route as AuthedRouteImport } from './routes/_authed'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthedDashboardRouteImport } from './routes/_authed/dashboard'
-import { Route as AuthedPostsRouteRouteImport } from './routes/_authed/posts.route'
-import { Route as AuthedPostsIndexRouteImport } from './routes/_authed/posts.index'
-import { Route as AuthedPostsPostIdRouteImport } from './routes/_authed/posts.$postId'
+import { Route as rootRouteImport } from './app/__root'
+import { Route as RegisterRouteImport } from './app/register'
+import { Route as LoginRouteImport } from './app/login'
+import { Route as AuthedRouteImport } from './app/_authed'
+import { Route as IndexRouteImport } from './app/index'
+import { Route as AuthedStaffMeetingRouteImport } from './app/_authed/staff/meeting'
+import { Route as AuthedStaffEscrowReturnRouteImport } from './app/_authed/staff/escrow-return'
+import { Route as AuthedStaffEscrowReportRouteImport } from './app/_authed/staff/escrow-report'
+import { Route as AuthedStaffEscrowRouteImport } from './app/_authed/staff/escrow'
+import { Route as AuthedStaffDashboardRouteImport } from './app/_authed/staff/dashboard'
+import { Route as AuthedStaffCustomersRouteImport } from './app/_authed/staff/customers'
+import { Route as AuthedStaffConfigLevelUpRouteImport } from './app/_authed/staff/config-level-up'
+import { Route as AuthedStaffConfigEscrowRouteImport } from './app/_authed/staff/config-escrow'
+import { Route as AuthedStaffCommissionTypeRouteImport } from './app/_authed/staff/commission-type'
+import { Route as AuthedStaffCommissionTableRouteImport } from './app/_authed/staff/commission-table'
+import { Route as AuthedStaffCommissionPeriodRouteImport } from './app/_authed/staff/commission-period'
+import { Route as AuthedStaffCommissionManualRouteImport } from './app/_authed/staff/commission-manual'
+import { Route as AuthedSamtekCustomersRouteImport } from './app/_authed/samtek/customers'
+import { Route as AuthedAgentProfileRouteImport } from './app/_authed/agent/profile'
+import { Route as AuthedAgentDocumentsRouteImport } from './app/_authed/agent/documents'
+import { Route as AuthedAgentDashboardRouteImport } from './app/_authed/agent/dashboard'
+import { Route as AuthedAgentCustomersRouteImport } from './app/_authed/agent/customers'
+import { Route as AuthedAgentCommissionTableRouteImport } from './app/_authed/agent/commission-table'
+import { Route as AuthedStaffStaffsPermissionsRouteImport } from './app/_authed/staff/staffs/permissions'
+import { Route as AuthedStaffStaffsLoginLogsRouteImport } from './app/_authed/staff/staffs/login-logs'
+import { Route as AuthedStaffStaffsListRouteImport } from './app/_authed/staff/staffs/list'
+import { Route as AuthedStaffReportPaidoutListRouteImport } from './app/_authed/staff/report/paidout-list'
+import { Route as AuthedStaffReportPaidoutDetailRouteImport } from './app/_authed/staff/report/paidout-detail'
+import { Route as AuthedStaffReportNotLoginLogsRouteImport } from './app/_authed/staff/report/not-login-logs'
+import { Route as AuthedStaffReportLoginLogsRouteImport } from './app/_authed/staff/report/login-logs'
+import { Route as AuthedStaffReportIncomeOutcomeRouteImport } from './app/_authed/staff/report/income-outcome'
+import { Route as AuthedStaffReportCommissionRouteImport } from './app/_authed/staff/report/commission'
+import { Route as AuthedStaffNotificationsProgramsRouteImport } from './app/_authed/staff/notifications/programs'
+import { Route as AuthedStaffNotificationsListRouteImport } from './app/_authed/staff/notifications/list'
+import { Route as AuthedStaffNotificationsFeaturedRouteImport } from './app/_authed/staff/notifications/featured'
+import { Route as AuthedStaffNonLifeInsuranceProvidersRouteImport } from './app/_authed/staff/non-life-insurance/providers'
+import { Route as AuthedStaffNonLifeInsuranceProfixDetailAllRouteImport } from './app/_authed/staff/non-life-insurance/profix-detail-all'
+import { Route as AuthedStaffNonLifeInsuranceProfixRouteImport } from './app/_authed/staff/non-life-insurance/profix'
+import { Route as AuthedStaffNonLifeInsuranceProductsRouteImport } from './app/_authed/staff/non-life-insurance/products'
+import { Route as AuthedStaffNonLifeInsurancePaidoutListRouteImport } from './app/_authed/staff/non-life-insurance/paidout-list'
+import { Route as AuthedStaffNonLifeInsurancePaidoutDetailRouteImport } from './app/_authed/staff/non-life-insurance/paidout-detail'
+import { Route as AuthedStaffNonLifeInsuranceListProcessingRouteImport } from './app/_authed/staff/non-life-insurance/list-processing'
+import { Route as AuthedStaffNonLifeInsuranceListDoneRouteImport } from './app/_authed/staff/non-life-insurance/list-done'
+import { Route as AuthedStaffNonLifeInsuranceCommissionListRouteImport } from './app/_authed/staff/non-life-insurance/commission-list'
+import { Route as AuthedStaffLifeInsuranceProvidersRouteImport } from './app/_authed/staff/life-insurance/providers'
+import { Route as AuthedStaffLifeInsuranceProductsRouteImport } from './app/_authed/staff/life-insurance/products'
+import { Route as AuthedStaffLifeInsurancePaidoutListRouteImport } from './app/_authed/staff/life-insurance/paidout-list'
+import { Route as AuthedStaffLifeInsurancePaidoutDetailRouteImport } from './app/_authed/staff/life-insurance/paidout-detail'
+import { Route as AuthedStaffLifeInsuranceLostEffectiveRouteImport } from './app/_authed/staff/life-insurance/lost-effective'
+import { Route as AuthedStaffLifeInsuranceListProcessingRouteImport } from './app/_authed/staff/life-insurance/list-processing'
+import { Route as AuthedStaffLifeInsuranceListDoneRouteImport } from './app/_authed/staff/life-insurance/list-done'
+import { Route as AuthedStaffLifeInsuranceListCanceledRouteImport } from './app/_authed/staff/life-insurance/list-canceled'
+import { Route as AuthedStaffLifeInsuranceFinancialRouteImport } from './app/_authed/staff/life-insurance/financial'
+import { Route as AuthedStaffLifeInsuranceFeeDueRouteImport } from './app/_authed/staff/life-insurance/fee-due'
+import { Route as AuthedStaffLifeInsuranceCommissionListRouteImport } from './app/_authed/staff/life-insurance/commission-list'
+import { Route as AuthedStaffIncomeOutcomeOutcomeRouteImport } from './app/_authed/staff/income-outcome/outcome'
+import { Route as AuthedStaffIncomeOutcomeIncomeRouteImport } from './app/_authed/staff/income-outcome/income'
+import { Route as AuthedStaffIncomeOutcomeCashbookTotalRouteImport } from './app/_authed/staff/income-outcome/cashbook-total'
+import { Route as AuthedStaffIncomeOutcomeCashbookOutcomeDeletedRouteImport } from './app/_authed/staff/income-outcome/cashbook-outcome-deleted'
+import { Route as AuthedStaffIncomeOutcomeCashbookOutcomeRouteImport } from './app/_authed/staff/income-outcome/cashbook-outcome'
+import { Route as AuthedStaffIncomeOutcomeCashbookIncomeDeletedRouteImport } from './app/_authed/staff/income-outcome/cashbook-income-deleted'
+import { Route as AuthedStaffIncomeOutcomeCashbookIncomeRouteImport } from './app/_authed/staff/income-outcome/cashbook-income'
+import { Route as AuthedStaffDocumentsTypesRouteImport } from './app/_authed/staff/documents/types'
+import { Route as AuthedStaffDocumentsTypeInternalRouteImport } from './app/_authed/staff/documents/type-internal'
+import { Route as AuthedStaffDocumentsMembersRouteImport } from './app/_authed/staff/documents/members'
+import { Route as AuthedStaffDocumentsMemberInternalRouteImport } from './app/_authed/staff/documents/member-internal'
+import { Route as AuthedStaffDocumentsEmailBusinessRouteImport } from './app/_authed/staff/documents/email-business'
+import { Route as AuthedStaffAgentsTreeRouteImport } from './app/_authed/staff/agents/tree'
+import { Route as AuthedStaffAgentsTotalsRouteImport } from './app/_authed/staff/agents/totals'
+import { Route as AuthedStaffAgentsNewAgentsRouteImport } from './app/_authed/staff/agents/new-agents'
+import { Route as AuthedStaffAgentsLoginLogsRouteImport } from './app/_authed/staff/agents/login-logs'
+import { Route as AuthedStaffAgentsListRouteImport } from './app/_authed/staff/agents/list'
+import { Route as AuthedStaffAgentsLevelUpReportRouteImport } from './app/_authed/staff/agents/level-up-report'
+import { Route as AuthedStaffAgentsLevelUpLogRouteImport } from './app/_authed/staff/agents/level-up-log'
+import { Route as AuthedStaffAgentsChangeManagerRouteImport } from './app/_authed/staff/agents/change-manager'
+import { Route as AuthedStaffAgentsAssignLevelRouteImport } from './app/_authed/staff/agents/assign-level'
+import { Route as AuthedStaffAgentsAgentEcontractRouteImport } from './app/_authed/staff/agents/agent-econtract'
+import { Route as AuthedStaffAbroadProvidersRouteImport } from './app/_authed/staff/abroad/providers'
+import { Route as AuthedStaffAbroadProfixDetailAllRouteImport } from './app/_authed/staff/abroad/profix-detail-all'
+import { Route as AuthedStaffAbroadProfixRouteImport } from './app/_authed/staff/abroad/profix'
+import { Route as AuthedStaffAbroadProductsRouteImport } from './app/_authed/staff/abroad/products'
+import { Route as AuthedStaffAbroadPaidoutListRouteImport } from './app/_authed/staff/abroad/paidout-list'
+import { Route as AuthedStaffAbroadPaidoutDetailRouteImport } from './app/_authed/staff/abroad/paidout-detail'
+import { Route as AuthedStaffAbroadListProcessingRouteImport } from './app/_authed/staff/abroad/list-processing'
+import { Route as AuthedStaffAbroadListDoneRouteImport } from './app/_authed/staff/abroad/list-done'
+import { Route as AuthedStaffAbroadCommissionListRouteImport } from './app/_authed/staff/abroad/commission-list'
+import { Route as AuthedSamtekStaffsPermissionsRouteImport } from './app/_authed/samtek/staffs/permissions'
+import { Route as AuthedSamtekStaffsLoginLogsRouteImport } from './app/_authed/samtek/staffs/login-logs'
+import { Route as AuthedSamtekStaffsListRouteImport } from './app/_authed/samtek/staffs/list'
+import { Route as AuthedAgentNotificationsProgramsRouteImport } from './app/_authed/agent/notifications/programs'
+import { Route as AuthedAgentNotificationsMeetingRouteImport } from './app/_authed/agent/notifications/meeting'
+import { Route as AuthedAgentNotificationsListRouteImport } from './app/_authed/agent/notifications/list'
+import { Route as AuthedAgentNonLifeInsuranceListProcessingRouteImport } from './app/_authed/agent/non-life-insurance/list-processing'
+import { Route as AuthedAgentNonLifeInsuranceListDoneRouteImport } from './app/_authed/agent/non-life-insurance/list-done'
+import { Route as AuthedAgentNonLifeInsuranceIndividualRouteImport } from './app/_authed/agent/non-life-insurance/individual'
+import { Route as AuthedAgentMembersTreeRouteImport } from './app/_authed/agent/members/tree'
+import { Route as AuthedAgentMembersListRouteImport } from './app/_authed/agent/members/list'
+import { Route as AuthedAgentMembersLevelUpReportRouteImport } from './app/_authed/agent/members/level-up-report'
+import { Route as AuthedAgentMembersLevelUpLogRouteImport } from './app/_authed/agent/members/level-up-log'
+import { Route as AuthedAgentLifeInsuranceProcessingRouteImport } from './app/_authed/agent/life-insurance/processing'
+import { Route as AuthedAgentLifeInsuranceLostEffectiveRouteImport } from './app/_authed/agent/life-insurance/lost-effective'
+import { Route as AuthedAgentLifeInsuranceListDoneRouteImport } from './app/_authed/agent/life-insurance/list-done'
+import { Route as AuthedAgentLifeInsuranceIndividualRouteImport } from './app/_authed/agent/life-insurance/individual'
+import { Route as AuthedAgentLifeInsuranceFeeDueRouteImport } from './app/_authed/agent/life-insurance/fee-due'
+import { Route as AuthedAgentLifeInsuranceCanceledRouteImport } from './app/_authed/agent/life-insurance/canceled'
+import { Route as AuthedAgentAbroadListProcessingRouteImport } from './app/_authed/agent/abroad/list-processing'
+import { Route as AuthedAgentAbroadListDoneRouteImport } from './app/_authed/agent/abroad/list-done'
+import { Route as AuthedAgentAbroadIndividualRouteImport } from './app/_authed/agent/abroad/individual'
 
-const SignupRoute = SignupRouteImport.update({
-  id: '/signup',
-  path: '/signup',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LogoutRoute = LogoutRouteImport.update({
-  id: '/logout',
-  path: '/logout',
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -43,113 +136,1273 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthedDashboardRoute = AuthedDashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
+const AuthedStaffMeetingRoute = AuthedStaffMeetingRouteImport.update({
+  id: '/staff/meeting',
+  path: '/staff/meeting',
   getParentRoute: () => AuthedRoute,
 } as any)
-const AuthedPostsRouteRoute = AuthedPostsRouteRouteImport.update({
-  id: '/posts',
-  path: '/posts',
+const AuthedStaffEscrowReturnRoute = AuthedStaffEscrowReturnRouteImport.update({
+  id: '/staff/escrow-return',
+  path: '/staff/escrow-return',
   getParentRoute: () => AuthedRoute,
 } as any)
-const AuthedPostsIndexRoute = AuthedPostsIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AuthedPostsRouteRoute,
+const AuthedStaffEscrowReportRoute = AuthedStaffEscrowReportRouteImport.update({
+  id: '/staff/escrow-report',
+  path: '/staff/escrow-report',
+  getParentRoute: () => AuthedRoute,
 } as any)
-const AuthedPostsPostIdRoute = AuthedPostsPostIdRouteImport.update({
-  id: '/$postId',
-  path: '/$postId',
-  getParentRoute: () => AuthedPostsRouteRoute,
+const AuthedStaffEscrowRoute = AuthedStaffEscrowRouteImport.update({
+  id: '/staff/escrow',
+  path: '/staff/escrow',
+  getParentRoute: () => AuthedRoute,
 } as any)
+const AuthedStaffDashboardRoute = AuthedStaffDashboardRouteImport.update({
+  id: '/staff/dashboard',
+  path: '/staff/dashboard',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedStaffCustomersRoute = AuthedStaffCustomersRouteImport.update({
+  id: '/staff/customers',
+  path: '/staff/customers',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedStaffConfigLevelUpRoute =
+  AuthedStaffConfigLevelUpRouteImport.update({
+    id: '/staff/config-level-up',
+    path: '/staff/config-level-up',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffConfigEscrowRoute = AuthedStaffConfigEscrowRouteImport.update({
+  id: '/staff/config-escrow',
+  path: '/staff/config-escrow',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedStaffCommissionTypeRoute =
+  AuthedStaffCommissionTypeRouteImport.update({
+    id: '/staff/commission-type',
+    path: '/staff/commission-type',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffCommissionTableRoute =
+  AuthedStaffCommissionTableRouteImport.update({
+    id: '/staff/commission-table',
+    path: '/staff/commission-table',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffCommissionPeriodRoute =
+  AuthedStaffCommissionPeriodRouteImport.update({
+    id: '/staff/commission-period',
+    path: '/staff/commission-period',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffCommissionManualRoute =
+  AuthedStaffCommissionManualRouteImport.update({
+    id: '/staff/commission-manual',
+    path: '/staff/commission-manual',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedSamtekCustomersRoute = AuthedSamtekCustomersRouteImport.update({
+  id: '/samtek/customers',
+  path: '/samtek/customers',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedAgentProfileRoute = AuthedAgentProfileRouteImport.update({
+  id: '/agent/profile',
+  path: '/agent/profile',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedAgentDocumentsRoute = AuthedAgentDocumentsRouteImport.update({
+  id: '/agent/documents',
+  path: '/agent/documents',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedAgentDashboardRoute = AuthedAgentDashboardRouteImport.update({
+  id: '/agent/dashboard',
+  path: '/agent/dashboard',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedAgentCustomersRoute = AuthedAgentCustomersRouteImport.update({
+  id: '/agent/customers',
+  path: '/agent/customers',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedAgentCommissionTableRoute =
+  AuthedAgentCommissionTableRouteImport.update({
+    id: '/agent/commission-table',
+    path: '/agent/commission-table',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffStaffsPermissionsRoute =
+  AuthedStaffStaffsPermissionsRouteImport.update({
+    id: '/staff/staffs/permissions',
+    path: '/staff/staffs/permissions',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffStaffsLoginLogsRoute =
+  AuthedStaffStaffsLoginLogsRouteImport.update({
+    id: '/staff/staffs/login-logs',
+    path: '/staff/staffs/login-logs',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffStaffsListRoute = AuthedStaffStaffsListRouteImport.update({
+  id: '/staff/staffs/list',
+  path: '/staff/staffs/list',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedStaffReportPaidoutListRoute =
+  AuthedStaffReportPaidoutListRouteImport.update({
+    id: '/staff/report/paidout-list',
+    path: '/staff/report/paidout-list',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffReportPaidoutDetailRoute =
+  AuthedStaffReportPaidoutDetailRouteImport.update({
+    id: '/staff/report/paidout-detail',
+    path: '/staff/report/paidout-detail',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffReportNotLoginLogsRoute =
+  AuthedStaffReportNotLoginLogsRouteImport.update({
+    id: '/staff/report/not-login-logs',
+    path: '/staff/report/not-login-logs',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffReportLoginLogsRoute =
+  AuthedStaffReportLoginLogsRouteImport.update({
+    id: '/staff/report/login-logs',
+    path: '/staff/report/login-logs',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffReportIncomeOutcomeRoute =
+  AuthedStaffReportIncomeOutcomeRouteImport.update({
+    id: '/staff/report/income-outcome',
+    path: '/staff/report/income-outcome',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffReportCommissionRoute =
+  AuthedStaffReportCommissionRouteImport.update({
+    id: '/staff/report/commission',
+    path: '/staff/report/commission',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffNotificationsProgramsRoute =
+  AuthedStaffNotificationsProgramsRouteImport.update({
+    id: '/staff/notifications/programs',
+    path: '/staff/notifications/programs',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffNotificationsListRoute =
+  AuthedStaffNotificationsListRouteImport.update({
+    id: '/staff/notifications/list',
+    path: '/staff/notifications/list',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffNotificationsFeaturedRoute =
+  AuthedStaffNotificationsFeaturedRouteImport.update({
+    id: '/staff/notifications/featured',
+    path: '/staff/notifications/featured',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffNonLifeInsuranceProvidersRoute =
+  AuthedStaffNonLifeInsuranceProvidersRouteImport.update({
+    id: '/staff/non-life-insurance/providers',
+    path: '/staff/non-life-insurance/providers',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffNonLifeInsuranceProfixDetailAllRoute =
+  AuthedStaffNonLifeInsuranceProfixDetailAllRouteImport.update({
+    id: '/staff/non-life-insurance/profix-detail-all',
+    path: '/staff/non-life-insurance/profix-detail-all',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffNonLifeInsuranceProfixRoute =
+  AuthedStaffNonLifeInsuranceProfixRouteImport.update({
+    id: '/staff/non-life-insurance/profix',
+    path: '/staff/non-life-insurance/profix',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffNonLifeInsuranceProductsRoute =
+  AuthedStaffNonLifeInsuranceProductsRouteImport.update({
+    id: '/staff/non-life-insurance/products',
+    path: '/staff/non-life-insurance/products',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffNonLifeInsurancePaidoutListRoute =
+  AuthedStaffNonLifeInsurancePaidoutListRouteImport.update({
+    id: '/staff/non-life-insurance/paidout-list',
+    path: '/staff/non-life-insurance/paidout-list',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffNonLifeInsurancePaidoutDetailRoute =
+  AuthedStaffNonLifeInsurancePaidoutDetailRouteImport.update({
+    id: '/staff/non-life-insurance/paidout-detail',
+    path: '/staff/non-life-insurance/paidout-detail',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffNonLifeInsuranceListProcessingRoute =
+  AuthedStaffNonLifeInsuranceListProcessingRouteImport.update({
+    id: '/staff/non-life-insurance/list-processing',
+    path: '/staff/non-life-insurance/list-processing',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffNonLifeInsuranceListDoneRoute =
+  AuthedStaffNonLifeInsuranceListDoneRouteImport.update({
+    id: '/staff/non-life-insurance/list-done',
+    path: '/staff/non-life-insurance/list-done',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffNonLifeInsuranceCommissionListRoute =
+  AuthedStaffNonLifeInsuranceCommissionListRouteImport.update({
+    id: '/staff/non-life-insurance/commission-list',
+    path: '/staff/non-life-insurance/commission-list',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffLifeInsuranceProvidersRoute =
+  AuthedStaffLifeInsuranceProvidersRouteImport.update({
+    id: '/staff/life-insurance/providers',
+    path: '/staff/life-insurance/providers',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffLifeInsuranceProductsRoute =
+  AuthedStaffLifeInsuranceProductsRouteImport.update({
+    id: '/staff/life-insurance/products',
+    path: '/staff/life-insurance/products',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffLifeInsurancePaidoutListRoute =
+  AuthedStaffLifeInsurancePaidoutListRouteImport.update({
+    id: '/staff/life-insurance/paidout-list',
+    path: '/staff/life-insurance/paidout-list',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffLifeInsurancePaidoutDetailRoute =
+  AuthedStaffLifeInsurancePaidoutDetailRouteImport.update({
+    id: '/staff/life-insurance/paidout-detail',
+    path: '/staff/life-insurance/paidout-detail',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffLifeInsuranceLostEffectiveRoute =
+  AuthedStaffLifeInsuranceLostEffectiveRouteImport.update({
+    id: '/staff/life-insurance/lost-effective',
+    path: '/staff/life-insurance/lost-effective',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffLifeInsuranceListProcessingRoute =
+  AuthedStaffLifeInsuranceListProcessingRouteImport.update({
+    id: '/staff/life-insurance/list-processing',
+    path: '/staff/life-insurance/list-processing',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffLifeInsuranceListDoneRoute =
+  AuthedStaffLifeInsuranceListDoneRouteImport.update({
+    id: '/staff/life-insurance/list-done',
+    path: '/staff/life-insurance/list-done',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffLifeInsuranceListCanceledRoute =
+  AuthedStaffLifeInsuranceListCanceledRouteImport.update({
+    id: '/staff/life-insurance/list-canceled',
+    path: '/staff/life-insurance/list-canceled',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffLifeInsuranceFinancialRoute =
+  AuthedStaffLifeInsuranceFinancialRouteImport.update({
+    id: '/staff/life-insurance/financial',
+    path: '/staff/life-insurance/financial',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffLifeInsuranceFeeDueRoute =
+  AuthedStaffLifeInsuranceFeeDueRouteImport.update({
+    id: '/staff/life-insurance/fee-due',
+    path: '/staff/life-insurance/fee-due',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffLifeInsuranceCommissionListRoute =
+  AuthedStaffLifeInsuranceCommissionListRouteImport.update({
+    id: '/staff/life-insurance/commission-list',
+    path: '/staff/life-insurance/commission-list',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffIncomeOutcomeOutcomeRoute =
+  AuthedStaffIncomeOutcomeOutcomeRouteImport.update({
+    id: '/staff/income-outcome/outcome',
+    path: '/staff/income-outcome/outcome',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffIncomeOutcomeIncomeRoute =
+  AuthedStaffIncomeOutcomeIncomeRouteImport.update({
+    id: '/staff/income-outcome/income',
+    path: '/staff/income-outcome/income',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffIncomeOutcomeCashbookTotalRoute =
+  AuthedStaffIncomeOutcomeCashbookTotalRouteImport.update({
+    id: '/staff/income-outcome/cashbook-total',
+    path: '/staff/income-outcome/cashbook-total',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffIncomeOutcomeCashbookOutcomeDeletedRoute =
+  AuthedStaffIncomeOutcomeCashbookOutcomeDeletedRouteImport.update({
+    id: '/staff/income-outcome/cashbook-outcome-deleted',
+    path: '/staff/income-outcome/cashbook-outcome-deleted',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffIncomeOutcomeCashbookOutcomeRoute =
+  AuthedStaffIncomeOutcomeCashbookOutcomeRouteImport.update({
+    id: '/staff/income-outcome/cashbook-outcome',
+    path: '/staff/income-outcome/cashbook-outcome',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffIncomeOutcomeCashbookIncomeDeletedRoute =
+  AuthedStaffIncomeOutcomeCashbookIncomeDeletedRouteImport.update({
+    id: '/staff/income-outcome/cashbook-income-deleted',
+    path: '/staff/income-outcome/cashbook-income-deleted',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffIncomeOutcomeCashbookIncomeRoute =
+  AuthedStaffIncomeOutcomeCashbookIncomeRouteImport.update({
+    id: '/staff/income-outcome/cashbook-income',
+    path: '/staff/income-outcome/cashbook-income',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffDocumentsTypesRoute =
+  AuthedStaffDocumentsTypesRouteImport.update({
+    id: '/staff/documents/types',
+    path: '/staff/documents/types',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffDocumentsTypeInternalRoute =
+  AuthedStaffDocumentsTypeInternalRouteImport.update({
+    id: '/staff/documents/type-internal',
+    path: '/staff/documents/type-internal',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffDocumentsMembersRoute =
+  AuthedStaffDocumentsMembersRouteImport.update({
+    id: '/staff/documents/members',
+    path: '/staff/documents/members',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffDocumentsMemberInternalRoute =
+  AuthedStaffDocumentsMemberInternalRouteImport.update({
+    id: '/staff/documents/member-internal',
+    path: '/staff/documents/member-internal',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffDocumentsEmailBusinessRoute =
+  AuthedStaffDocumentsEmailBusinessRouteImport.update({
+    id: '/staff/documents/email-business',
+    path: '/staff/documents/email-business',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffAgentsTreeRoute = AuthedStaffAgentsTreeRouteImport.update({
+  id: '/staff/agents/tree',
+  path: '/staff/agents/tree',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedStaffAgentsTotalsRoute = AuthedStaffAgentsTotalsRouteImport.update({
+  id: '/staff/agents/totals',
+  path: '/staff/agents/totals',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedStaffAgentsNewAgentsRoute =
+  AuthedStaffAgentsNewAgentsRouteImport.update({
+    id: '/staff/agents/new-agents',
+    path: '/staff/agents/new-agents',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffAgentsLoginLogsRoute =
+  AuthedStaffAgentsLoginLogsRouteImport.update({
+    id: '/staff/agents/login-logs',
+    path: '/staff/agents/login-logs',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffAgentsListRoute = AuthedStaffAgentsListRouteImport.update({
+  id: '/staff/agents/list',
+  path: '/staff/agents/list',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedStaffAgentsLevelUpReportRoute =
+  AuthedStaffAgentsLevelUpReportRouteImport.update({
+    id: '/staff/agents/level-up-report',
+    path: '/staff/agents/level-up-report',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffAgentsLevelUpLogRoute =
+  AuthedStaffAgentsLevelUpLogRouteImport.update({
+    id: '/staff/agents/level-up-log',
+    path: '/staff/agents/level-up-log',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffAgentsChangeManagerRoute =
+  AuthedStaffAgentsChangeManagerRouteImport.update({
+    id: '/staff/agents/change-manager',
+    path: '/staff/agents/change-manager',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffAgentsAssignLevelRoute =
+  AuthedStaffAgentsAssignLevelRouteImport.update({
+    id: '/staff/agents/assign-level',
+    path: '/staff/agents/assign-level',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffAgentsAgentEcontractRoute =
+  AuthedStaffAgentsAgentEcontractRouteImport.update({
+    id: '/staff/agents/agent-econtract',
+    path: '/staff/agents/agent-econtract',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffAbroadProvidersRoute =
+  AuthedStaffAbroadProvidersRouteImport.update({
+    id: '/staff/abroad/providers',
+    path: '/staff/abroad/providers',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffAbroadProfixDetailAllRoute =
+  AuthedStaffAbroadProfixDetailAllRouteImport.update({
+    id: '/staff/abroad/profix-detail-all',
+    path: '/staff/abroad/profix-detail-all',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffAbroadProfixRoute = AuthedStaffAbroadProfixRouteImport.update({
+  id: '/staff/abroad/profix',
+  path: '/staff/abroad/profix',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedStaffAbroadProductsRoute =
+  AuthedStaffAbroadProductsRouteImport.update({
+    id: '/staff/abroad/products',
+    path: '/staff/abroad/products',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffAbroadPaidoutListRoute =
+  AuthedStaffAbroadPaidoutListRouteImport.update({
+    id: '/staff/abroad/paidout-list',
+    path: '/staff/abroad/paidout-list',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffAbroadPaidoutDetailRoute =
+  AuthedStaffAbroadPaidoutDetailRouteImport.update({
+    id: '/staff/abroad/paidout-detail',
+    path: '/staff/abroad/paidout-detail',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffAbroadListProcessingRoute =
+  AuthedStaffAbroadListProcessingRouteImport.update({
+    id: '/staff/abroad/list-processing',
+    path: '/staff/abroad/list-processing',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffAbroadListDoneRoute =
+  AuthedStaffAbroadListDoneRouteImport.update({
+    id: '/staff/abroad/list-done',
+    path: '/staff/abroad/list-done',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedStaffAbroadCommissionListRoute =
+  AuthedStaffAbroadCommissionListRouteImport.update({
+    id: '/staff/abroad/commission-list',
+    path: '/staff/abroad/commission-list',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedSamtekStaffsPermissionsRoute =
+  AuthedSamtekStaffsPermissionsRouteImport.update({
+    id: '/samtek/staffs/permissions',
+    path: '/samtek/staffs/permissions',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedSamtekStaffsLoginLogsRoute =
+  AuthedSamtekStaffsLoginLogsRouteImport.update({
+    id: '/samtek/staffs/login-logs',
+    path: '/samtek/staffs/login-logs',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedSamtekStaffsListRoute = AuthedSamtekStaffsListRouteImport.update({
+  id: '/samtek/staffs/list',
+  path: '/samtek/staffs/list',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedAgentNotificationsProgramsRoute =
+  AuthedAgentNotificationsProgramsRouteImport.update({
+    id: '/agent/notifications/programs',
+    path: '/agent/notifications/programs',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedAgentNotificationsMeetingRoute =
+  AuthedAgentNotificationsMeetingRouteImport.update({
+    id: '/agent/notifications/meeting',
+    path: '/agent/notifications/meeting',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedAgentNotificationsListRoute =
+  AuthedAgentNotificationsListRouteImport.update({
+    id: '/agent/notifications/list',
+    path: '/agent/notifications/list',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedAgentNonLifeInsuranceListProcessingRoute =
+  AuthedAgentNonLifeInsuranceListProcessingRouteImport.update({
+    id: '/agent/non-life-insurance/list-processing',
+    path: '/agent/non-life-insurance/list-processing',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedAgentNonLifeInsuranceListDoneRoute =
+  AuthedAgentNonLifeInsuranceListDoneRouteImport.update({
+    id: '/agent/non-life-insurance/list-done',
+    path: '/agent/non-life-insurance/list-done',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedAgentNonLifeInsuranceIndividualRoute =
+  AuthedAgentNonLifeInsuranceIndividualRouteImport.update({
+    id: '/agent/non-life-insurance/individual',
+    path: '/agent/non-life-insurance/individual',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedAgentMembersTreeRoute = AuthedAgentMembersTreeRouteImport.update({
+  id: '/agent/members/tree',
+  path: '/agent/members/tree',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedAgentMembersListRoute = AuthedAgentMembersListRouteImport.update({
+  id: '/agent/members/list',
+  path: '/agent/members/list',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedAgentMembersLevelUpReportRoute =
+  AuthedAgentMembersLevelUpReportRouteImport.update({
+    id: '/agent/members/level-up-report',
+    path: '/agent/members/level-up-report',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedAgentMembersLevelUpLogRoute =
+  AuthedAgentMembersLevelUpLogRouteImport.update({
+    id: '/agent/members/level-up-log',
+    path: '/agent/members/level-up-log',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedAgentLifeInsuranceProcessingRoute =
+  AuthedAgentLifeInsuranceProcessingRouteImport.update({
+    id: '/agent/life-insurance/processing',
+    path: '/agent/life-insurance/processing',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedAgentLifeInsuranceLostEffectiveRoute =
+  AuthedAgentLifeInsuranceLostEffectiveRouteImport.update({
+    id: '/agent/life-insurance/lost-effective',
+    path: '/agent/life-insurance/lost-effective',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedAgentLifeInsuranceListDoneRoute =
+  AuthedAgentLifeInsuranceListDoneRouteImport.update({
+    id: '/agent/life-insurance/list-done',
+    path: '/agent/life-insurance/list-done',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedAgentLifeInsuranceIndividualRoute =
+  AuthedAgentLifeInsuranceIndividualRouteImport.update({
+    id: '/agent/life-insurance/individual',
+    path: '/agent/life-insurance/individual',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedAgentLifeInsuranceFeeDueRoute =
+  AuthedAgentLifeInsuranceFeeDueRouteImport.update({
+    id: '/agent/life-insurance/fee-due',
+    path: '/agent/life-insurance/fee-due',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedAgentLifeInsuranceCanceledRoute =
+  AuthedAgentLifeInsuranceCanceledRouteImport.update({
+    id: '/agent/life-insurance/canceled',
+    path: '/agent/life-insurance/canceled',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedAgentAbroadListProcessingRoute =
+  AuthedAgentAbroadListProcessingRouteImport.update({
+    id: '/agent/abroad/list-processing',
+    path: '/agent/abroad/list-processing',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedAgentAbroadListDoneRoute =
+  AuthedAgentAbroadListDoneRouteImport.update({
+    id: '/agent/abroad/list-done',
+    path: '/agent/abroad/list-done',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedAgentAbroadIndividualRoute =
+  AuthedAgentAbroadIndividualRouteImport.update({
+    id: '/agent/abroad/individual',
+    path: '/agent/abroad/individual',
+    getParentRoute: () => AuthedRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
-  '/logout': typeof LogoutRoute
-  '/signup': typeof SignupRoute
-  '/posts': typeof AuthedPostsRouteRouteWithChildren
-  '/dashboard': typeof AuthedDashboardRoute
-  '/posts/$postId': typeof AuthedPostsPostIdRoute
-  '/posts/': typeof AuthedPostsIndexRoute
+  '/register': typeof RegisterRoute
+  '/agent/commission-table': typeof AuthedAgentCommissionTableRoute
+  '/agent/customers': typeof AuthedAgentCustomersRoute
+  '/agent/dashboard': typeof AuthedAgentDashboardRoute
+  '/agent/documents': typeof AuthedAgentDocumentsRoute
+  '/agent/profile': typeof AuthedAgentProfileRoute
+  '/samtek/customers': typeof AuthedSamtekCustomersRoute
+  '/staff/commission-manual': typeof AuthedStaffCommissionManualRoute
+  '/staff/commission-period': typeof AuthedStaffCommissionPeriodRoute
+  '/staff/commission-table': typeof AuthedStaffCommissionTableRoute
+  '/staff/commission-type': typeof AuthedStaffCommissionTypeRoute
+  '/staff/config-escrow': typeof AuthedStaffConfigEscrowRoute
+  '/staff/config-level-up': typeof AuthedStaffConfigLevelUpRoute
+  '/staff/customers': typeof AuthedStaffCustomersRoute
+  '/staff/dashboard': typeof AuthedStaffDashboardRoute
+  '/staff/escrow': typeof AuthedStaffEscrowRoute
+  '/staff/escrow-report': typeof AuthedStaffEscrowReportRoute
+  '/staff/escrow-return': typeof AuthedStaffEscrowReturnRoute
+  '/staff/meeting': typeof AuthedStaffMeetingRoute
+  '/agent/abroad/individual': typeof AuthedAgentAbroadIndividualRoute
+  '/agent/abroad/list-done': typeof AuthedAgentAbroadListDoneRoute
+  '/agent/abroad/list-processing': typeof AuthedAgentAbroadListProcessingRoute
+  '/agent/life-insurance/canceled': typeof AuthedAgentLifeInsuranceCanceledRoute
+  '/agent/life-insurance/fee-due': typeof AuthedAgentLifeInsuranceFeeDueRoute
+  '/agent/life-insurance/individual': typeof AuthedAgentLifeInsuranceIndividualRoute
+  '/agent/life-insurance/list-done': typeof AuthedAgentLifeInsuranceListDoneRoute
+  '/agent/life-insurance/lost-effective': typeof AuthedAgentLifeInsuranceLostEffectiveRoute
+  '/agent/life-insurance/processing': typeof AuthedAgentLifeInsuranceProcessingRoute
+  '/agent/members/level-up-log': typeof AuthedAgentMembersLevelUpLogRoute
+  '/agent/members/level-up-report': typeof AuthedAgentMembersLevelUpReportRoute
+  '/agent/members/list': typeof AuthedAgentMembersListRoute
+  '/agent/members/tree': typeof AuthedAgentMembersTreeRoute
+  '/agent/non-life-insurance/individual': typeof AuthedAgentNonLifeInsuranceIndividualRoute
+  '/agent/non-life-insurance/list-done': typeof AuthedAgentNonLifeInsuranceListDoneRoute
+  '/agent/non-life-insurance/list-processing': typeof AuthedAgentNonLifeInsuranceListProcessingRoute
+  '/agent/notifications/list': typeof AuthedAgentNotificationsListRoute
+  '/agent/notifications/meeting': typeof AuthedAgentNotificationsMeetingRoute
+  '/agent/notifications/programs': typeof AuthedAgentNotificationsProgramsRoute
+  '/samtek/staffs/list': typeof AuthedSamtekStaffsListRoute
+  '/samtek/staffs/login-logs': typeof AuthedSamtekStaffsLoginLogsRoute
+  '/samtek/staffs/permissions': typeof AuthedSamtekStaffsPermissionsRoute
+  '/staff/abroad/commission-list': typeof AuthedStaffAbroadCommissionListRoute
+  '/staff/abroad/list-done': typeof AuthedStaffAbroadListDoneRoute
+  '/staff/abroad/list-processing': typeof AuthedStaffAbroadListProcessingRoute
+  '/staff/abroad/paidout-detail': typeof AuthedStaffAbroadPaidoutDetailRoute
+  '/staff/abroad/paidout-list': typeof AuthedStaffAbroadPaidoutListRoute
+  '/staff/abroad/products': typeof AuthedStaffAbroadProductsRoute
+  '/staff/abroad/profix': typeof AuthedStaffAbroadProfixRoute
+  '/staff/abroad/profix-detail-all': typeof AuthedStaffAbroadProfixDetailAllRoute
+  '/staff/abroad/providers': typeof AuthedStaffAbroadProvidersRoute
+  '/staff/agents/agent-econtract': typeof AuthedStaffAgentsAgentEcontractRoute
+  '/staff/agents/assign-level': typeof AuthedStaffAgentsAssignLevelRoute
+  '/staff/agents/change-manager': typeof AuthedStaffAgentsChangeManagerRoute
+  '/staff/agents/level-up-log': typeof AuthedStaffAgentsLevelUpLogRoute
+  '/staff/agents/level-up-report': typeof AuthedStaffAgentsLevelUpReportRoute
+  '/staff/agents/list': typeof AuthedStaffAgentsListRoute
+  '/staff/agents/login-logs': typeof AuthedStaffAgentsLoginLogsRoute
+  '/staff/agents/new-agents': typeof AuthedStaffAgentsNewAgentsRoute
+  '/staff/agents/totals': typeof AuthedStaffAgentsTotalsRoute
+  '/staff/agents/tree': typeof AuthedStaffAgentsTreeRoute
+  '/staff/documents/email-business': typeof AuthedStaffDocumentsEmailBusinessRoute
+  '/staff/documents/member-internal': typeof AuthedStaffDocumentsMemberInternalRoute
+  '/staff/documents/members': typeof AuthedStaffDocumentsMembersRoute
+  '/staff/documents/type-internal': typeof AuthedStaffDocumentsTypeInternalRoute
+  '/staff/documents/types': typeof AuthedStaffDocumentsTypesRoute
+  '/staff/income-outcome/cashbook-income': typeof AuthedStaffIncomeOutcomeCashbookIncomeRoute
+  '/staff/income-outcome/cashbook-income-deleted': typeof AuthedStaffIncomeOutcomeCashbookIncomeDeletedRoute
+  '/staff/income-outcome/cashbook-outcome': typeof AuthedStaffIncomeOutcomeCashbookOutcomeRoute
+  '/staff/income-outcome/cashbook-outcome-deleted': typeof AuthedStaffIncomeOutcomeCashbookOutcomeDeletedRoute
+  '/staff/income-outcome/cashbook-total': typeof AuthedStaffIncomeOutcomeCashbookTotalRoute
+  '/staff/income-outcome/income': typeof AuthedStaffIncomeOutcomeIncomeRoute
+  '/staff/income-outcome/outcome': typeof AuthedStaffIncomeOutcomeOutcomeRoute
+  '/staff/life-insurance/commission-list': typeof AuthedStaffLifeInsuranceCommissionListRoute
+  '/staff/life-insurance/fee-due': typeof AuthedStaffLifeInsuranceFeeDueRoute
+  '/staff/life-insurance/financial': typeof AuthedStaffLifeInsuranceFinancialRoute
+  '/staff/life-insurance/list-canceled': typeof AuthedStaffLifeInsuranceListCanceledRoute
+  '/staff/life-insurance/list-done': typeof AuthedStaffLifeInsuranceListDoneRoute
+  '/staff/life-insurance/list-processing': typeof AuthedStaffLifeInsuranceListProcessingRoute
+  '/staff/life-insurance/lost-effective': typeof AuthedStaffLifeInsuranceLostEffectiveRoute
+  '/staff/life-insurance/paidout-detail': typeof AuthedStaffLifeInsurancePaidoutDetailRoute
+  '/staff/life-insurance/paidout-list': typeof AuthedStaffLifeInsurancePaidoutListRoute
+  '/staff/life-insurance/products': typeof AuthedStaffLifeInsuranceProductsRoute
+  '/staff/life-insurance/providers': typeof AuthedStaffLifeInsuranceProvidersRoute
+  '/staff/non-life-insurance/commission-list': typeof AuthedStaffNonLifeInsuranceCommissionListRoute
+  '/staff/non-life-insurance/list-done': typeof AuthedStaffNonLifeInsuranceListDoneRoute
+  '/staff/non-life-insurance/list-processing': typeof AuthedStaffNonLifeInsuranceListProcessingRoute
+  '/staff/non-life-insurance/paidout-detail': typeof AuthedStaffNonLifeInsurancePaidoutDetailRoute
+  '/staff/non-life-insurance/paidout-list': typeof AuthedStaffNonLifeInsurancePaidoutListRoute
+  '/staff/non-life-insurance/products': typeof AuthedStaffNonLifeInsuranceProductsRoute
+  '/staff/non-life-insurance/profix': typeof AuthedStaffNonLifeInsuranceProfixRoute
+  '/staff/non-life-insurance/profix-detail-all': typeof AuthedStaffNonLifeInsuranceProfixDetailAllRoute
+  '/staff/non-life-insurance/providers': typeof AuthedStaffNonLifeInsuranceProvidersRoute
+  '/staff/notifications/featured': typeof AuthedStaffNotificationsFeaturedRoute
+  '/staff/notifications/list': typeof AuthedStaffNotificationsListRoute
+  '/staff/notifications/programs': typeof AuthedStaffNotificationsProgramsRoute
+  '/staff/report/commission': typeof AuthedStaffReportCommissionRoute
+  '/staff/report/income-outcome': typeof AuthedStaffReportIncomeOutcomeRoute
+  '/staff/report/login-logs': typeof AuthedStaffReportLoginLogsRoute
+  '/staff/report/not-login-logs': typeof AuthedStaffReportNotLoginLogsRoute
+  '/staff/report/paidout-detail': typeof AuthedStaffReportPaidoutDetailRoute
+  '/staff/report/paidout-list': typeof AuthedStaffReportPaidoutListRoute
+  '/staff/staffs/list': typeof AuthedStaffStaffsListRoute
+  '/staff/staffs/login-logs': typeof AuthedStaffStaffsLoginLogsRoute
+  '/staff/staffs/permissions': typeof AuthedStaffStaffsPermissionsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
-  '/logout': typeof LogoutRoute
-  '/signup': typeof SignupRoute
-  '/dashboard': typeof AuthedDashboardRoute
-  '/posts/$postId': typeof AuthedPostsPostIdRoute
-  '/posts': typeof AuthedPostsIndexRoute
+  '/register': typeof RegisterRoute
+  '/agent/commission-table': typeof AuthedAgentCommissionTableRoute
+  '/agent/customers': typeof AuthedAgentCustomersRoute
+  '/agent/dashboard': typeof AuthedAgentDashboardRoute
+  '/agent/documents': typeof AuthedAgentDocumentsRoute
+  '/agent/profile': typeof AuthedAgentProfileRoute
+  '/samtek/customers': typeof AuthedSamtekCustomersRoute
+  '/staff/commission-manual': typeof AuthedStaffCommissionManualRoute
+  '/staff/commission-period': typeof AuthedStaffCommissionPeriodRoute
+  '/staff/commission-table': typeof AuthedStaffCommissionTableRoute
+  '/staff/commission-type': typeof AuthedStaffCommissionTypeRoute
+  '/staff/config-escrow': typeof AuthedStaffConfigEscrowRoute
+  '/staff/config-level-up': typeof AuthedStaffConfigLevelUpRoute
+  '/staff/customers': typeof AuthedStaffCustomersRoute
+  '/staff/dashboard': typeof AuthedStaffDashboardRoute
+  '/staff/escrow': typeof AuthedStaffEscrowRoute
+  '/staff/escrow-report': typeof AuthedStaffEscrowReportRoute
+  '/staff/escrow-return': typeof AuthedStaffEscrowReturnRoute
+  '/staff/meeting': typeof AuthedStaffMeetingRoute
+  '/agent/abroad/individual': typeof AuthedAgentAbroadIndividualRoute
+  '/agent/abroad/list-done': typeof AuthedAgentAbroadListDoneRoute
+  '/agent/abroad/list-processing': typeof AuthedAgentAbroadListProcessingRoute
+  '/agent/life-insurance/canceled': typeof AuthedAgentLifeInsuranceCanceledRoute
+  '/agent/life-insurance/fee-due': typeof AuthedAgentLifeInsuranceFeeDueRoute
+  '/agent/life-insurance/individual': typeof AuthedAgentLifeInsuranceIndividualRoute
+  '/agent/life-insurance/list-done': typeof AuthedAgentLifeInsuranceListDoneRoute
+  '/agent/life-insurance/lost-effective': typeof AuthedAgentLifeInsuranceLostEffectiveRoute
+  '/agent/life-insurance/processing': typeof AuthedAgentLifeInsuranceProcessingRoute
+  '/agent/members/level-up-log': typeof AuthedAgentMembersLevelUpLogRoute
+  '/agent/members/level-up-report': typeof AuthedAgentMembersLevelUpReportRoute
+  '/agent/members/list': typeof AuthedAgentMembersListRoute
+  '/agent/members/tree': typeof AuthedAgentMembersTreeRoute
+  '/agent/non-life-insurance/individual': typeof AuthedAgentNonLifeInsuranceIndividualRoute
+  '/agent/non-life-insurance/list-done': typeof AuthedAgentNonLifeInsuranceListDoneRoute
+  '/agent/non-life-insurance/list-processing': typeof AuthedAgentNonLifeInsuranceListProcessingRoute
+  '/agent/notifications/list': typeof AuthedAgentNotificationsListRoute
+  '/agent/notifications/meeting': typeof AuthedAgentNotificationsMeetingRoute
+  '/agent/notifications/programs': typeof AuthedAgentNotificationsProgramsRoute
+  '/samtek/staffs/list': typeof AuthedSamtekStaffsListRoute
+  '/samtek/staffs/login-logs': typeof AuthedSamtekStaffsLoginLogsRoute
+  '/samtek/staffs/permissions': typeof AuthedSamtekStaffsPermissionsRoute
+  '/staff/abroad/commission-list': typeof AuthedStaffAbroadCommissionListRoute
+  '/staff/abroad/list-done': typeof AuthedStaffAbroadListDoneRoute
+  '/staff/abroad/list-processing': typeof AuthedStaffAbroadListProcessingRoute
+  '/staff/abroad/paidout-detail': typeof AuthedStaffAbroadPaidoutDetailRoute
+  '/staff/abroad/paidout-list': typeof AuthedStaffAbroadPaidoutListRoute
+  '/staff/abroad/products': typeof AuthedStaffAbroadProductsRoute
+  '/staff/abroad/profix': typeof AuthedStaffAbroadProfixRoute
+  '/staff/abroad/profix-detail-all': typeof AuthedStaffAbroadProfixDetailAllRoute
+  '/staff/abroad/providers': typeof AuthedStaffAbroadProvidersRoute
+  '/staff/agents/agent-econtract': typeof AuthedStaffAgentsAgentEcontractRoute
+  '/staff/agents/assign-level': typeof AuthedStaffAgentsAssignLevelRoute
+  '/staff/agents/change-manager': typeof AuthedStaffAgentsChangeManagerRoute
+  '/staff/agents/level-up-log': typeof AuthedStaffAgentsLevelUpLogRoute
+  '/staff/agents/level-up-report': typeof AuthedStaffAgentsLevelUpReportRoute
+  '/staff/agents/list': typeof AuthedStaffAgentsListRoute
+  '/staff/agents/login-logs': typeof AuthedStaffAgentsLoginLogsRoute
+  '/staff/agents/new-agents': typeof AuthedStaffAgentsNewAgentsRoute
+  '/staff/agents/totals': typeof AuthedStaffAgentsTotalsRoute
+  '/staff/agents/tree': typeof AuthedStaffAgentsTreeRoute
+  '/staff/documents/email-business': typeof AuthedStaffDocumentsEmailBusinessRoute
+  '/staff/documents/member-internal': typeof AuthedStaffDocumentsMemberInternalRoute
+  '/staff/documents/members': typeof AuthedStaffDocumentsMembersRoute
+  '/staff/documents/type-internal': typeof AuthedStaffDocumentsTypeInternalRoute
+  '/staff/documents/types': typeof AuthedStaffDocumentsTypesRoute
+  '/staff/income-outcome/cashbook-income': typeof AuthedStaffIncomeOutcomeCashbookIncomeRoute
+  '/staff/income-outcome/cashbook-income-deleted': typeof AuthedStaffIncomeOutcomeCashbookIncomeDeletedRoute
+  '/staff/income-outcome/cashbook-outcome': typeof AuthedStaffIncomeOutcomeCashbookOutcomeRoute
+  '/staff/income-outcome/cashbook-outcome-deleted': typeof AuthedStaffIncomeOutcomeCashbookOutcomeDeletedRoute
+  '/staff/income-outcome/cashbook-total': typeof AuthedStaffIncomeOutcomeCashbookTotalRoute
+  '/staff/income-outcome/income': typeof AuthedStaffIncomeOutcomeIncomeRoute
+  '/staff/income-outcome/outcome': typeof AuthedStaffIncomeOutcomeOutcomeRoute
+  '/staff/life-insurance/commission-list': typeof AuthedStaffLifeInsuranceCommissionListRoute
+  '/staff/life-insurance/fee-due': typeof AuthedStaffLifeInsuranceFeeDueRoute
+  '/staff/life-insurance/financial': typeof AuthedStaffLifeInsuranceFinancialRoute
+  '/staff/life-insurance/list-canceled': typeof AuthedStaffLifeInsuranceListCanceledRoute
+  '/staff/life-insurance/list-done': typeof AuthedStaffLifeInsuranceListDoneRoute
+  '/staff/life-insurance/list-processing': typeof AuthedStaffLifeInsuranceListProcessingRoute
+  '/staff/life-insurance/lost-effective': typeof AuthedStaffLifeInsuranceLostEffectiveRoute
+  '/staff/life-insurance/paidout-detail': typeof AuthedStaffLifeInsurancePaidoutDetailRoute
+  '/staff/life-insurance/paidout-list': typeof AuthedStaffLifeInsurancePaidoutListRoute
+  '/staff/life-insurance/products': typeof AuthedStaffLifeInsuranceProductsRoute
+  '/staff/life-insurance/providers': typeof AuthedStaffLifeInsuranceProvidersRoute
+  '/staff/non-life-insurance/commission-list': typeof AuthedStaffNonLifeInsuranceCommissionListRoute
+  '/staff/non-life-insurance/list-done': typeof AuthedStaffNonLifeInsuranceListDoneRoute
+  '/staff/non-life-insurance/list-processing': typeof AuthedStaffNonLifeInsuranceListProcessingRoute
+  '/staff/non-life-insurance/paidout-detail': typeof AuthedStaffNonLifeInsurancePaidoutDetailRoute
+  '/staff/non-life-insurance/paidout-list': typeof AuthedStaffNonLifeInsurancePaidoutListRoute
+  '/staff/non-life-insurance/products': typeof AuthedStaffNonLifeInsuranceProductsRoute
+  '/staff/non-life-insurance/profix': typeof AuthedStaffNonLifeInsuranceProfixRoute
+  '/staff/non-life-insurance/profix-detail-all': typeof AuthedStaffNonLifeInsuranceProfixDetailAllRoute
+  '/staff/non-life-insurance/providers': typeof AuthedStaffNonLifeInsuranceProvidersRoute
+  '/staff/notifications/featured': typeof AuthedStaffNotificationsFeaturedRoute
+  '/staff/notifications/list': typeof AuthedStaffNotificationsListRoute
+  '/staff/notifications/programs': typeof AuthedStaffNotificationsProgramsRoute
+  '/staff/report/commission': typeof AuthedStaffReportCommissionRoute
+  '/staff/report/income-outcome': typeof AuthedStaffReportIncomeOutcomeRoute
+  '/staff/report/login-logs': typeof AuthedStaffReportLoginLogsRoute
+  '/staff/report/not-login-logs': typeof AuthedStaffReportNotLoginLogsRoute
+  '/staff/report/paidout-detail': typeof AuthedStaffReportPaidoutDetailRoute
+  '/staff/report/paidout-list': typeof AuthedStaffReportPaidoutListRoute
+  '/staff/staffs/list': typeof AuthedStaffStaffsListRoute
+  '/staff/staffs/login-logs': typeof AuthedStaffStaffsLoginLogsRoute
+  '/staff/staffs/permissions': typeof AuthedStaffStaffsPermissionsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authed': typeof AuthedRouteWithChildren
   '/login': typeof LoginRoute
-  '/logout': typeof LogoutRoute
-  '/signup': typeof SignupRoute
-  '/_authed/posts': typeof AuthedPostsRouteRouteWithChildren
-  '/_authed/dashboard': typeof AuthedDashboardRoute
-  '/_authed/posts/$postId': typeof AuthedPostsPostIdRoute
-  '/_authed/posts/': typeof AuthedPostsIndexRoute
+  '/register': typeof RegisterRoute
+  '/_authed/agent/commission-table': typeof AuthedAgentCommissionTableRoute
+  '/_authed/agent/customers': typeof AuthedAgentCustomersRoute
+  '/_authed/agent/dashboard': typeof AuthedAgentDashboardRoute
+  '/_authed/agent/documents': typeof AuthedAgentDocumentsRoute
+  '/_authed/agent/profile': typeof AuthedAgentProfileRoute
+  '/_authed/samtek/customers': typeof AuthedSamtekCustomersRoute
+  '/_authed/staff/commission-manual': typeof AuthedStaffCommissionManualRoute
+  '/_authed/staff/commission-period': typeof AuthedStaffCommissionPeriodRoute
+  '/_authed/staff/commission-table': typeof AuthedStaffCommissionTableRoute
+  '/_authed/staff/commission-type': typeof AuthedStaffCommissionTypeRoute
+  '/_authed/staff/config-escrow': typeof AuthedStaffConfigEscrowRoute
+  '/_authed/staff/config-level-up': typeof AuthedStaffConfigLevelUpRoute
+  '/_authed/staff/customers': typeof AuthedStaffCustomersRoute
+  '/_authed/staff/dashboard': typeof AuthedStaffDashboardRoute
+  '/_authed/staff/escrow': typeof AuthedStaffEscrowRoute
+  '/_authed/staff/escrow-report': typeof AuthedStaffEscrowReportRoute
+  '/_authed/staff/escrow-return': typeof AuthedStaffEscrowReturnRoute
+  '/_authed/staff/meeting': typeof AuthedStaffMeetingRoute
+  '/_authed/agent/abroad/individual': typeof AuthedAgentAbroadIndividualRoute
+  '/_authed/agent/abroad/list-done': typeof AuthedAgentAbroadListDoneRoute
+  '/_authed/agent/abroad/list-processing': typeof AuthedAgentAbroadListProcessingRoute
+  '/_authed/agent/life-insurance/canceled': typeof AuthedAgentLifeInsuranceCanceledRoute
+  '/_authed/agent/life-insurance/fee-due': typeof AuthedAgentLifeInsuranceFeeDueRoute
+  '/_authed/agent/life-insurance/individual': typeof AuthedAgentLifeInsuranceIndividualRoute
+  '/_authed/agent/life-insurance/list-done': typeof AuthedAgentLifeInsuranceListDoneRoute
+  '/_authed/agent/life-insurance/lost-effective': typeof AuthedAgentLifeInsuranceLostEffectiveRoute
+  '/_authed/agent/life-insurance/processing': typeof AuthedAgentLifeInsuranceProcessingRoute
+  '/_authed/agent/members/level-up-log': typeof AuthedAgentMembersLevelUpLogRoute
+  '/_authed/agent/members/level-up-report': typeof AuthedAgentMembersLevelUpReportRoute
+  '/_authed/agent/members/list': typeof AuthedAgentMembersListRoute
+  '/_authed/agent/members/tree': typeof AuthedAgentMembersTreeRoute
+  '/_authed/agent/non-life-insurance/individual': typeof AuthedAgentNonLifeInsuranceIndividualRoute
+  '/_authed/agent/non-life-insurance/list-done': typeof AuthedAgentNonLifeInsuranceListDoneRoute
+  '/_authed/agent/non-life-insurance/list-processing': typeof AuthedAgentNonLifeInsuranceListProcessingRoute
+  '/_authed/agent/notifications/list': typeof AuthedAgentNotificationsListRoute
+  '/_authed/agent/notifications/meeting': typeof AuthedAgentNotificationsMeetingRoute
+  '/_authed/agent/notifications/programs': typeof AuthedAgentNotificationsProgramsRoute
+  '/_authed/samtek/staffs/list': typeof AuthedSamtekStaffsListRoute
+  '/_authed/samtek/staffs/login-logs': typeof AuthedSamtekStaffsLoginLogsRoute
+  '/_authed/samtek/staffs/permissions': typeof AuthedSamtekStaffsPermissionsRoute
+  '/_authed/staff/abroad/commission-list': typeof AuthedStaffAbroadCommissionListRoute
+  '/_authed/staff/abroad/list-done': typeof AuthedStaffAbroadListDoneRoute
+  '/_authed/staff/abroad/list-processing': typeof AuthedStaffAbroadListProcessingRoute
+  '/_authed/staff/abroad/paidout-detail': typeof AuthedStaffAbroadPaidoutDetailRoute
+  '/_authed/staff/abroad/paidout-list': typeof AuthedStaffAbroadPaidoutListRoute
+  '/_authed/staff/abroad/products': typeof AuthedStaffAbroadProductsRoute
+  '/_authed/staff/abroad/profix': typeof AuthedStaffAbroadProfixRoute
+  '/_authed/staff/abroad/profix-detail-all': typeof AuthedStaffAbroadProfixDetailAllRoute
+  '/_authed/staff/abroad/providers': typeof AuthedStaffAbroadProvidersRoute
+  '/_authed/staff/agents/agent-econtract': typeof AuthedStaffAgentsAgentEcontractRoute
+  '/_authed/staff/agents/assign-level': typeof AuthedStaffAgentsAssignLevelRoute
+  '/_authed/staff/agents/change-manager': typeof AuthedStaffAgentsChangeManagerRoute
+  '/_authed/staff/agents/level-up-log': typeof AuthedStaffAgentsLevelUpLogRoute
+  '/_authed/staff/agents/level-up-report': typeof AuthedStaffAgentsLevelUpReportRoute
+  '/_authed/staff/agents/list': typeof AuthedStaffAgentsListRoute
+  '/_authed/staff/agents/login-logs': typeof AuthedStaffAgentsLoginLogsRoute
+  '/_authed/staff/agents/new-agents': typeof AuthedStaffAgentsNewAgentsRoute
+  '/_authed/staff/agents/totals': typeof AuthedStaffAgentsTotalsRoute
+  '/_authed/staff/agents/tree': typeof AuthedStaffAgentsTreeRoute
+  '/_authed/staff/documents/email-business': typeof AuthedStaffDocumentsEmailBusinessRoute
+  '/_authed/staff/documents/member-internal': typeof AuthedStaffDocumentsMemberInternalRoute
+  '/_authed/staff/documents/members': typeof AuthedStaffDocumentsMembersRoute
+  '/_authed/staff/documents/type-internal': typeof AuthedStaffDocumentsTypeInternalRoute
+  '/_authed/staff/documents/types': typeof AuthedStaffDocumentsTypesRoute
+  '/_authed/staff/income-outcome/cashbook-income': typeof AuthedStaffIncomeOutcomeCashbookIncomeRoute
+  '/_authed/staff/income-outcome/cashbook-income-deleted': typeof AuthedStaffIncomeOutcomeCashbookIncomeDeletedRoute
+  '/_authed/staff/income-outcome/cashbook-outcome': typeof AuthedStaffIncomeOutcomeCashbookOutcomeRoute
+  '/_authed/staff/income-outcome/cashbook-outcome-deleted': typeof AuthedStaffIncomeOutcomeCashbookOutcomeDeletedRoute
+  '/_authed/staff/income-outcome/cashbook-total': typeof AuthedStaffIncomeOutcomeCashbookTotalRoute
+  '/_authed/staff/income-outcome/income': typeof AuthedStaffIncomeOutcomeIncomeRoute
+  '/_authed/staff/income-outcome/outcome': typeof AuthedStaffIncomeOutcomeOutcomeRoute
+  '/_authed/staff/life-insurance/commission-list': typeof AuthedStaffLifeInsuranceCommissionListRoute
+  '/_authed/staff/life-insurance/fee-due': typeof AuthedStaffLifeInsuranceFeeDueRoute
+  '/_authed/staff/life-insurance/financial': typeof AuthedStaffLifeInsuranceFinancialRoute
+  '/_authed/staff/life-insurance/list-canceled': typeof AuthedStaffLifeInsuranceListCanceledRoute
+  '/_authed/staff/life-insurance/list-done': typeof AuthedStaffLifeInsuranceListDoneRoute
+  '/_authed/staff/life-insurance/list-processing': typeof AuthedStaffLifeInsuranceListProcessingRoute
+  '/_authed/staff/life-insurance/lost-effective': typeof AuthedStaffLifeInsuranceLostEffectiveRoute
+  '/_authed/staff/life-insurance/paidout-detail': typeof AuthedStaffLifeInsurancePaidoutDetailRoute
+  '/_authed/staff/life-insurance/paidout-list': typeof AuthedStaffLifeInsurancePaidoutListRoute
+  '/_authed/staff/life-insurance/products': typeof AuthedStaffLifeInsuranceProductsRoute
+  '/_authed/staff/life-insurance/providers': typeof AuthedStaffLifeInsuranceProvidersRoute
+  '/_authed/staff/non-life-insurance/commission-list': typeof AuthedStaffNonLifeInsuranceCommissionListRoute
+  '/_authed/staff/non-life-insurance/list-done': typeof AuthedStaffNonLifeInsuranceListDoneRoute
+  '/_authed/staff/non-life-insurance/list-processing': typeof AuthedStaffNonLifeInsuranceListProcessingRoute
+  '/_authed/staff/non-life-insurance/paidout-detail': typeof AuthedStaffNonLifeInsurancePaidoutDetailRoute
+  '/_authed/staff/non-life-insurance/paidout-list': typeof AuthedStaffNonLifeInsurancePaidoutListRoute
+  '/_authed/staff/non-life-insurance/products': typeof AuthedStaffNonLifeInsuranceProductsRoute
+  '/_authed/staff/non-life-insurance/profix': typeof AuthedStaffNonLifeInsuranceProfixRoute
+  '/_authed/staff/non-life-insurance/profix-detail-all': typeof AuthedStaffNonLifeInsuranceProfixDetailAllRoute
+  '/_authed/staff/non-life-insurance/providers': typeof AuthedStaffNonLifeInsuranceProvidersRoute
+  '/_authed/staff/notifications/featured': typeof AuthedStaffNotificationsFeaturedRoute
+  '/_authed/staff/notifications/list': typeof AuthedStaffNotificationsListRoute
+  '/_authed/staff/notifications/programs': typeof AuthedStaffNotificationsProgramsRoute
+  '/_authed/staff/report/commission': typeof AuthedStaffReportCommissionRoute
+  '/_authed/staff/report/income-outcome': typeof AuthedStaffReportIncomeOutcomeRoute
+  '/_authed/staff/report/login-logs': typeof AuthedStaffReportLoginLogsRoute
+  '/_authed/staff/report/not-login-logs': typeof AuthedStaffReportNotLoginLogsRoute
+  '/_authed/staff/report/paidout-detail': typeof AuthedStaffReportPaidoutDetailRoute
+  '/_authed/staff/report/paidout-list': typeof AuthedStaffReportPaidoutListRoute
+  '/_authed/staff/staffs/list': typeof AuthedStaffStaffsListRoute
+  '/_authed/staff/staffs/login-logs': typeof AuthedStaffStaffsLoginLogsRoute
+  '/_authed/staff/staffs/permissions': typeof AuthedStaffStaffsPermissionsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/login'
-    | '/logout'
-    | '/signup'
-    | '/posts'
-    | '/dashboard'
-    | '/posts/$postId'
-    | '/posts/'
+    | '/register'
+    | '/agent/commission-table'
+    | '/agent/customers'
+    | '/agent/dashboard'
+    | '/agent/documents'
+    | '/agent/profile'
+    | '/samtek/customers'
+    | '/staff/commission-manual'
+    | '/staff/commission-period'
+    | '/staff/commission-table'
+    | '/staff/commission-type'
+    | '/staff/config-escrow'
+    | '/staff/config-level-up'
+    | '/staff/customers'
+    | '/staff/dashboard'
+    | '/staff/escrow'
+    | '/staff/escrow-report'
+    | '/staff/escrow-return'
+    | '/staff/meeting'
+    | '/agent/abroad/individual'
+    | '/agent/abroad/list-done'
+    | '/agent/abroad/list-processing'
+    | '/agent/life-insurance/canceled'
+    | '/agent/life-insurance/fee-due'
+    | '/agent/life-insurance/individual'
+    | '/agent/life-insurance/list-done'
+    | '/agent/life-insurance/lost-effective'
+    | '/agent/life-insurance/processing'
+    | '/agent/members/level-up-log'
+    | '/agent/members/level-up-report'
+    | '/agent/members/list'
+    | '/agent/members/tree'
+    | '/agent/non-life-insurance/individual'
+    | '/agent/non-life-insurance/list-done'
+    | '/agent/non-life-insurance/list-processing'
+    | '/agent/notifications/list'
+    | '/agent/notifications/meeting'
+    | '/agent/notifications/programs'
+    | '/samtek/staffs/list'
+    | '/samtek/staffs/login-logs'
+    | '/samtek/staffs/permissions'
+    | '/staff/abroad/commission-list'
+    | '/staff/abroad/list-done'
+    | '/staff/abroad/list-processing'
+    | '/staff/abroad/paidout-detail'
+    | '/staff/abroad/paidout-list'
+    | '/staff/abroad/products'
+    | '/staff/abroad/profix'
+    | '/staff/abroad/profix-detail-all'
+    | '/staff/abroad/providers'
+    | '/staff/agents/agent-econtract'
+    | '/staff/agents/assign-level'
+    | '/staff/agents/change-manager'
+    | '/staff/agents/level-up-log'
+    | '/staff/agents/level-up-report'
+    | '/staff/agents/list'
+    | '/staff/agents/login-logs'
+    | '/staff/agents/new-agents'
+    | '/staff/agents/totals'
+    | '/staff/agents/tree'
+    | '/staff/documents/email-business'
+    | '/staff/documents/member-internal'
+    | '/staff/documents/members'
+    | '/staff/documents/type-internal'
+    | '/staff/documents/types'
+    | '/staff/income-outcome/cashbook-income'
+    | '/staff/income-outcome/cashbook-income-deleted'
+    | '/staff/income-outcome/cashbook-outcome'
+    | '/staff/income-outcome/cashbook-outcome-deleted'
+    | '/staff/income-outcome/cashbook-total'
+    | '/staff/income-outcome/income'
+    | '/staff/income-outcome/outcome'
+    | '/staff/life-insurance/commission-list'
+    | '/staff/life-insurance/fee-due'
+    | '/staff/life-insurance/financial'
+    | '/staff/life-insurance/list-canceled'
+    | '/staff/life-insurance/list-done'
+    | '/staff/life-insurance/list-processing'
+    | '/staff/life-insurance/lost-effective'
+    | '/staff/life-insurance/paidout-detail'
+    | '/staff/life-insurance/paidout-list'
+    | '/staff/life-insurance/products'
+    | '/staff/life-insurance/providers'
+    | '/staff/non-life-insurance/commission-list'
+    | '/staff/non-life-insurance/list-done'
+    | '/staff/non-life-insurance/list-processing'
+    | '/staff/non-life-insurance/paidout-detail'
+    | '/staff/non-life-insurance/paidout-list'
+    | '/staff/non-life-insurance/products'
+    | '/staff/non-life-insurance/profix'
+    | '/staff/non-life-insurance/profix-detail-all'
+    | '/staff/non-life-insurance/providers'
+    | '/staff/notifications/featured'
+    | '/staff/notifications/list'
+    | '/staff/notifications/programs'
+    | '/staff/report/commission'
+    | '/staff/report/income-outcome'
+    | '/staff/report/login-logs'
+    | '/staff/report/not-login-logs'
+    | '/staff/report/paidout-detail'
+    | '/staff/report/paidout-list'
+    | '/staff/staffs/list'
+    | '/staff/staffs/login-logs'
+    | '/staff/staffs/permissions'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/login'
-    | '/logout'
-    | '/signup'
-    | '/dashboard'
-    | '/posts/$postId'
-    | '/posts'
+    | '/register'
+    | '/agent/commission-table'
+    | '/agent/customers'
+    | '/agent/dashboard'
+    | '/agent/documents'
+    | '/agent/profile'
+    | '/samtek/customers'
+    | '/staff/commission-manual'
+    | '/staff/commission-period'
+    | '/staff/commission-table'
+    | '/staff/commission-type'
+    | '/staff/config-escrow'
+    | '/staff/config-level-up'
+    | '/staff/customers'
+    | '/staff/dashboard'
+    | '/staff/escrow'
+    | '/staff/escrow-report'
+    | '/staff/escrow-return'
+    | '/staff/meeting'
+    | '/agent/abroad/individual'
+    | '/agent/abroad/list-done'
+    | '/agent/abroad/list-processing'
+    | '/agent/life-insurance/canceled'
+    | '/agent/life-insurance/fee-due'
+    | '/agent/life-insurance/individual'
+    | '/agent/life-insurance/list-done'
+    | '/agent/life-insurance/lost-effective'
+    | '/agent/life-insurance/processing'
+    | '/agent/members/level-up-log'
+    | '/agent/members/level-up-report'
+    | '/agent/members/list'
+    | '/agent/members/tree'
+    | '/agent/non-life-insurance/individual'
+    | '/agent/non-life-insurance/list-done'
+    | '/agent/non-life-insurance/list-processing'
+    | '/agent/notifications/list'
+    | '/agent/notifications/meeting'
+    | '/agent/notifications/programs'
+    | '/samtek/staffs/list'
+    | '/samtek/staffs/login-logs'
+    | '/samtek/staffs/permissions'
+    | '/staff/abroad/commission-list'
+    | '/staff/abroad/list-done'
+    | '/staff/abroad/list-processing'
+    | '/staff/abroad/paidout-detail'
+    | '/staff/abroad/paidout-list'
+    | '/staff/abroad/products'
+    | '/staff/abroad/profix'
+    | '/staff/abroad/profix-detail-all'
+    | '/staff/abroad/providers'
+    | '/staff/agents/agent-econtract'
+    | '/staff/agents/assign-level'
+    | '/staff/agents/change-manager'
+    | '/staff/agents/level-up-log'
+    | '/staff/agents/level-up-report'
+    | '/staff/agents/list'
+    | '/staff/agents/login-logs'
+    | '/staff/agents/new-agents'
+    | '/staff/agents/totals'
+    | '/staff/agents/tree'
+    | '/staff/documents/email-business'
+    | '/staff/documents/member-internal'
+    | '/staff/documents/members'
+    | '/staff/documents/type-internal'
+    | '/staff/documents/types'
+    | '/staff/income-outcome/cashbook-income'
+    | '/staff/income-outcome/cashbook-income-deleted'
+    | '/staff/income-outcome/cashbook-outcome'
+    | '/staff/income-outcome/cashbook-outcome-deleted'
+    | '/staff/income-outcome/cashbook-total'
+    | '/staff/income-outcome/income'
+    | '/staff/income-outcome/outcome'
+    | '/staff/life-insurance/commission-list'
+    | '/staff/life-insurance/fee-due'
+    | '/staff/life-insurance/financial'
+    | '/staff/life-insurance/list-canceled'
+    | '/staff/life-insurance/list-done'
+    | '/staff/life-insurance/list-processing'
+    | '/staff/life-insurance/lost-effective'
+    | '/staff/life-insurance/paidout-detail'
+    | '/staff/life-insurance/paidout-list'
+    | '/staff/life-insurance/products'
+    | '/staff/life-insurance/providers'
+    | '/staff/non-life-insurance/commission-list'
+    | '/staff/non-life-insurance/list-done'
+    | '/staff/non-life-insurance/list-processing'
+    | '/staff/non-life-insurance/paidout-detail'
+    | '/staff/non-life-insurance/paidout-list'
+    | '/staff/non-life-insurance/products'
+    | '/staff/non-life-insurance/profix'
+    | '/staff/non-life-insurance/profix-detail-all'
+    | '/staff/non-life-insurance/providers'
+    | '/staff/notifications/featured'
+    | '/staff/notifications/list'
+    | '/staff/notifications/programs'
+    | '/staff/report/commission'
+    | '/staff/report/income-outcome'
+    | '/staff/report/login-logs'
+    | '/staff/report/not-login-logs'
+    | '/staff/report/paidout-detail'
+    | '/staff/report/paidout-list'
+    | '/staff/staffs/list'
+    | '/staff/staffs/login-logs'
+    | '/staff/staffs/permissions'
   id:
     | '__root__'
     | '/'
     | '/_authed'
     | '/login'
-    | '/logout'
-    | '/signup'
-    | '/_authed/posts'
-    | '/_authed/dashboard'
-    | '/_authed/posts/$postId'
-    | '/_authed/posts/'
+    | '/register'
+    | '/_authed/agent/commission-table'
+    | '/_authed/agent/customers'
+    | '/_authed/agent/dashboard'
+    | '/_authed/agent/documents'
+    | '/_authed/agent/profile'
+    | '/_authed/samtek/customers'
+    | '/_authed/staff/commission-manual'
+    | '/_authed/staff/commission-period'
+    | '/_authed/staff/commission-table'
+    | '/_authed/staff/commission-type'
+    | '/_authed/staff/config-escrow'
+    | '/_authed/staff/config-level-up'
+    | '/_authed/staff/customers'
+    | '/_authed/staff/dashboard'
+    | '/_authed/staff/escrow'
+    | '/_authed/staff/escrow-report'
+    | '/_authed/staff/escrow-return'
+    | '/_authed/staff/meeting'
+    | '/_authed/agent/abroad/individual'
+    | '/_authed/agent/abroad/list-done'
+    | '/_authed/agent/abroad/list-processing'
+    | '/_authed/agent/life-insurance/canceled'
+    | '/_authed/agent/life-insurance/fee-due'
+    | '/_authed/agent/life-insurance/individual'
+    | '/_authed/agent/life-insurance/list-done'
+    | '/_authed/agent/life-insurance/lost-effective'
+    | '/_authed/agent/life-insurance/processing'
+    | '/_authed/agent/members/level-up-log'
+    | '/_authed/agent/members/level-up-report'
+    | '/_authed/agent/members/list'
+    | '/_authed/agent/members/tree'
+    | '/_authed/agent/non-life-insurance/individual'
+    | '/_authed/agent/non-life-insurance/list-done'
+    | '/_authed/agent/non-life-insurance/list-processing'
+    | '/_authed/agent/notifications/list'
+    | '/_authed/agent/notifications/meeting'
+    | '/_authed/agent/notifications/programs'
+    | '/_authed/samtek/staffs/list'
+    | '/_authed/samtek/staffs/login-logs'
+    | '/_authed/samtek/staffs/permissions'
+    | '/_authed/staff/abroad/commission-list'
+    | '/_authed/staff/abroad/list-done'
+    | '/_authed/staff/abroad/list-processing'
+    | '/_authed/staff/abroad/paidout-detail'
+    | '/_authed/staff/abroad/paidout-list'
+    | '/_authed/staff/abroad/products'
+    | '/_authed/staff/abroad/profix'
+    | '/_authed/staff/abroad/profix-detail-all'
+    | '/_authed/staff/abroad/providers'
+    | '/_authed/staff/agents/agent-econtract'
+    | '/_authed/staff/agents/assign-level'
+    | '/_authed/staff/agents/change-manager'
+    | '/_authed/staff/agents/level-up-log'
+    | '/_authed/staff/agents/level-up-report'
+    | '/_authed/staff/agents/list'
+    | '/_authed/staff/agents/login-logs'
+    | '/_authed/staff/agents/new-agents'
+    | '/_authed/staff/agents/totals'
+    | '/_authed/staff/agents/tree'
+    | '/_authed/staff/documents/email-business'
+    | '/_authed/staff/documents/member-internal'
+    | '/_authed/staff/documents/members'
+    | '/_authed/staff/documents/type-internal'
+    | '/_authed/staff/documents/types'
+    | '/_authed/staff/income-outcome/cashbook-income'
+    | '/_authed/staff/income-outcome/cashbook-income-deleted'
+    | '/_authed/staff/income-outcome/cashbook-outcome'
+    | '/_authed/staff/income-outcome/cashbook-outcome-deleted'
+    | '/_authed/staff/income-outcome/cashbook-total'
+    | '/_authed/staff/income-outcome/income'
+    | '/_authed/staff/income-outcome/outcome'
+    | '/_authed/staff/life-insurance/commission-list'
+    | '/_authed/staff/life-insurance/fee-due'
+    | '/_authed/staff/life-insurance/financial'
+    | '/_authed/staff/life-insurance/list-canceled'
+    | '/_authed/staff/life-insurance/list-done'
+    | '/_authed/staff/life-insurance/list-processing'
+    | '/_authed/staff/life-insurance/lost-effective'
+    | '/_authed/staff/life-insurance/paidout-detail'
+    | '/_authed/staff/life-insurance/paidout-list'
+    | '/_authed/staff/life-insurance/products'
+    | '/_authed/staff/life-insurance/providers'
+    | '/_authed/staff/non-life-insurance/commission-list'
+    | '/_authed/staff/non-life-insurance/list-done'
+    | '/_authed/staff/non-life-insurance/list-processing'
+    | '/_authed/staff/non-life-insurance/paidout-detail'
+    | '/_authed/staff/non-life-insurance/paidout-list'
+    | '/_authed/staff/non-life-insurance/products'
+    | '/_authed/staff/non-life-insurance/profix'
+    | '/_authed/staff/non-life-insurance/profix-detail-all'
+    | '/_authed/staff/non-life-insurance/providers'
+    | '/_authed/staff/notifications/featured'
+    | '/_authed/staff/notifications/list'
+    | '/_authed/staff/notifications/programs'
+    | '/_authed/staff/report/commission'
+    | '/_authed/staff/report/income-outcome'
+    | '/_authed/staff/report/login-logs'
+    | '/_authed/staff/report/not-login-logs'
+    | '/_authed/staff/report/paidout-detail'
+    | '/_authed/staff/report/paidout-list'
+    | '/_authed/staff/staffs/list'
+    | '/_authed/staff/staffs/login-logs'
+    | '/_authed/staff/staffs/permissions'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthedRoute: typeof AuthedRouteWithChildren
   LoginRoute: typeof LoginRoute
-  LogoutRoute: typeof LogoutRoute
-  SignupRoute: typeof SignupRoute
+  RegisterRoute: typeof RegisterRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/signup': {
-      id: '/signup'
-      path: '/signup'
-      fullPath: '/signup'
-      preLoaderRoute: typeof SignupRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/logout': {
-      id: '/logout'
-      path: '/logout'
-      fullPath: '/logout'
-      preLoaderRoute: typeof LogoutRouteImport
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -173,58 +1426,970 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authed/dashboard': {
-      id: '/_authed/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof AuthedDashboardRouteImport
+    '/_authed/staff/meeting': {
+      id: '/_authed/staff/meeting'
+      path: '/staff/meeting'
+      fullPath: '/staff/meeting'
+      preLoaderRoute: typeof AuthedStaffMeetingRouteImport
       parentRoute: typeof AuthedRoute
     }
-    '/_authed/posts': {
-      id: '/_authed/posts'
-      path: '/posts'
-      fullPath: '/posts'
-      preLoaderRoute: typeof AuthedPostsRouteRouteImport
+    '/_authed/staff/escrow-return': {
+      id: '/_authed/staff/escrow-return'
+      path: '/staff/escrow-return'
+      fullPath: '/staff/escrow-return'
+      preLoaderRoute: typeof AuthedStaffEscrowReturnRouteImport
       parentRoute: typeof AuthedRoute
     }
-    '/_authed/posts/': {
-      id: '/_authed/posts/'
-      path: '/'
-      fullPath: '/posts/'
-      preLoaderRoute: typeof AuthedPostsIndexRouteImport
-      parentRoute: typeof AuthedPostsRouteRoute
+    '/_authed/staff/escrow-report': {
+      id: '/_authed/staff/escrow-report'
+      path: '/staff/escrow-report'
+      fullPath: '/staff/escrow-report'
+      preLoaderRoute: typeof AuthedStaffEscrowReportRouteImport
+      parentRoute: typeof AuthedRoute
     }
-    '/_authed/posts/$postId': {
-      id: '/_authed/posts/$postId'
-      path: '/$postId'
-      fullPath: '/posts/$postId'
-      preLoaderRoute: typeof AuthedPostsPostIdRouteImport
-      parentRoute: typeof AuthedPostsRouteRoute
+    '/_authed/staff/escrow': {
+      id: '/_authed/staff/escrow'
+      path: '/staff/escrow'
+      fullPath: '/staff/escrow'
+      preLoaderRoute: typeof AuthedStaffEscrowRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/dashboard': {
+      id: '/_authed/staff/dashboard'
+      path: '/staff/dashboard'
+      fullPath: '/staff/dashboard'
+      preLoaderRoute: typeof AuthedStaffDashboardRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/customers': {
+      id: '/_authed/staff/customers'
+      path: '/staff/customers'
+      fullPath: '/staff/customers'
+      preLoaderRoute: typeof AuthedStaffCustomersRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/config-level-up': {
+      id: '/_authed/staff/config-level-up'
+      path: '/staff/config-level-up'
+      fullPath: '/staff/config-level-up'
+      preLoaderRoute: typeof AuthedStaffConfigLevelUpRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/config-escrow': {
+      id: '/_authed/staff/config-escrow'
+      path: '/staff/config-escrow'
+      fullPath: '/staff/config-escrow'
+      preLoaderRoute: typeof AuthedStaffConfigEscrowRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/commission-type': {
+      id: '/_authed/staff/commission-type'
+      path: '/staff/commission-type'
+      fullPath: '/staff/commission-type'
+      preLoaderRoute: typeof AuthedStaffCommissionTypeRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/commission-table': {
+      id: '/_authed/staff/commission-table'
+      path: '/staff/commission-table'
+      fullPath: '/staff/commission-table'
+      preLoaderRoute: typeof AuthedStaffCommissionTableRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/commission-period': {
+      id: '/_authed/staff/commission-period'
+      path: '/staff/commission-period'
+      fullPath: '/staff/commission-period'
+      preLoaderRoute: typeof AuthedStaffCommissionPeriodRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/commission-manual': {
+      id: '/_authed/staff/commission-manual'
+      path: '/staff/commission-manual'
+      fullPath: '/staff/commission-manual'
+      preLoaderRoute: typeof AuthedStaffCommissionManualRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/samtek/customers': {
+      id: '/_authed/samtek/customers'
+      path: '/samtek/customers'
+      fullPath: '/samtek/customers'
+      preLoaderRoute: typeof AuthedSamtekCustomersRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/profile': {
+      id: '/_authed/agent/profile'
+      path: '/agent/profile'
+      fullPath: '/agent/profile'
+      preLoaderRoute: typeof AuthedAgentProfileRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/documents': {
+      id: '/_authed/agent/documents'
+      path: '/agent/documents'
+      fullPath: '/agent/documents'
+      preLoaderRoute: typeof AuthedAgentDocumentsRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/dashboard': {
+      id: '/_authed/agent/dashboard'
+      path: '/agent/dashboard'
+      fullPath: '/agent/dashboard'
+      preLoaderRoute: typeof AuthedAgentDashboardRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/customers': {
+      id: '/_authed/agent/customers'
+      path: '/agent/customers'
+      fullPath: '/agent/customers'
+      preLoaderRoute: typeof AuthedAgentCustomersRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/commission-table': {
+      id: '/_authed/agent/commission-table'
+      path: '/agent/commission-table'
+      fullPath: '/agent/commission-table'
+      preLoaderRoute: typeof AuthedAgentCommissionTableRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/staffs/permissions': {
+      id: '/_authed/staff/staffs/permissions'
+      path: '/staff/staffs/permissions'
+      fullPath: '/staff/staffs/permissions'
+      preLoaderRoute: typeof AuthedStaffStaffsPermissionsRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/staffs/login-logs': {
+      id: '/_authed/staff/staffs/login-logs'
+      path: '/staff/staffs/login-logs'
+      fullPath: '/staff/staffs/login-logs'
+      preLoaderRoute: typeof AuthedStaffStaffsLoginLogsRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/staffs/list': {
+      id: '/_authed/staff/staffs/list'
+      path: '/staff/staffs/list'
+      fullPath: '/staff/staffs/list'
+      preLoaderRoute: typeof AuthedStaffStaffsListRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/report/paidout-list': {
+      id: '/_authed/staff/report/paidout-list'
+      path: '/staff/report/paidout-list'
+      fullPath: '/staff/report/paidout-list'
+      preLoaderRoute: typeof AuthedStaffReportPaidoutListRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/report/paidout-detail': {
+      id: '/_authed/staff/report/paidout-detail'
+      path: '/staff/report/paidout-detail'
+      fullPath: '/staff/report/paidout-detail'
+      preLoaderRoute: typeof AuthedStaffReportPaidoutDetailRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/report/not-login-logs': {
+      id: '/_authed/staff/report/not-login-logs'
+      path: '/staff/report/not-login-logs'
+      fullPath: '/staff/report/not-login-logs'
+      preLoaderRoute: typeof AuthedStaffReportNotLoginLogsRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/report/login-logs': {
+      id: '/_authed/staff/report/login-logs'
+      path: '/staff/report/login-logs'
+      fullPath: '/staff/report/login-logs'
+      preLoaderRoute: typeof AuthedStaffReportLoginLogsRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/report/income-outcome': {
+      id: '/_authed/staff/report/income-outcome'
+      path: '/staff/report/income-outcome'
+      fullPath: '/staff/report/income-outcome'
+      preLoaderRoute: typeof AuthedStaffReportIncomeOutcomeRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/report/commission': {
+      id: '/_authed/staff/report/commission'
+      path: '/staff/report/commission'
+      fullPath: '/staff/report/commission'
+      preLoaderRoute: typeof AuthedStaffReportCommissionRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/notifications/programs': {
+      id: '/_authed/staff/notifications/programs'
+      path: '/staff/notifications/programs'
+      fullPath: '/staff/notifications/programs'
+      preLoaderRoute: typeof AuthedStaffNotificationsProgramsRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/notifications/list': {
+      id: '/_authed/staff/notifications/list'
+      path: '/staff/notifications/list'
+      fullPath: '/staff/notifications/list'
+      preLoaderRoute: typeof AuthedStaffNotificationsListRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/notifications/featured': {
+      id: '/_authed/staff/notifications/featured'
+      path: '/staff/notifications/featured'
+      fullPath: '/staff/notifications/featured'
+      preLoaderRoute: typeof AuthedStaffNotificationsFeaturedRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/non-life-insurance/providers': {
+      id: '/_authed/staff/non-life-insurance/providers'
+      path: '/staff/non-life-insurance/providers'
+      fullPath: '/staff/non-life-insurance/providers'
+      preLoaderRoute: typeof AuthedStaffNonLifeInsuranceProvidersRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/non-life-insurance/profix-detail-all': {
+      id: '/_authed/staff/non-life-insurance/profix-detail-all'
+      path: '/staff/non-life-insurance/profix-detail-all'
+      fullPath: '/staff/non-life-insurance/profix-detail-all'
+      preLoaderRoute: typeof AuthedStaffNonLifeInsuranceProfixDetailAllRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/non-life-insurance/profix': {
+      id: '/_authed/staff/non-life-insurance/profix'
+      path: '/staff/non-life-insurance/profix'
+      fullPath: '/staff/non-life-insurance/profix'
+      preLoaderRoute: typeof AuthedStaffNonLifeInsuranceProfixRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/non-life-insurance/products': {
+      id: '/_authed/staff/non-life-insurance/products'
+      path: '/staff/non-life-insurance/products'
+      fullPath: '/staff/non-life-insurance/products'
+      preLoaderRoute: typeof AuthedStaffNonLifeInsuranceProductsRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/non-life-insurance/paidout-list': {
+      id: '/_authed/staff/non-life-insurance/paidout-list'
+      path: '/staff/non-life-insurance/paidout-list'
+      fullPath: '/staff/non-life-insurance/paidout-list'
+      preLoaderRoute: typeof AuthedStaffNonLifeInsurancePaidoutListRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/non-life-insurance/paidout-detail': {
+      id: '/_authed/staff/non-life-insurance/paidout-detail'
+      path: '/staff/non-life-insurance/paidout-detail'
+      fullPath: '/staff/non-life-insurance/paidout-detail'
+      preLoaderRoute: typeof AuthedStaffNonLifeInsurancePaidoutDetailRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/non-life-insurance/list-processing': {
+      id: '/_authed/staff/non-life-insurance/list-processing'
+      path: '/staff/non-life-insurance/list-processing'
+      fullPath: '/staff/non-life-insurance/list-processing'
+      preLoaderRoute: typeof AuthedStaffNonLifeInsuranceListProcessingRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/non-life-insurance/list-done': {
+      id: '/_authed/staff/non-life-insurance/list-done'
+      path: '/staff/non-life-insurance/list-done'
+      fullPath: '/staff/non-life-insurance/list-done'
+      preLoaderRoute: typeof AuthedStaffNonLifeInsuranceListDoneRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/non-life-insurance/commission-list': {
+      id: '/_authed/staff/non-life-insurance/commission-list'
+      path: '/staff/non-life-insurance/commission-list'
+      fullPath: '/staff/non-life-insurance/commission-list'
+      preLoaderRoute: typeof AuthedStaffNonLifeInsuranceCommissionListRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/life-insurance/providers': {
+      id: '/_authed/staff/life-insurance/providers'
+      path: '/staff/life-insurance/providers'
+      fullPath: '/staff/life-insurance/providers'
+      preLoaderRoute: typeof AuthedStaffLifeInsuranceProvidersRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/life-insurance/products': {
+      id: '/_authed/staff/life-insurance/products'
+      path: '/staff/life-insurance/products'
+      fullPath: '/staff/life-insurance/products'
+      preLoaderRoute: typeof AuthedStaffLifeInsuranceProductsRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/life-insurance/paidout-list': {
+      id: '/_authed/staff/life-insurance/paidout-list'
+      path: '/staff/life-insurance/paidout-list'
+      fullPath: '/staff/life-insurance/paidout-list'
+      preLoaderRoute: typeof AuthedStaffLifeInsurancePaidoutListRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/life-insurance/paidout-detail': {
+      id: '/_authed/staff/life-insurance/paidout-detail'
+      path: '/staff/life-insurance/paidout-detail'
+      fullPath: '/staff/life-insurance/paidout-detail'
+      preLoaderRoute: typeof AuthedStaffLifeInsurancePaidoutDetailRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/life-insurance/lost-effective': {
+      id: '/_authed/staff/life-insurance/lost-effective'
+      path: '/staff/life-insurance/lost-effective'
+      fullPath: '/staff/life-insurance/lost-effective'
+      preLoaderRoute: typeof AuthedStaffLifeInsuranceLostEffectiveRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/life-insurance/list-processing': {
+      id: '/_authed/staff/life-insurance/list-processing'
+      path: '/staff/life-insurance/list-processing'
+      fullPath: '/staff/life-insurance/list-processing'
+      preLoaderRoute: typeof AuthedStaffLifeInsuranceListProcessingRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/life-insurance/list-done': {
+      id: '/_authed/staff/life-insurance/list-done'
+      path: '/staff/life-insurance/list-done'
+      fullPath: '/staff/life-insurance/list-done'
+      preLoaderRoute: typeof AuthedStaffLifeInsuranceListDoneRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/life-insurance/list-canceled': {
+      id: '/_authed/staff/life-insurance/list-canceled'
+      path: '/staff/life-insurance/list-canceled'
+      fullPath: '/staff/life-insurance/list-canceled'
+      preLoaderRoute: typeof AuthedStaffLifeInsuranceListCanceledRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/life-insurance/financial': {
+      id: '/_authed/staff/life-insurance/financial'
+      path: '/staff/life-insurance/financial'
+      fullPath: '/staff/life-insurance/financial'
+      preLoaderRoute: typeof AuthedStaffLifeInsuranceFinancialRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/life-insurance/fee-due': {
+      id: '/_authed/staff/life-insurance/fee-due'
+      path: '/staff/life-insurance/fee-due'
+      fullPath: '/staff/life-insurance/fee-due'
+      preLoaderRoute: typeof AuthedStaffLifeInsuranceFeeDueRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/life-insurance/commission-list': {
+      id: '/_authed/staff/life-insurance/commission-list'
+      path: '/staff/life-insurance/commission-list'
+      fullPath: '/staff/life-insurance/commission-list'
+      preLoaderRoute: typeof AuthedStaffLifeInsuranceCommissionListRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/income-outcome/outcome': {
+      id: '/_authed/staff/income-outcome/outcome'
+      path: '/staff/income-outcome/outcome'
+      fullPath: '/staff/income-outcome/outcome'
+      preLoaderRoute: typeof AuthedStaffIncomeOutcomeOutcomeRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/income-outcome/income': {
+      id: '/_authed/staff/income-outcome/income'
+      path: '/staff/income-outcome/income'
+      fullPath: '/staff/income-outcome/income'
+      preLoaderRoute: typeof AuthedStaffIncomeOutcomeIncomeRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/income-outcome/cashbook-total': {
+      id: '/_authed/staff/income-outcome/cashbook-total'
+      path: '/staff/income-outcome/cashbook-total'
+      fullPath: '/staff/income-outcome/cashbook-total'
+      preLoaderRoute: typeof AuthedStaffIncomeOutcomeCashbookTotalRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/income-outcome/cashbook-outcome-deleted': {
+      id: '/_authed/staff/income-outcome/cashbook-outcome-deleted'
+      path: '/staff/income-outcome/cashbook-outcome-deleted'
+      fullPath: '/staff/income-outcome/cashbook-outcome-deleted'
+      preLoaderRoute: typeof AuthedStaffIncomeOutcomeCashbookOutcomeDeletedRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/income-outcome/cashbook-outcome': {
+      id: '/_authed/staff/income-outcome/cashbook-outcome'
+      path: '/staff/income-outcome/cashbook-outcome'
+      fullPath: '/staff/income-outcome/cashbook-outcome'
+      preLoaderRoute: typeof AuthedStaffIncomeOutcomeCashbookOutcomeRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/income-outcome/cashbook-income-deleted': {
+      id: '/_authed/staff/income-outcome/cashbook-income-deleted'
+      path: '/staff/income-outcome/cashbook-income-deleted'
+      fullPath: '/staff/income-outcome/cashbook-income-deleted'
+      preLoaderRoute: typeof AuthedStaffIncomeOutcomeCashbookIncomeDeletedRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/income-outcome/cashbook-income': {
+      id: '/_authed/staff/income-outcome/cashbook-income'
+      path: '/staff/income-outcome/cashbook-income'
+      fullPath: '/staff/income-outcome/cashbook-income'
+      preLoaderRoute: typeof AuthedStaffIncomeOutcomeCashbookIncomeRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/documents/types': {
+      id: '/_authed/staff/documents/types'
+      path: '/staff/documents/types'
+      fullPath: '/staff/documents/types'
+      preLoaderRoute: typeof AuthedStaffDocumentsTypesRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/documents/type-internal': {
+      id: '/_authed/staff/documents/type-internal'
+      path: '/staff/documents/type-internal'
+      fullPath: '/staff/documents/type-internal'
+      preLoaderRoute: typeof AuthedStaffDocumentsTypeInternalRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/documents/members': {
+      id: '/_authed/staff/documents/members'
+      path: '/staff/documents/members'
+      fullPath: '/staff/documents/members'
+      preLoaderRoute: typeof AuthedStaffDocumentsMembersRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/documents/member-internal': {
+      id: '/_authed/staff/documents/member-internal'
+      path: '/staff/documents/member-internal'
+      fullPath: '/staff/documents/member-internal'
+      preLoaderRoute: typeof AuthedStaffDocumentsMemberInternalRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/documents/email-business': {
+      id: '/_authed/staff/documents/email-business'
+      path: '/staff/documents/email-business'
+      fullPath: '/staff/documents/email-business'
+      preLoaderRoute: typeof AuthedStaffDocumentsEmailBusinessRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/agents/tree': {
+      id: '/_authed/staff/agents/tree'
+      path: '/staff/agents/tree'
+      fullPath: '/staff/agents/tree'
+      preLoaderRoute: typeof AuthedStaffAgentsTreeRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/agents/totals': {
+      id: '/_authed/staff/agents/totals'
+      path: '/staff/agents/totals'
+      fullPath: '/staff/agents/totals'
+      preLoaderRoute: typeof AuthedStaffAgentsTotalsRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/agents/new-agents': {
+      id: '/_authed/staff/agents/new-agents'
+      path: '/staff/agents/new-agents'
+      fullPath: '/staff/agents/new-agents'
+      preLoaderRoute: typeof AuthedStaffAgentsNewAgentsRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/agents/login-logs': {
+      id: '/_authed/staff/agents/login-logs'
+      path: '/staff/agents/login-logs'
+      fullPath: '/staff/agents/login-logs'
+      preLoaderRoute: typeof AuthedStaffAgentsLoginLogsRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/agents/list': {
+      id: '/_authed/staff/agents/list'
+      path: '/staff/agents/list'
+      fullPath: '/staff/agents/list'
+      preLoaderRoute: typeof AuthedStaffAgentsListRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/agents/level-up-report': {
+      id: '/_authed/staff/agents/level-up-report'
+      path: '/staff/agents/level-up-report'
+      fullPath: '/staff/agents/level-up-report'
+      preLoaderRoute: typeof AuthedStaffAgentsLevelUpReportRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/agents/level-up-log': {
+      id: '/_authed/staff/agents/level-up-log'
+      path: '/staff/agents/level-up-log'
+      fullPath: '/staff/agents/level-up-log'
+      preLoaderRoute: typeof AuthedStaffAgentsLevelUpLogRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/agents/change-manager': {
+      id: '/_authed/staff/agents/change-manager'
+      path: '/staff/agents/change-manager'
+      fullPath: '/staff/agents/change-manager'
+      preLoaderRoute: typeof AuthedStaffAgentsChangeManagerRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/agents/assign-level': {
+      id: '/_authed/staff/agents/assign-level'
+      path: '/staff/agents/assign-level'
+      fullPath: '/staff/agents/assign-level'
+      preLoaderRoute: typeof AuthedStaffAgentsAssignLevelRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/agents/agent-econtract': {
+      id: '/_authed/staff/agents/agent-econtract'
+      path: '/staff/agents/agent-econtract'
+      fullPath: '/staff/agents/agent-econtract'
+      preLoaderRoute: typeof AuthedStaffAgentsAgentEcontractRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/abroad/providers': {
+      id: '/_authed/staff/abroad/providers'
+      path: '/staff/abroad/providers'
+      fullPath: '/staff/abroad/providers'
+      preLoaderRoute: typeof AuthedStaffAbroadProvidersRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/abroad/profix-detail-all': {
+      id: '/_authed/staff/abroad/profix-detail-all'
+      path: '/staff/abroad/profix-detail-all'
+      fullPath: '/staff/abroad/profix-detail-all'
+      preLoaderRoute: typeof AuthedStaffAbroadProfixDetailAllRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/abroad/profix': {
+      id: '/_authed/staff/abroad/profix'
+      path: '/staff/abroad/profix'
+      fullPath: '/staff/abroad/profix'
+      preLoaderRoute: typeof AuthedStaffAbroadProfixRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/abroad/products': {
+      id: '/_authed/staff/abroad/products'
+      path: '/staff/abroad/products'
+      fullPath: '/staff/abroad/products'
+      preLoaderRoute: typeof AuthedStaffAbroadProductsRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/abroad/paidout-list': {
+      id: '/_authed/staff/abroad/paidout-list'
+      path: '/staff/abroad/paidout-list'
+      fullPath: '/staff/abroad/paidout-list'
+      preLoaderRoute: typeof AuthedStaffAbroadPaidoutListRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/abroad/paidout-detail': {
+      id: '/_authed/staff/abroad/paidout-detail'
+      path: '/staff/abroad/paidout-detail'
+      fullPath: '/staff/abroad/paidout-detail'
+      preLoaderRoute: typeof AuthedStaffAbroadPaidoutDetailRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/abroad/list-processing': {
+      id: '/_authed/staff/abroad/list-processing'
+      path: '/staff/abroad/list-processing'
+      fullPath: '/staff/abroad/list-processing'
+      preLoaderRoute: typeof AuthedStaffAbroadListProcessingRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/abroad/list-done': {
+      id: '/_authed/staff/abroad/list-done'
+      path: '/staff/abroad/list-done'
+      fullPath: '/staff/abroad/list-done'
+      preLoaderRoute: typeof AuthedStaffAbroadListDoneRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/abroad/commission-list': {
+      id: '/_authed/staff/abroad/commission-list'
+      path: '/staff/abroad/commission-list'
+      fullPath: '/staff/abroad/commission-list'
+      preLoaderRoute: typeof AuthedStaffAbroadCommissionListRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/samtek/staffs/permissions': {
+      id: '/_authed/samtek/staffs/permissions'
+      path: '/samtek/staffs/permissions'
+      fullPath: '/samtek/staffs/permissions'
+      preLoaderRoute: typeof AuthedSamtekStaffsPermissionsRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/samtek/staffs/login-logs': {
+      id: '/_authed/samtek/staffs/login-logs'
+      path: '/samtek/staffs/login-logs'
+      fullPath: '/samtek/staffs/login-logs'
+      preLoaderRoute: typeof AuthedSamtekStaffsLoginLogsRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/samtek/staffs/list': {
+      id: '/_authed/samtek/staffs/list'
+      path: '/samtek/staffs/list'
+      fullPath: '/samtek/staffs/list'
+      preLoaderRoute: typeof AuthedSamtekStaffsListRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/notifications/programs': {
+      id: '/_authed/agent/notifications/programs'
+      path: '/agent/notifications/programs'
+      fullPath: '/agent/notifications/programs'
+      preLoaderRoute: typeof AuthedAgentNotificationsProgramsRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/notifications/meeting': {
+      id: '/_authed/agent/notifications/meeting'
+      path: '/agent/notifications/meeting'
+      fullPath: '/agent/notifications/meeting'
+      preLoaderRoute: typeof AuthedAgentNotificationsMeetingRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/notifications/list': {
+      id: '/_authed/agent/notifications/list'
+      path: '/agent/notifications/list'
+      fullPath: '/agent/notifications/list'
+      preLoaderRoute: typeof AuthedAgentNotificationsListRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/non-life-insurance/list-processing': {
+      id: '/_authed/agent/non-life-insurance/list-processing'
+      path: '/agent/non-life-insurance/list-processing'
+      fullPath: '/agent/non-life-insurance/list-processing'
+      preLoaderRoute: typeof AuthedAgentNonLifeInsuranceListProcessingRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/non-life-insurance/list-done': {
+      id: '/_authed/agent/non-life-insurance/list-done'
+      path: '/agent/non-life-insurance/list-done'
+      fullPath: '/agent/non-life-insurance/list-done'
+      preLoaderRoute: typeof AuthedAgentNonLifeInsuranceListDoneRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/non-life-insurance/individual': {
+      id: '/_authed/agent/non-life-insurance/individual'
+      path: '/agent/non-life-insurance/individual'
+      fullPath: '/agent/non-life-insurance/individual'
+      preLoaderRoute: typeof AuthedAgentNonLifeInsuranceIndividualRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/members/tree': {
+      id: '/_authed/agent/members/tree'
+      path: '/agent/members/tree'
+      fullPath: '/agent/members/tree'
+      preLoaderRoute: typeof AuthedAgentMembersTreeRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/members/list': {
+      id: '/_authed/agent/members/list'
+      path: '/agent/members/list'
+      fullPath: '/agent/members/list'
+      preLoaderRoute: typeof AuthedAgentMembersListRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/members/level-up-report': {
+      id: '/_authed/agent/members/level-up-report'
+      path: '/agent/members/level-up-report'
+      fullPath: '/agent/members/level-up-report'
+      preLoaderRoute: typeof AuthedAgentMembersLevelUpReportRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/members/level-up-log': {
+      id: '/_authed/agent/members/level-up-log'
+      path: '/agent/members/level-up-log'
+      fullPath: '/agent/members/level-up-log'
+      preLoaderRoute: typeof AuthedAgentMembersLevelUpLogRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/life-insurance/processing': {
+      id: '/_authed/agent/life-insurance/processing'
+      path: '/agent/life-insurance/processing'
+      fullPath: '/agent/life-insurance/processing'
+      preLoaderRoute: typeof AuthedAgentLifeInsuranceProcessingRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/life-insurance/lost-effective': {
+      id: '/_authed/agent/life-insurance/lost-effective'
+      path: '/agent/life-insurance/lost-effective'
+      fullPath: '/agent/life-insurance/lost-effective'
+      preLoaderRoute: typeof AuthedAgentLifeInsuranceLostEffectiveRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/life-insurance/list-done': {
+      id: '/_authed/agent/life-insurance/list-done'
+      path: '/agent/life-insurance/list-done'
+      fullPath: '/agent/life-insurance/list-done'
+      preLoaderRoute: typeof AuthedAgentLifeInsuranceListDoneRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/life-insurance/individual': {
+      id: '/_authed/agent/life-insurance/individual'
+      path: '/agent/life-insurance/individual'
+      fullPath: '/agent/life-insurance/individual'
+      preLoaderRoute: typeof AuthedAgentLifeInsuranceIndividualRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/life-insurance/fee-due': {
+      id: '/_authed/agent/life-insurance/fee-due'
+      path: '/agent/life-insurance/fee-due'
+      fullPath: '/agent/life-insurance/fee-due'
+      preLoaderRoute: typeof AuthedAgentLifeInsuranceFeeDueRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/life-insurance/canceled': {
+      id: '/_authed/agent/life-insurance/canceled'
+      path: '/agent/life-insurance/canceled'
+      fullPath: '/agent/life-insurance/canceled'
+      preLoaderRoute: typeof AuthedAgentLifeInsuranceCanceledRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/abroad/list-processing': {
+      id: '/_authed/agent/abroad/list-processing'
+      path: '/agent/abroad/list-processing'
+      fullPath: '/agent/abroad/list-processing'
+      preLoaderRoute: typeof AuthedAgentAbroadListProcessingRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/abroad/list-done': {
+      id: '/_authed/agent/abroad/list-done'
+      path: '/agent/abroad/list-done'
+      fullPath: '/agent/abroad/list-done'
+      preLoaderRoute: typeof AuthedAgentAbroadListDoneRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/agent/abroad/individual': {
+      id: '/_authed/agent/abroad/individual'
+      path: '/agent/abroad/individual'
+      fullPath: '/agent/abroad/individual'
+      preLoaderRoute: typeof AuthedAgentAbroadIndividualRouteImport
+      parentRoute: typeof AuthedRoute
     }
   }
 }
 
-interface AuthedPostsRouteRouteChildren {
-  AuthedPostsPostIdRoute: typeof AuthedPostsPostIdRoute
-  AuthedPostsIndexRoute: typeof AuthedPostsIndexRoute
-}
-
-const AuthedPostsRouteRouteChildren: AuthedPostsRouteRouteChildren = {
-  AuthedPostsPostIdRoute: AuthedPostsPostIdRoute,
-  AuthedPostsIndexRoute: AuthedPostsIndexRoute,
-}
-
-const AuthedPostsRouteRouteWithChildren =
-  AuthedPostsRouteRoute._addFileChildren(AuthedPostsRouteRouteChildren)
-
 interface AuthedRouteChildren {
-  AuthedPostsRouteRoute: typeof AuthedPostsRouteRouteWithChildren
-  AuthedDashboardRoute: typeof AuthedDashboardRoute
+  AuthedAgentCommissionTableRoute: typeof AuthedAgentCommissionTableRoute
+  AuthedAgentCustomersRoute: typeof AuthedAgentCustomersRoute
+  AuthedAgentDashboardRoute: typeof AuthedAgentDashboardRoute
+  AuthedAgentDocumentsRoute: typeof AuthedAgentDocumentsRoute
+  AuthedAgentProfileRoute: typeof AuthedAgentProfileRoute
+  AuthedSamtekCustomersRoute: typeof AuthedSamtekCustomersRoute
+  AuthedStaffCommissionManualRoute: typeof AuthedStaffCommissionManualRoute
+  AuthedStaffCommissionPeriodRoute: typeof AuthedStaffCommissionPeriodRoute
+  AuthedStaffCommissionTableRoute: typeof AuthedStaffCommissionTableRoute
+  AuthedStaffCommissionTypeRoute: typeof AuthedStaffCommissionTypeRoute
+  AuthedStaffConfigEscrowRoute: typeof AuthedStaffConfigEscrowRoute
+  AuthedStaffConfigLevelUpRoute: typeof AuthedStaffConfigLevelUpRoute
+  AuthedStaffCustomersRoute: typeof AuthedStaffCustomersRoute
+  AuthedStaffDashboardRoute: typeof AuthedStaffDashboardRoute
+  AuthedStaffEscrowRoute: typeof AuthedStaffEscrowRoute
+  AuthedStaffEscrowReportRoute: typeof AuthedStaffEscrowReportRoute
+  AuthedStaffEscrowReturnRoute: typeof AuthedStaffEscrowReturnRoute
+  AuthedStaffMeetingRoute: typeof AuthedStaffMeetingRoute
+  AuthedAgentAbroadIndividualRoute: typeof AuthedAgentAbroadIndividualRoute
+  AuthedAgentAbroadListDoneRoute: typeof AuthedAgentAbroadListDoneRoute
+  AuthedAgentAbroadListProcessingRoute: typeof AuthedAgentAbroadListProcessingRoute
+  AuthedAgentLifeInsuranceCanceledRoute: typeof AuthedAgentLifeInsuranceCanceledRoute
+  AuthedAgentLifeInsuranceFeeDueRoute: typeof AuthedAgentLifeInsuranceFeeDueRoute
+  AuthedAgentLifeInsuranceIndividualRoute: typeof AuthedAgentLifeInsuranceIndividualRoute
+  AuthedAgentLifeInsuranceListDoneRoute: typeof AuthedAgentLifeInsuranceListDoneRoute
+  AuthedAgentLifeInsuranceLostEffectiveRoute: typeof AuthedAgentLifeInsuranceLostEffectiveRoute
+  AuthedAgentLifeInsuranceProcessingRoute: typeof AuthedAgentLifeInsuranceProcessingRoute
+  AuthedAgentMembersLevelUpLogRoute: typeof AuthedAgentMembersLevelUpLogRoute
+  AuthedAgentMembersLevelUpReportRoute: typeof AuthedAgentMembersLevelUpReportRoute
+  AuthedAgentMembersListRoute: typeof AuthedAgentMembersListRoute
+  AuthedAgentMembersTreeRoute: typeof AuthedAgentMembersTreeRoute
+  AuthedAgentNonLifeInsuranceIndividualRoute: typeof AuthedAgentNonLifeInsuranceIndividualRoute
+  AuthedAgentNonLifeInsuranceListDoneRoute: typeof AuthedAgentNonLifeInsuranceListDoneRoute
+  AuthedAgentNonLifeInsuranceListProcessingRoute: typeof AuthedAgentNonLifeInsuranceListProcessingRoute
+  AuthedAgentNotificationsListRoute: typeof AuthedAgentNotificationsListRoute
+  AuthedAgentNotificationsMeetingRoute: typeof AuthedAgentNotificationsMeetingRoute
+  AuthedAgentNotificationsProgramsRoute: typeof AuthedAgentNotificationsProgramsRoute
+  AuthedSamtekStaffsListRoute: typeof AuthedSamtekStaffsListRoute
+  AuthedSamtekStaffsLoginLogsRoute: typeof AuthedSamtekStaffsLoginLogsRoute
+  AuthedSamtekStaffsPermissionsRoute: typeof AuthedSamtekStaffsPermissionsRoute
+  AuthedStaffAbroadCommissionListRoute: typeof AuthedStaffAbroadCommissionListRoute
+  AuthedStaffAbroadListDoneRoute: typeof AuthedStaffAbroadListDoneRoute
+  AuthedStaffAbroadListProcessingRoute: typeof AuthedStaffAbroadListProcessingRoute
+  AuthedStaffAbroadPaidoutDetailRoute: typeof AuthedStaffAbroadPaidoutDetailRoute
+  AuthedStaffAbroadPaidoutListRoute: typeof AuthedStaffAbroadPaidoutListRoute
+  AuthedStaffAbroadProductsRoute: typeof AuthedStaffAbroadProductsRoute
+  AuthedStaffAbroadProfixRoute: typeof AuthedStaffAbroadProfixRoute
+  AuthedStaffAbroadProfixDetailAllRoute: typeof AuthedStaffAbroadProfixDetailAllRoute
+  AuthedStaffAbroadProvidersRoute: typeof AuthedStaffAbroadProvidersRoute
+  AuthedStaffAgentsAgentEcontractRoute: typeof AuthedStaffAgentsAgentEcontractRoute
+  AuthedStaffAgentsAssignLevelRoute: typeof AuthedStaffAgentsAssignLevelRoute
+  AuthedStaffAgentsChangeManagerRoute: typeof AuthedStaffAgentsChangeManagerRoute
+  AuthedStaffAgentsLevelUpLogRoute: typeof AuthedStaffAgentsLevelUpLogRoute
+  AuthedStaffAgentsLevelUpReportRoute: typeof AuthedStaffAgentsLevelUpReportRoute
+  AuthedStaffAgentsListRoute: typeof AuthedStaffAgentsListRoute
+  AuthedStaffAgentsLoginLogsRoute: typeof AuthedStaffAgentsLoginLogsRoute
+  AuthedStaffAgentsNewAgentsRoute: typeof AuthedStaffAgentsNewAgentsRoute
+  AuthedStaffAgentsTotalsRoute: typeof AuthedStaffAgentsTotalsRoute
+  AuthedStaffAgentsTreeRoute: typeof AuthedStaffAgentsTreeRoute
+  AuthedStaffDocumentsEmailBusinessRoute: typeof AuthedStaffDocumentsEmailBusinessRoute
+  AuthedStaffDocumentsMemberInternalRoute: typeof AuthedStaffDocumentsMemberInternalRoute
+  AuthedStaffDocumentsMembersRoute: typeof AuthedStaffDocumentsMembersRoute
+  AuthedStaffDocumentsTypeInternalRoute: typeof AuthedStaffDocumentsTypeInternalRoute
+  AuthedStaffDocumentsTypesRoute: typeof AuthedStaffDocumentsTypesRoute
+  AuthedStaffIncomeOutcomeCashbookIncomeRoute: typeof AuthedStaffIncomeOutcomeCashbookIncomeRoute
+  AuthedStaffIncomeOutcomeCashbookIncomeDeletedRoute: typeof AuthedStaffIncomeOutcomeCashbookIncomeDeletedRoute
+  AuthedStaffIncomeOutcomeCashbookOutcomeRoute: typeof AuthedStaffIncomeOutcomeCashbookOutcomeRoute
+  AuthedStaffIncomeOutcomeCashbookOutcomeDeletedRoute: typeof AuthedStaffIncomeOutcomeCashbookOutcomeDeletedRoute
+  AuthedStaffIncomeOutcomeCashbookTotalRoute: typeof AuthedStaffIncomeOutcomeCashbookTotalRoute
+  AuthedStaffIncomeOutcomeIncomeRoute: typeof AuthedStaffIncomeOutcomeIncomeRoute
+  AuthedStaffIncomeOutcomeOutcomeRoute: typeof AuthedStaffIncomeOutcomeOutcomeRoute
+  AuthedStaffLifeInsuranceCommissionListRoute: typeof AuthedStaffLifeInsuranceCommissionListRoute
+  AuthedStaffLifeInsuranceFeeDueRoute: typeof AuthedStaffLifeInsuranceFeeDueRoute
+  AuthedStaffLifeInsuranceFinancialRoute: typeof AuthedStaffLifeInsuranceFinancialRoute
+  AuthedStaffLifeInsuranceListCanceledRoute: typeof AuthedStaffLifeInsuranceListCanceledRoute
+  AuthedStaffLifeInsuranceListDoneRoute: typeof AuthedStaffLifeInsuranceListDoneRoute
+  AuthedStaffLifeInsuranceListProcessingRoute: typeof AuthedStaffLifeInsuranceListProcessingRoute
+  AuthedStaffLifeInsuranceLostEffectiveRoute: typeof AuthedStaffLifeInsuranceLostEffectiveRoute
+  AuthedStaffLifeInsurancePaidoutDetailRoute: typeof AuthedStaffLifeInsurancePaidoutDetailRoute
+  AuthedStaffLifeInsurancePaidoutListRoute: typeof AuthedStaffLifeInsurancePaidoutListRoute
+  AuthedStaffLifeInsuranceProductsRoute: typeof AuthedStaffLifeInsuranceProductsRoute
+  AuthedStaffLifeInsuranceProvidersRoute: typeof AuthedStaffLifeInsuranceProvidersRoute
+  AuthedStaffNonLifeInsuranceCommissionListRoute: typeof AuthedStaffNonLifeInsuranceCommissionListRoute
+  AuthedStaffNonLifeInsuranceListDoneRoute: typeof AuthedStaffNonLifeInsuranceListDoneRoute
+  AuthedStaffNonLifeInsuranceListProcessingRoute: typeof AuthedStaffNonLifeInsuranceListProcessingRoute
+  AuthedStaffNonLifeInsurancePaidoutDetailRoute: typeof AuthedStaffNonLifeInsurancePaidoutDetailRoute
+  AuthedStaffNonLifeInsurancePaidoutListRoute: typeof AuthedStaffNonLifeInsurancePaidoutListRoute
+  AuthedStaffNonLifeInsuranceProductsRoute: typeof AuthedStaffNonLifeInsuranceProductsRoute
+  AuthedStaffNonLifeInsuranceProfixRoute: typeof AuthedStaffNonLifeInsuranceProfixRoute
+  AuthedStaffNonLifeInsuranceProfixDetailAllRoute: typeof AuthedStaffNonLifeInsuranceProfixDetailAllRoute
+  AuthedStaffNonLifeInsuranceProvidersRoute: typeof AuthedStaffNonLifeInsuranceProvidersRoute
+  AuthedStaffNotificationsFeaturedRoute: typeof AuthedStaffNotificationsFeaturedRoute
+  AuthedStaffNotificationsListRoute: typeof AuthedStaffNotificationsListRoute
+  AuthedStaffNotificationsProgramsRoute: typeof AuthedStaffNotificationsProgramsRoute
+  AuthedStaffReportCommissionRoute: typeof AuthedStaffReportCommissionRoute
+  AuthedStaffReportIncomeOutcomeRoute: typeof AuthedStaffReportIncomeOutcomeRoute
+  AuthedStaffReportLoginLogsRoute: typeof AuthedStaffReportLoginLogsRoute
+  AuthedStaffReportNotLoginLogsRoute: typeof AuthedStaffReportNotLoginLogsRoute
+  AuthedStaffReportPaidoutDetailRoute: typeof AuthedStaffReportPaidoutDetailRoute
+  AuthedStaffReportPaidoutListRoute: typeof AuthedStaffReportPaidoutListRoute
+  AuthedStaffStaffsListRoute: typeof AuthedStaffStaffsListRoute
+  AuthedStaffStaffsLoginLogsRoute: typeof AuthedStaffStaffsLoginLogsRoute
+  AuthedStaffStaffsPermissionsRoute: typeof AuthedStaffStaffsPermissionsRoute
 }
 
 const AuthedRouteChildren: AuthedRouteChildren = {
-  AuthedPostsRouteRoute: AuthedPostsRouteRouteWithChildren,
-  AuthedDashboardRoute: AuthedDashboardRoute,
+  AuthedAgentCommissionTableRoute: AuthedAgentCommissionTableRoute,
+  AuthedAgentCustomersRoute: AuthedAgentCustomersRoute,
+  AuthedAgentDashboardRoute: AuthedAgentDashboardRoute,
+  AuthedAgentDocumentsRoute: AuthedAgentDocumentsRoute,
+  AuthedAgentProfileRoute: AuthedAgentProfileRoute,
+  AuthedSamtekCustomersRoute: AuthedSamtekCustomersRoute,
+  AuthedStaffCommissionManualRoute: AuthedStaffCommissionManualRoute,
+  AuthedStaffCommissionPeriodRoute: AuthedStaffCommissionPeriodRoute,
+  AuthedStaffCommissionTableRoute: AuthedStaffCommissionTableRoute,
+  AuthedStaffCommissionTypeRoute: AuthedStaffCommissionTypeRoute,
+  AuthedStaffConfigEscrowRoute: AuthedStaffConfigEscrowRoute,
+  AuthedStaffConfigLevelUpRoute: AuthedStaffConfigLevelUpRoute,
+  AuthedStaffCustomersRoute: AuthedStaffCustomersRoute,
+  AuthedStaffDashboardRoute: AuthedStaffDashboardRoute,
+  AuthedStaffEscrowRoute: AuthedStaffEscrowRoute,
+  AuthedStaffEscrowReportRoute: AuthedStaffEscrowReportRoute,
+  AuthedStaffEscrowReturnRoute: AuthedStaffEscrowReturnRoute,
+  AuthedStaffMeetingRoute: AuthedStaffMeetingRoute,
+  AuthedAgentAbroadIndividualRoute: AuthedAgentAbroadIndividualRoute,
+  AuthedAgentAbroadListDoneRoute: AuthedAgentAbroadListDoneRoute,
+  AuthedAgentAbroadListProcessingRoute: AuthedAgentAbroadListProcessingRoute,
+  AuthedAgentLifeInsuranceCanceledRoute: AuthedAgentLifeInsuranceCanceledRoute,
+  AuthedAgentLifeInsuranceFeeDueRoute: AuthedAgentLifeInsuranceFeeDueRoute,
+  AuthedAgentLifeInsuranceIndividualRoute:
+    AuthedAgentLifeInsuranceIndividualRoute,
+  AuthedAgentLifeInsuranceListDoneRoute: AuthedAgentLifeInsuranceListDoneRoute,
+  AuthedAgentLifeInsuranceLostEffectiveRoute:
+    AuthedAgentLifeInsuranceLostEffectiveRoute,
+  AuthedAgentLifeInsuranceProcessingRoute:
+    AuthedAgentLifeInsuranceProcessingRoute,
+  AuthedAgentMembersLevelUpLogRoute: AuthedAgentMembersLevelUpLogRoute,
+  AuthedAgentMembersLevelUpReportRoute: AuthedAgentMembersLevelUpReportRoute,
+  AuthedAgentMembersListRoute: AuthedAgentMembersListRoute,
+  AuthedAgentMembersTreeRoute: AuthedAgentMembersTreeRoute,
+  AuthedAgentNonLifeInsuranceIndividualRoute:
+    AuthedAgentNonLifeInsuranceIndividualRoute,
+  AuthedAgentNonLifeInsuranceListDoneRoute:
+    AuthedAgentNonLifeInsuranceListDoneRoute,
+  AuthedAgentNonLifeInsuranceListProcessingRoute:
+    AuthedAgentNonLifeInsuranceListProcessingRoute,
+  AuthedAgentNotificationsListRoute: AuthedAgentNotificationsListRoute,
+  AuthedAgentNotificationsMeetingRoute: AuthedAgentNotificationsMeetingRoute,
+  AuthedAgentNotificationsProgramsRoute: AuthedAgentNotificationsProgramsRoute,
+  AuthedSamtekStaffsListRoute: AuthedSamtekStaffsListRoute,
+  AuthedSamtekStaffsLoginLogsRoute: AuthedSamtekStaffsLoginLogsRoute,
+  AuthedSamtekStaffsPermissionsRoute: AuthedSamtekStaffsPermissionsRoute,
+  AuthedStaffAbroadCommissionListRoute: AuthedStaffAbroadCommissionListRoute,
+  AuthedStaffAbroadListDoneRoute: AuthedStaffAbroadListDoneRoute,
+  AuthedStaffAbroadListProcessingRoute: AuthedStaffAbroadListProcessingRoute,
+  AuthedStaffAbroadPaidoutDetailRoute: AuthedStaffAbroadPaidoutDetailRoute,
+  AuthedStaffAbroadPaidoutListRoute: AuthedStaffAbroadPaidoutListRoute,
+  AuthedStaffAbroadProductsRoute: AuthedStaffAbroadProductsRoute,
+  AuthedStaffAbroadProfixRoute: AuthedStaffAbroadProfixRoute,
+  AuthedStaffAbroadProfixDetailAllRoute: AuthedStaffAbroadProfixDetailAllRoute,
+  AuthedStaffAbroadProvidersRoute: AuthedStaffAbroadProvidersRoute,
+  AuthedStaffAgentsAgentEcontractRoute: AuthedStaffAgentsAgentEcontractRoute,
+  AuthedStaffAgentsAssignLevelRoute: AuthedStaffAgentsAssignLevelRoute,
+  AuthedStaffAgentsChangeManagerRoute: AuthedStaffAgentsChangeManagerRoute,
+  AuthedStaffAgentsLevelUpLogRoute: AuthedStaffAgentsLevelUpLogRoute,
+  AuthedStaffAgentsLevelUpReportRoute: AuthedStaffAgentsLevelUpReportRoute,
+  AuthedStaffAgentsListRoute: AuthedStaffAgentsListRoute,
+  AuthedStaffAgentsLoginLogsRoute: AuthedStaffAgentsLoginLogsRoute,
+  AuthedStaffAgentsNewAgentsRoute: AuthedStaffAgentsNewAgentsRoute,
+  AuthedStaffAgentsTotalsRoute: AuthedStaffAgentsTotalsRoute,
+  AuthedStaffAgentsTreeRoute: AuthedStaffAgentsTreeRoute,
+  AuthedStaffDocumentsEmailBusinessRoute:
+    AuthedStaffDocumentsEmailBusinessRoute,
+  AuthedStaffDocumentsMemberInternalRoute:
+    AuthedStaffDocumentsMemberInternalRoute,
+  AuthedStaffDocumentsMembersRoute: AuthedStaffDocumentsMembersRoute,
+  AuthedStaffDocumentsTypeInternalRoute: AuthedStaffDocumentsTypeInternalRoute,
+  AuthedStaffDocumentsTypesRoute: AuthedStaffDocumentsTypesRoute,
+  AuthedStaffIncomeOutcomeCashbookIncomeRoute:
+    AuthedStaffIncomeOutcomeCashbookIncomeRoute,
+  AuthedStaffIncomeOutcomeCashbookIncomeDeletedRoute:
+    AuthedStaffIncomeOutcomeCashbookIncomeDeletedRoute,
+  AuthedStaffIncomeOutcomeCashbookOutcomeRoute:
+    AuthedStaffIncomeOutcomeCashbookOutcomeRoute,
+  AuthedStaffIncomeOutcomeCashbookOutcomeDeletedRoute:
+    AuthedStaffIncomeOutcomeCashbookOutcomeDeletedRoute,
+  AuthedStaffIncomeOutcomeCashbookTotalRoute:
+    AuthedStaffIncomeOutcomeCashbookTotalRoute,
+  AuthedStaffIncomeOutcomeIncomeRoute: AuthedStaffIncomeOutcomeIncomeRoute,
+  AuthedStaffIncomeOutcomeOutcomeRoute: AuthedStaffIncomeOutcomeOutcomeRoute,
+  AuthedStaffLifeInsuranceCommissionListRoute:
+    AuthedStaffLifeInsuranceCommissionListRoute,
+  AuthedStaffLifeInsuranceFeeDueRoute: AuthedStaffLifeInsuranceFeeDueRoute,
+  AuthedStaffLifeInsuranceFinancialRoute:
+    AuthedStaffLifeInsuranceFinancialRoute,
+  AuthedStaffLifeInsuranceListCanceledRoute:
+    AuthedStaffLifeInsuranceListCanceledRoute,
+  AuthedStaffLifeInsuranceListDoneRoute: AuthedStaffLifeInsuranceListDoneRoute,
+  AuthedStaffLifeInsuranceListProcessingRoute:
+    AuthedStaffLifeInsuranceListProcessingRoute,
+  AuthedStaffLifeInsuranceLostEffectiveRoute:
+    AuthedStaffLifeInsuranceLostEffectiveRoute,
+  AuthedStaffLifeInsurancePaidoutDetailRoute:
+    AuthedStaffLifeInsurancePaidoutDetailRoute,
+  AuthedStaffLifeInsurancePaidoutListRoute:
+    AuthedStaffLifeInsurancePaidoutListRoute,
+  AuthedStaffLifeInsuranceProductsRoute: AuthedStaffLifeInsuranceProductsRoute,
+  AuthedStaffLifeInsuranceProvidersRoute:
+    AuthedStaffLifeInsuranceProvidersRoute,
+  AuthedStaffNonLifeInsuranceCommissionListRoute:
+    AuthedStaffNonLifeInsuranceCommissionListRoute,
+  AuthedStaffNonLifeInsuranceListDoneRoute:
+    AuthedStaffNonLifeInsuranceListDoneRoute,
+  AuthedStaffNonLifeInsuranceListProcessingRoute:
+    AuthedStaffNonLifeInsuranceListProcessingRoute,
+  AuthedStaffNonLifeInsurancePaidoutDetailRoute:
+    AuthedStaffNonLifeInsurancePaidoutDetailRoute,
+  AuthedStaffNonLifeInsurancePaidoutListRoute:
+    AuthedStaffNonLifeInsurancePaidoutListRoute,
+  AuthedStaffNonLifeInsuranceProductsRoute:
+    AuthedStaffNonLifeInsuranceProductsRoute,
+  AuthedStaffNonLifeInsuranceProfixRoute:
+    AuthedStaffNonLifeInsuranceProfixRoute,
+  AuthedStaffNonLifeInsuranceProfixDetailAllRoute:
+    AuthedStaffNonLifeInsuranceProfixDetailAllRoute,
+  AuthedStaffNonLifeInsuranceProvidersRoute:
+    AuthedStaffNonLifeInsuranceProvidersRoute,
+  AuthedStaffNotificationsFeaturedRoute: AuthedStaffNotificationsFeaturedRoute,
+  AuthedStaffNotificationsListRoute: AuthedStaffNotificationsListRoute,
+  AuthedStaffNotificationsProgramsRoute: AuthedStaffNotificationsProgramsRoute,
+  AuthedStaffReportCommissionRoute: AuthedStaffReportCommissionRoute,
+  AuthedStaffReportIncomeOutcomeRoute: AuthedStaffReportIncomeOutcomeRoute,
+  AuthedStaffReportLoginLogsRoute: AuthedStaffReportLoginLogsRoute,
+  AuthedStaffReportNotLoginLogsRoute: AuthedStaffReportNotLoginLogsRoute,
+  AuthedStaffReportPaidoutDetailRoute: AuthedStaffReportPaidoutDetailRoute,
+  AuthedStaffReportPaidoutListRoute: AuthedStaffReportPaidoutListRoute,
+  AuthedStaffStaffsListRoute: AuthedStaffStaffsListRoute,
+  AuthedStaffStaffsLoginLogsRoute: AuthedStaffStaffsLoginLogsRoute,
+  AuthedStaffStaffsPermissionsRoute: AuthedStaffStaffsPermissionsRoute,
 }
 
 const AuthedRouteWithChildren =
@@ -234,8 +2399,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthedRoute: AuthedRouteWithChildren,
   LoginRoute: LoginRoute,
-  LogoutRoute: LogoutRoute,
-  SignupRoute: SignupRoute,
+  RegisterRoute: RegisterRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

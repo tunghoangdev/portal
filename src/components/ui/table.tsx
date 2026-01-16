@@ -1,13 +1,5 @@
+import { type ComponentProps } from "react";
 import { cn } from "~/lib/utils";
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  type ComponentProps,
-} from "react";
-import { Button } from "./button";
-import { Icons } from "../icons";
 type TableProps = ComponentProps<"table"> & {
   className?: string;
   classNames?: {
@@ -189,11 +181,11 @@ function TableCaption({ className, ...props }: ComponentProps<"caption">) {
 
 export {
   Table,
-  TableHeader,
   TableBody,
+  TableCaption,
+  TableCell,
   TableFooter,
   TableHead,
+  TableHeader,
   TableRow,
-  TableCell,
-  TableCaption,
 };

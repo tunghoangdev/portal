@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef, useCallback } from "react";
-import cn from "classnames";
-import { Button } from "~/components/ui";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Icons } from "~/components/icons";
+import { Button } from "~/components/ui";
+import { cn } from "~/lib/utils";
 
 interface Props {
   onNext: () => void;

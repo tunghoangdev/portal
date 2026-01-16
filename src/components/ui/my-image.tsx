@@ -1,7 +1,6 @@
-import CustomLoader from './custom-loader';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from "react";
 const DEFAULT_SRC =
-  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+  "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 interface MyImageProps {
   src: string;
   alt: string;
@@ -13,7 +12,7 @@ interface MyImageProps {
 }
 
 const keyStr =
-  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 const triplet = (e1: number, e2: number, e3: number) =>
   keyStr.charAt(e1 >> 2) +
   keyStr.charAt(((e1 & 3) << 4) | (e2 >> 4)) +
@@ -27,24 +26,24 @@ export const cloudinaryUrl = (
   src: string,
   options?: { w?: number; q?: number }
 ) => {
-  if (!src) return '';
+  if (!src) return "";
   if (
-    src.startsWith('/') ||
-    src.startsWith('blob:') ||
-    src.startsWith('data:')
+    src.startsWith("/") ||
+    src.startsWith("blob:") ||
+    src.startsWith("data:")
   ) {
     return src;
   }
   const width = options?.w || 800;
   const quality = options?.q || 70;
-  const base = 'https://res.cloudinary.com/dnckohpw2/image/fetch';
+  const base = "https://res.cloudinary.com/dnckohpw2/image/fetch";
   return `${base}/w_${width},q_${quality},f_auto/${encodeURIComponent(src)}`;
   // const encodedSrc = encodeURIComponent(src);
   // return `https://res.cloudinary.com/demo/image/fetch/w_${width},q_${quality}/${encodedSrc}`;
 };
 export const MyImage = ({
   fallbackSrc,
-  className = '',
+  className = "",
   ...props
 }: MyImageProps) => {
   const { src, width, height, alt } = props || {};
@@ -56,7 +55,7 @@ export const MyImage = ({
       key={src as string}
       ref={imgRef}
       src={cloudinaryUrl(src as string, { w: width as number, q: 90 })}
-      alt={alt || ''}
+      alt={alt || ""}
       width={width}
       height={height}
       onError={(e) => {
@@ -66,7 +65,7 @@ export const MyImage = ({
         }
       }}
       className={`transition-opacity duration-500 opacity-0 select-none ${className}`}
-      onLoad={(e) => e.currentTarget.classList.remove('opacity-0')}
+      onLoad={(e) => e.currentTarget.classList.remove("opacity-0")}
     />
   );
 };

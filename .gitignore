@@ -9,6 +9,7 @@ yarn-error.log*
 # --- TanStack Start / Nitro / Vinxi ---
 # Thư mục chứa kết quả build
 .output
+.agent
 .vinxi
 dist
 /beta

@@ -1,10 +1,10 @@
+import { toast } from "sonner";
 import { create } from "zustand";
-import type { User } from "~/types/user";
 import { persist } from "zustand/middleware";
 import { HIDE_NOTIFICATION, ROLES, USER_DATA } from "~/constant";
-import { getIdFormFromPathname } from "~/components/auth/auth-guard";
 import { NORMALIZE_URLS } from "~/constant/api-endpoints";
-import { toast } from "sonner";
+import { getIdFormFromPathname } from "~/features/auth/auth-guard";
+import type { User } from "~/types/user";
 
 export interface AuthState {
   user: User | null;
@@ -21,13 +21,13 @@ export interface AuthState {
     accessToken: string,
     newRefreshToken?: string
   ) => void;
-  logoutAction: (router: any, redirect?: boolean) => void; // router để điều hướng sau khi logout
-  checkAuthStatusAction: (pathname: string, router: any) => Promise<void>; // router để điều hướng
+  logoutAction: (navigate: any, redirect?: boolean) => void; // navigate để điều hướng sau khi logout
+  checkAuthStatusAction: (pathname: string, navigate: any) => Promise<void>; // navigate để điều hướng
   checkAuthPermission: (
     pathname: string,
-    router: any,
+    navigate: any,
     formIds: number[]
-  ) => Promise<void>; // router để điều hướng
+  ) => Promise<void>; // navigate để điều hướng
   setLoadingAuthAction: (loading: boolean) => void;
 }
 export const useAuthStore = create<AuthState>()(
@@ -57,7 +57,7 @@ export const useAuthStore = create<AuthState>()(
           avatar: userData?.agent_avatar || userData?.staff_avatar,
         });
       },
-      logoutAction: (router, redirect = true) => {
+      logoutAction: (navigate, redirect = true) => {
         set({
           user: null,
           role: "",
@@ -68,18 +68,18 @@ export const useAuthStore = create<AuthState>()(
         if (typeof window !== "undefined") {
           localStorage.removeItem(HIDE_NOTIFICATION);
           if (redirect) {
-            if (router) navigate({ to: "/login" });
+            if (navigate) navigate({ to: "/login" });
             window.location.href = "/login";
           }
         }
       },
-      checkAuthStatusAction: async (pathname, router) => {
+      checkAuthStatusAction: async (pathname, navigate) => {
         const token = get().token;
         const user = get().user;
 
         if (pathname === "/register") {
           if (token && user) {
-            get().logoutAction(router, false);
+            get().logoutAction(navigate, false);
           }
           set({ isLoadingAuth: false });
           return;
@@ -91,7 +91,7 @@ export const useAuthStore = create<AuthState>()(
             // User is logged in, check if role is samtek
             if (user.role !== ROLES.SAMTEK) {
               // Wrong role, logout without redirect
-              get().logoutAction(router, false);
+              get().logoutAction(navigate, false);
               set({ isLoadingAuth: false });
               return;
             }
@@ -145,7 +145,7 @@ export const useAuthStore = create<AuthState>()(
         if (token && user?.role === ROLES.SAMTEK) {
           if (pathname.startsWith("/staff") || pathname.startsWith("/agent")) {
             // Samtek user trying to access staff/agent paths, logout and redirect to /login
-            get().logoutAction(router, true);
+            get().logoutAction(navigate, true);
             return;
           }
         }
@@ -156,12 +156,12 @@ export const useAuthStore = create<AuthState>()(
         set({ isLoadingAuth: true });
         const currentToken = get().token;
         if (!currentToken) {
-          get().logoutAction(router); // Gọi logout của store để xử lý state và redirect
+          get().logoutAction(navigate); // Gọi logout của store để xử lý state và redirect
           return;
         }
       },
 
-      checkAuthPermission: async (pathname, router, formIds) => {
+      checkAuthPermission: async (pathname, navigate, formIds) => {
         const idForm = getIdFormFromPathname(pathname);
         const role = get().role;
         if (idForm === 0) {
