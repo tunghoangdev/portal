@@ -74,6 +74,9 @@ export default defineConfig(({ mode }) => {
         // },
         prerender: {
           failOnError: false, // Temporarily disabled for debugging
+          crawlLinks: true,
+          autoSubfolderIndex: false,
+          
         },
       }),
       viteReact(),

@@ -1,3 +1,4 @@
+
 import { QRCodeSVG } from "qrcode.react";
 import { useState } from "react";
 import { Icons } from "~/components/icons";
@@ -6,8 +7,8 @@ import { LevelCell } from "./cells";
 export default function RecruitmentQRCode({ data }: any) {
   const { agent_name: name, agent_phone: phone, agent_avatar } = data || {};
   const [copied, setCopied] = useState(false);
-  const codeKey = "123456";
   // const codeKey = getCodeKey();
+  const codeKey = "123456";
   const link = `${window.location.origin}/register?code=${codeKey}&staff=${phone}`;
   // const link = `${window.location.origin}/register/${codeKey}/${phone}`;
 
@@ -59,6 +60,7 @@ export default function RecruitmentQRCode({ data }: any) {
                  transition-all duration-300 shadow-md hover:shadow-lg  
                  active:scale-95"
       >
+        <Icons.copy />
         {/* <Copy className="w-5 h-5" /> */}
         <span className="font-semibold">
           {copied ? "Đã sao chép!" : "Sao chép liên kết đăng ký"}

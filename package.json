@@ -74,12 +74,14 @@
     "zustand": "^5.0.10"
   },
   "devDependencies": {
+    "@fontsource-variable/montserrat": "^5.2.8",
     "@tailwindcss/vite": "^4.1.18",
     "@types/lodash": "^4.17.23",
     "@types/node": "^22.5.4",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.8",
     "@vitejs/plugin-react": "^4.3.4",
+    "sass-embedded": "^1.97.2",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.7.2",
     "vite": "^7.1.7",

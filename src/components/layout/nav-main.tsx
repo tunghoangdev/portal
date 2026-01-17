@@ -1,11 +1,11 @@
-import { useLocation } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { Icons } from "~/components/icons";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-  Link,
+  // Link,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -286,8 +286,8 @@ export function NavMain({ items }: Props) {
                               })}
                             >
                               <Link
-                                href={subItem.url}
-                                isDisabled={
+                                to={subItem.url}
+                                disabled={
                                   !formIds?.includes(subItem.id_form) &&
                                   role === ROLES.STAFF
                                 }
@@ -332,8 +332,8 @@ export function NavMain({ items }: Props) {
                   )}
                 >
                   <Link
-                    href={item.url}
-                    isDisabled={
+                    to={item.url}
+                    disabled={
                       !formIds?.includes(item.id_form) &&
                       role === ROLES.STAFF &&
                       item.id_form !== 0

@@ -2,8 +2,8 @@ import { toast } from "sonner";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { HIDE_NOTIFICATION, ROLES, USER_DATA } from "~/constant";
+import { getIdFormFromPathname } from "~/utils/auth-utils";
 import { NORMALIZE_URLS } from "~/constant/api-endpoints";
-import { getIdFormFromPathname } from "~/features/auth/auth-guard";
 import type { User } from "~/types/user";
 
 export interface AuthState {
@@ -29,7 +29,10 @@ export interface AuthState {
     formIds: number[]
   ) => Promise<void>; // navigate để điều hướng
   setLoadingAuthAction: (loading: boolean) => void;
+  _hasHydrated: boolean;
+  setHasHydrated: (state: boolean) => void;
 }
+
 export const useAuthStore = create<AuthState>()(
   persist(
     (set, get) => ({
@@ -39,15 +42,14 @@ export const useAuthStore = create<AuthState>()(
       role: ROLES.AGENT,
       token: null,
       isAuthenticated: false,
-      isLoadingAuth: true, // Bắt đầu với trạng thái loading
+      isLoadingAuth: true,
       isStaff: false,
+      _hasHydrated: false,
+      setHasHydrated: (state) => set({ _hasHydrated: state }),
       setLoadingAuthAction: (loading) => set({ isLoadingAuth: loading }),
       setAvatar: (avatar) => set({ avatar }),
+      // ... (các action khác giữ nguyên)
       loginAction: (userData, accessToken) => {
-        // setAccessToken(accessToken); // Lưu access token vào cookie
-        // if (newRefreshToken) {
-        // 	setRefreshToken(newRefreshToken); // Lưu refresh token vào localStorage (nếu có)
-        // }
         set({
           user: userData,
           token: accessToken,
@@ -68,6 +70,8 @@ export const useAuthStore = create<AuthState>()(
         if (typeof window !== "undefined") {
           localStorage.removeItem(HIDE_NOTIFICATION);
           if (redirect) {
+            console.log('navigate', navigate);
+
             if (navigate) navigate({ to: "/login" });
             window.location.href = "/login";
           }
@@ -162,6 +166,7 @@ export const useAuthStore = create<AuthState>()(
       },
 
       checkAuthPermission: async (pathname, navigate, formIds) => {
+        // ... (giữ nguyên logic checkAuthPermission)
         const idForm = getIdFormFromPathname(pathname);
         const role = get().role;
         if (idForm === 0) {
@@ -180,6 +185,9 @@ export const useAuthStore = create<AuthState>()(
     }),
     {
       name: USER_DATA,
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
+      },
     }
   )
 );

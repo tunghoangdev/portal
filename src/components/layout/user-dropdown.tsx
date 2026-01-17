@@ -123,7 +123,7 @@ export default function UserDropdown() {
             onSuccess: (data) => {
               if (!data.error_code) {
                 onClose();
-                logoutAction({ navigate });
+                logoutAction(navigate);
               }
             },
           }
@@ -289,7 +289,7 @@ export default function UserDropdown() {
         <DropdownItem
           key="logout"
           color="danger"
-          onPress={() => logoutAction({ navigate })}
+          onPress={() => logoutAction(navigate)}
           startContent={<Icons.power size={16} className="text-default-800" />}
         >
           Đăng xuất

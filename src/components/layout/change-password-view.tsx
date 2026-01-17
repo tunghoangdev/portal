@@ -1,10 +1,21 @@
 import { Control } from "react-hook-form";
-import { PasswordField } from "~/features/shared/components/form-fields";
 import { Stack } from "../ui";
+import { PasswordField } from "~/features/shared/components/form-fields";
 interface Props {
   control: Control<any, any>;
 }
 export default function ChangePasswordView({ control }: Props) {
+  //   const { user, role, logoutAction } = useAuth();
+  //   const { confirm } = useSwal();
+  //   const navigate = useNavigate();
+  // *** Hook Form ***
+  // const { control, handleSubmit, getValues, formState }: any = useForm({
+  //   defaultValues: {
+  //     old_password: "",
+  //     new_password: "",
+  //     confirm_password: "",
+  //   },
+  // });
   return (
     <Stack
       direction="column"
