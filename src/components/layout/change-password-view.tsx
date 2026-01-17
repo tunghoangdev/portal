@@ -1,13 +1,10 @@
-import { Control, useForm } from "react-hook-form";
-import { useAuth, useSwal } from "~/hooks";
+import { Control } from "react-hook-form";
 import { Stack } from "../ui";
-import { PasswordField } from "../form";
-import { useRouter } from "next/navigation";
+import { PasswordField } from "~/features/shared/components/form-fields";
 interface Props {
   control: Control<any, any>;
-  formMethods: any;
 }
-export default function ChangePasswordView({ control, formMethods }: Props) {
+export default function ChangePasswordView({ control }: Props) {
   //   const { user, role, logoutAction } = useAuth();
   //   const { confirm } = useSwal();
   //   const navigate = useNavigate();

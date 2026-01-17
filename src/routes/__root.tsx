@@ -94,11 +94,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 						<QueryProvider>
 							<MediaQueryProvider>
 								<AuthGuard>
-								{/* <Loading /> */}
 								<ProcessProvider>
-									{/* <AppLoader> */}
 									<SidebarProvider>{children}</SidebarProvider>
-									{/* </AppLoader> */}
 								</ProcessProvider>
 								</AuthGuard>
 							</MediaQueryProvider>

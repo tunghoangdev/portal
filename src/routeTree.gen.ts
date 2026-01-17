@@ -9,8 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SignupRouteImport } from './routes/signup'
-import { Route as LogoutRouteImport } from './routes/logout'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AuthedRouteImport } from './routes/_authed'
 import { Route as IndexRouteImport } from './routes/index'
@@ -19,16 +17,6 @@ import { Route as AuthedPostsRouteRouteImport } from './routes/_authed/posts.rou
 import { Route as AuthedPostsIndexRouteImport } from './routes/_authed/posts.index'
 import { Route as AuthedPostsPostIdRouteImport } from './routes/_authed/posts.$postId'
 
-const SignupRoute = SignupRouteImport.update({
-  id: '/signup',
-  path: '/signup',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LogoutRoute = LogoutRouteImport.update({
-  id: '/logout',
-  path: '/logout',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -67,8 +55,6 @@ const AuthedPostsPostIdRoute = AuthedPostsPostIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
-  '/logout': typeof LogoutRoute
-  '/signup': typeof SignupRoute
   '/posts': typeof AuthedPostsRouteRouteWithChildren
   '/dashboard': typeof AuthedDashboardRoute
   '/posts/$postId': typeof AuthedPostsPostIdRoute
@@ -77,8 +63,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
-  '/logout': typeof LogoutRoute
-  '/signup': typeof SignupRoute
   '/dashboard': typeof AuthedDashboardRoute
   '/posts/$postId': typeof AuthedPostsPostIdRoute
   '/posts': typeof AuthedPostsIndexRoute
@@ -88,8 +72,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authed': typeof AuthedRouteWithChildren
   '/login': typeof LoginRoute
-  '/logout': typeof LogoutRoute
-  '/signup': typeof SignupRoute
   '/_authed/posts': typeof AuthedPostsRouteRouteWithChildren
   '/_authed/dashboard': typeof AuthedDashboardRoute
   '/_authed/posts/$postId': typeof AuthedPostsPostIdRoute
@@ -100,28 +82,17 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/login'
-    | '/logout'
-    | '/signup'
     | '/posts'
     | '/dashboard'
     | '/posts/$postId'
     | '/posts/'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/login'
-    | '/logout'
-    | '/signup'
-    | '/dashboard'
-    | '/posts/$postId'
-    | '/posts'
+  to: '/' | '/login' | '/dashboard' | '/posts/$postId' | '/posts'
   id:
     | '__root__'
     | '/'
     | '/_authed'
     | '/login'
-    | '/logout'
-    | '/signup'
     | '/_authed/posts'
     | '/_authed/dashboard'
     | '/_authed/posts/$postId'
@@ -132,26 +103,10 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthedRoute: typeof AuthedRouteWithChildren
   LoginRoute: typeof LoginRoute
-  LogoutRoute: typeof LogoutRoute
-  SignupRoute: typeof SignupRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/signup': {
-      id: '/signup'
-      path: '/signup'
-      fullPath: '/signup'
-      preLoaderRoute: typeof SignupRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/logout': {
-      id: '/logout'
-      path: '/logout'
-      fullPath: '/logout'
-      preLoaderRoute: typeof LogoutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -234,8 +189,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthedRoute: AuthedRouteWithChildren,
   LoginRoute: LoginRoute,
-  LogoutRoute: LogoutRoute,
-  SignupRoute: SignupRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

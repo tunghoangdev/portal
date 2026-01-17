@@ -1,21 +1,20 @@
 import { HeroUIProvider } from '@heroui/react';
-import { useNavigate } from '@tanstack/react-router';
+import { NavigateOptions, useNavigate, useRouter } from '@tanstack/react-router';
 import { Toaster } from 'sonner';
-
-declare module '@react-types/shared' {
-	interface RouterConfig {
-		routerOptions: NonNullable<
-			Parameters<ReturnType<typeof useRouter>['push']>[1]
-		>;
-	}
+declare module "@react-types/shared" {
+  interface RouterConfig {
+    href: NavigateOptions['to'];
+    routerOptions: Omit<NavigateOptions, keyof NavigateOptions>;
+  }
 }
 export default function NextUiProvider({
 	children,
 }: { children: React.ReactNode }) {
-	const navigate = useNavigate();
-
+  let router = useRouter();
 	return (
-		<HeroUIProvider navigate={router.push} locale="vi">
+		<HeroUIProvider   navigate={(to, options) => router.navigate({to, ...options})}
+      useHref={(to) => router.buildLocation({to}).href}
+      locale="vi">
 			<Toaster position="top-right" richColors />
 			{children}
 		</HeroUIProvider>
