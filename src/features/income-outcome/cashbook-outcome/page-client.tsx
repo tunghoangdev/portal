@@ -67,8 +67,8 @@ export default function PageClient() {
       }
       if (action === CRUD_ACTIONS.LOCK) {
         await updateConfirm(formData, {
-          title: "Khoá phiếu chi",
-          message: `Bạn có muốn khoá phiếu chi ${formData?.receipt_no} không?`,
+          title: formData?.is_lock ? "Mở khoá phiếu chi" : "Khoá phiếu chi",
+          message: `Bạn có muốn ${formData?.is_lock ? "mở khoá" : "khoá"} phiếu chi ${formData?.receipt_no} không?`,
           _customUrl: basePath.lock,
         });
         return;

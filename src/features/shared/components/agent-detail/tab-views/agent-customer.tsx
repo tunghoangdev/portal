@@ -2,7 +2,7 @@ import { useState } from 'react'; // Thêm useRef, useCallback
 import { useCrud } from '~/hooks/use-crud-v2';
 import { DataTable } from '~/features/shared/components/data-table';
 import { DEFAULT_PARAMS, ROLES } from '~/constant';
-import { customerColumns } from '~/components/table-columns';
+import { customerColumns } from '@/features/customers/columns';
 import { getColumns } from '~/features/shared/common/get-columns';
 import { API_ENDPOINTS } from '~/constant/api-endpoints';
 import { Endpoint } from '~/types/axios';

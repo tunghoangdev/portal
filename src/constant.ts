@@ -288,9 +288,9 @@ export enum MORE_ACTIONS {
 }
 
 export const ROLES = {
-  ADMIN: "admin",
+  // ADMIN: "admin",
   AGENT: "agent",
-  USER: "user",
+  // USER: "user",
   STAFF: "staff",
   SAMTEK: "samtek",
 };

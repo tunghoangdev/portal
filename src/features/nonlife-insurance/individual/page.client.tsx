@@ -2,11 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'; // Thêm useR
 import { useAuth, useDataQuery, useModal, useTableColumns } from '~/hooks';
 import { DataTable } from '~/features/shared/components/data-table';
 import { CRUD_ACTIONS, ROLES } from '~/constant';
-import {
-	noneLifeBaseColumns,
-	noneLifeContractCommissionColumns,
-	noneLifeProductDetailColumns,
-} from '~/components/table-columns';
+
 import { API_ENDPOINTS } from '~/constant/api-endpoints';
 import type { CrudActionType, ToolbarAction } from '~/types/data-table-type';
 import type { TItemFormFields } from '~/types/form-field';
@@ -15,6 +11,9 @@ import { Icons } from '~/components/icons';
 import { FormView } from './form-view';
 import { formSchema, initialFormValues } from './form.schema';
 import { getColumns } from '~/features/shared/common';
+import { noneLifeContractCommissionColumns } from '../none-life-commission-columns';
+import { noneLifeProductDetailColumns } from '../none-life-product-detail-columns';
+import { noneLifeBaseColumns } from '../none-life-base-columns';
 
 const commissionColumns = getColumns<any>(noneLifeContractCommissionColumns);
 const detailColumns = getColumns<any>(noneLifeProductDetailColumns);

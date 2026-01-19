@@ -10,7 +10,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 	const { role, user } = useAuth();
 	const userMenus: any = MENU_SETTINGS?.[(role as string) || ROLES.AGENT];
 	return (
-		<Sidebar collapsible="icon" {...props}>
+		<Sidebar collapsible="icon" className='border-none bg-sidebar p-2.5' {...props}>
 			<SidebarHeader className="flex flex-row items-center justify-start py-5 px-0">
 			{role !== ROLES.SAMTEK ? (
 				<CompanyName company={user?.company_name} />

@@ -3,9 +3,9 @@ import { getColumns } from '~/features/shared/common';
 import { API_ENDPOINTS } from '~/constant/api-endpoints';
 import { DataTable } from '~/features/shared/components/data-table';
 import { useCrud } from '~/hooks/use-crud-v2';
-import { noneLifeBaseColumns } from '~/components/table-columns';
 import { DEFAULT_PARAMS } from '~/constant';
 import { useEffect, useState } from 'react';
+import { noneLifeBaseColumns } from '@/features/nonlife-insurance/none-life-base-columns';
 
 const columns = getColumns<any>(noneLifeBaseColumns);
 

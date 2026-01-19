@@ -107,7 +107,7 @@ export const useAuthStore = create<AuthState>()(
               token,
               role: user.role,
             });
-            navigate({ to: "/samtek/dashboard" });
+            navigate({ to: user?.role === ROLES.SAMTEK ? "/samtek/dashboard" : "/dashboard" });
             return;
           }
           // No user logged in, don't redirect anywhere
@@ -133,7 +133,7 @@ export const useAuthStore = create<AuthState>()(
               token,
               role: user.role || "",
             });
-            navigate({ to: `/${user.role}/dashboard` });
+            navigate({ to: user?.role === ROLES.SAMTEK ? "/samtek/customers" : `/${user.role}/dashboard` });
             return;
           }
           set({

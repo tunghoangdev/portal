@@ -6,7 +6,7 @@ import { useCrud } from "~/hooks/use-crud-v2";
 import { API_ENDPOINTS } from "~/constant/api-endpoints";
 import { useAuth, useFilter } from "~/hooks";
 import Loading from "~/components/ui/loading";
-import { usePathname } from "next/navigation";
+import { useLocation } from "@tanstack/react-router";
 import { ROLES } from "~/constant";
 import { serializeListData } from "~/utils/util";
 export const MonthChart = () => {

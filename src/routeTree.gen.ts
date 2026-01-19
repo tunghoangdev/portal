@@ -13,6 +13,7 @@ import { Route as RegisterRouteImport } from './app/register'
 import { Route as LoginRouteImport } from './app/login'
 import { Route as AuthedRouteImport } from './app/_authed'
 import { Route as IndexRouteImport } from './app/index'
+import { Route as SamtekLoginRouteImport } from './app/samtek/login'
 import { Route as AuthedStaffMeetingRouteImport } from './app/_authed/staff/meeting'
 import { Route as AuthedStaffEscrowReturnRouteImport } from './app/_authed/staff/escrow-return'
 import { Route as AuthedStaffEscrowReportRouteImport } from './app/_authed/staff/escrow-report'
@@ -134,6 +135,11 @@ const AuthedRoute = AuthedRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SamtekLoginRoute = SamtekLoginRouteImport.update({
+  id: '/samtek/login',
+  path: '/samtek/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthedStaffMeetingRoute = AuthedStaffMeetingRouteImport.update({
@@ -739,6 +745,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/samtek/login': typeof SamtekLoginRoute
   '/agent/commission-table': typeof AuthedAgentCommissionTableRoute
   '/agent/customers': typeof AuthedAgentCustomersRoute
   '/agent/dashboard': typeof AuthedAgentDashboardRoute
@@ -847,6 +854,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/samtek/login': typeof SamtekLoginRoute
   '/agent/commission-table': typeof AuthedAgentCommissionTableRoute
   '/agent/customers': typeof AuthedAgentCustomersRoute
   '/agent/dashboard': typeof AuthedAgentDashboardRoute
@@ -957,6 +965,7 @@ export interface FileRoutesById {
   '/_authed': typeof AuthedRouteWithChildren
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/samtek/login': typeof SamtekLoginRoute
   '/_authed/agent/commission-table': typeof AuthedAgentCommissionTableRoute
   '/_authed/agent/customers': typeof AuthedAgentCustomersRoute
   '/_authed/agent/dashboard': typeof AuthedAgentDashboardRoute
@@ -1067,6 +1076,7 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/register'
+    | '/samtek/login'
     | '/agent/commission-table'
     | '/agent/customers'
     | '/agent/dashboard'
@@ -1175,6 +1185,7 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/register'
+    | '/samtek/login'
     | '/agent/commission-table'
     | '/agent/customers'
     | '/agent/dashboard'
@@ -1284,6 +1295,7 @@ export interface FileRouteTypes {
     | '/_authed'
     | '/login'
     | '/register'
+    | '/samtek/login'
     | '/_authed/agent/commission-table'
     | '/_authed/agent/customers'
     | '/_authed/agent/dashboard'
@@ -1394,6 +1406,7 @@ export interface RootRouteChildren {
   AuthedRoute: typeof AuthedRouteWithChildren
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
+  SamtekLoginRoute: typeof SamtekLoginRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1424,6 +1437,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/samtek/login': {
+      id: '/samtek/login'
+      path: '/samtek/login'
+      fullPath: '/samtek/login'
+      preLoaderRoute: typeof SamtekLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authed/staff/meeting': {
@@ -2400,6 +2420,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthedRoute: AuthedRouteWithChildren,
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
+  SamtekLoginRoute: SamtekLoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

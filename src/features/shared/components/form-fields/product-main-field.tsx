@@ -2,7 +2,7 @@ import { Control, FieldValues, Path, useWatch } from "react-hook-form";
 import { API_ENDPOINTS } from "~/constant/api-endpoints";
 import { transformToOptions, useCrud } from "~/hooks";
 import { AutocompleteField } from "./auto-complete-field";
-import { usePathname } from "next/navigation";
+import { useLocation } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { useCommonStore } from "~/stores";
 interface ProductMainFieldProps<TFormValues extends FieldValues> {
@@ -29,7 +29,7 @@ export function ProductMainField<TFormValues extends FieldValues>({
   storeName,
   isRequired,
 }: ProductMainFieldProps<TFormValues>) {
-  const pathName = usePathname();
+  const pathName = useLocation().pathname;
   const providerId = useWatch({
     control,
     name: storeName || "id_life_provider",

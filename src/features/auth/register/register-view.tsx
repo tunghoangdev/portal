@@ -1,4 +1,4 @@
-"use client";
+
 import { Divider } from "@/components/ui";
 import { ParentSquareCard } from "@/features/shared/components";
 import { useSwal } from "@/hooks";

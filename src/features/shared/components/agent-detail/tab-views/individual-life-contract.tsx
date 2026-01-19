@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react'; // Thêm useRef, useCallback
 import { DataTable } from '~/features/shared/components/data-table';
-import { CRUD_ACTIONS, DEFAULT_PARAMS, ROLES } from '~/constant';
-import { processingColumns } from '~/components/table-columns';
+import { DEFAULT_PARAMS, ROLES } from '~/constant';
 import { getColumns } from '~/features/shared/common/get-columns';
 import { API_ENDPOINTS } from '~/constant/api-endpoints';
 import { useCrud } from '~/hooks/use-crud-v2';
 import { useFilter } from '~/hooks';
+import { processingColumns } from '~/features/shared/common';
 
-const columns = getColumns<any>(processingColumns, {
-	// actions: [CRUD_ACTIONS.DETAIL, CRUD_ACTIONS.COMMISON_LIST],
-});
+const columns = getColumns<any>(processingColumns);
 export const IndividualLifeList = () => {
 	const { agentId, contractTypeSelected, providerSelected, setFilter: setFilterGlobal } = useFilter();
 	const [filter, setFilter] = useState(DEFAULT_PARAMS);

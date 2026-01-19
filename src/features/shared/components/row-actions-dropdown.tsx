@@ -160,9 +160,9 @@ export function RowActionsDropdownPortal() {
 							action.label = row?.is_lock ? 'Mở khóa' : 'Khóa';
 							// @ts-ignore
 							action.icon = row?.is_lock ? (
-								<Icons.lock size={16} strokeWidth={2} />
-							) : (
 								<Icons.lockOpen size={16} strokeWidth={2} />
+							) : (
+								<Icons.lock size={16} strokeWidth={2} />
 							);
 						}
 						if (action.type === CRUD_ACTIONS.CHANGE_STATUS) {

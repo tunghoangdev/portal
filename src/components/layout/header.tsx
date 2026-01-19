@@ -14,7 +14,7 @@ const AppHeader: React.FC = () => {
   const isAgent = role === ROLES.AGENT;
   const handleAction = () => {
     openDetailModal(user, {
-      title: "Linh tuyển dụng",
+      title: "Link tuyển dụng",
       size: "md",
       renderContent: ({ data }: any) => <RecruitmentQRCode data={data} />,
     });

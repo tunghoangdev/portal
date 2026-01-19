@@ -21,12 +21,12 @@ async function cleanup() {
     if (fs.existsSync(shellPath)) {
       let content = fs.readFileSync(shellPath, 'utf8');
       
-      // Sửa đường dẫn tuyệt đối thành tương đối để IIS tìm được assets
-      // Tìm các chuỗi như href="/assets/..." và đổi thành href="assets/..."
-      content = content.replace(/(href|src)="\/assets\//g, '$1="assets/');
+      // Không sửa đường dẫn thành tương đối nữa, để nguyên đường dẫn tuyệt đối (bắt đầu bằng /)
+      // để đảm bảo hoạt động đúng với nested routes và IIS Rewrite.
+      // content = content.replace(/(href|src)="\/assets\//g, '$1="assets/');
       
       fs.writeFileSync(indexPath, content);
-      console.log('✅ Đã tạo index.html và sửa đường dẫn assets');
+      console.log('✅ Đã tạo index.html');
     }
 
     // 2. Di chuyển toàn bộ file trong client/ ra thư mục gốc (beta/ hoặc prod/)

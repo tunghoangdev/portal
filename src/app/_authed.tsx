@@ -61,7 +61,7 @@ export const Route = createFileRoute("/_authed")({
 
 function AuthedLayout() {
   return (
-    <SidebarProvider>
+    <SidebarProvider className="gap-x-2.5">
       <AppSidebar />
       <SidebarInset className="bg-white overflow-x-hidden shadow-sm px-2.5 md:px-5 pt-2.5 rounded-md md:rounded-xl md:m-2">
         <Header />

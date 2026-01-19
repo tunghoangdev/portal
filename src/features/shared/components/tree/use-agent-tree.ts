@@ -2,17 +2,24 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '~/hooks';
 import { useCrud } from '~/hooks/use-crud-v2';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { API_ENDPOINTS } from '~/constant/api-endpoints';
 import { testValidPhone } from '~/utils/util';
-const schema = yup.object().shape({
-	phone: yup
+
+const schema = z.object({
+	phone: z
 		.string()
-		.test('agent_phone', 'Số điện thoại không hợp lệ', (value) => {
-			if (!value) return true;
-			return testValidPhone(value);
-		}),
+		.optional()
+		.refine(
+			(value) => {
+				if (!value) return true;
+				return testValidPhone(value);
+			},
+			{
+				message: 'Số điện thoại không hợp lệ',
+			},
+		),
 });
 
 const serializeObjectData = (data: any) => ({
@@ -58,7 +65,7 @@ export const useAgentTree = () => {
 		formState: { errors },
 	}: any = useForm({
 		mode: 'onChange',
-		resolver: yupResolver(schema),
+		resolver: zodResolver(schema),
 		defaultValues: { phone: '' },
 	});
 

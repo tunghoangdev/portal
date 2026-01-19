@@ -1,13 +1,21 @@
 import "react-quill-new/dist/quill.snow.css";
-import dynamic from "next/dynamic";
+import { lazy, Suspense, useMemo } from 'react';
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
-import { useMemo, useRef } from "react";
 
-// Tối ưu hóa dynamic import: Chỉ cần import và return component gốc
-const ReactQuill = dynamic(
-  () => import("react-quill-new"),
-  { ssr: false } // Disable server-side rendering
-);
+// Lazy load the component
+const ReactQuillLazy = lazy(() => import("react-quill-new"));
+
+// Wrapper to handle Suspense and client-side rendering validation
+const ReactQuill = (props: any) => {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+  return (
+    <Suspense fallback={<div className="h-[200px] w-full animate-pulse bg-gray-100 rounded-md"></div>}>
+      <ReactQuillLazy {...props} />
+    </Suspense>
+  );
+};
 
 // Cần định nghĩa các props mà bạn muốn sử dụng
 interface RHFQuillProps {

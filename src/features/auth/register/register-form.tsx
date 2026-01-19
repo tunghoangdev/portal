@@ -1,4 +1,4 @@
-"use client";
+
 import { useEffect, memo } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Grid } from "@/components/ui";

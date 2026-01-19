@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'; // Thêm useRef, useCallback
 import { DataTable } from '~/features/shared/components/data-table';
 import { DEFAULT_PARAMS, ROLES } from '~/constant';
-import { noneLifeBaseColumns } from '~/components/table-columns';
 import { getColumns } from '~/features/shared/common/get-columns';
 import { API_ENDPOINTS } from '~/constant/api-endpoints';
 import { useCrud } from '~/hooks/use-crud-v2';
 import { useFilter } from '~/hooks';
+import { noneLifeBaseColumns } from '~/features/nonlife-insurance/none-life-base-columns';
 
 const columns = getColumns<any>(noneLifeBaseColumns);
 export const IndividualNonlifeContract = () => {

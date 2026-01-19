@@ -14,9 +14,9 @@ import { useCrud } from '~/hooks/use-crud-v2';
 import { FormView } from './form-view';
 import { formSchema, initialFormValues } from './form.schema';
 import { Icons } from '~/components/icons';
-import { lifeContractCommissionColumns } from '~/components/table-columns';
 import { FormViewNew } from './form-view-new';
-const commissionColumns = getColumns<any>(lifeContractCommissionColumns);
+import { baseColumns } from './columns';
+const commissionColumns = getColumns<any>(baseColumns);
 
 const detailColumns = getColumns<any>(lifeProductDetailColumns);
 

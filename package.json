@@ -7,8 +7,8 @@
     "dev": "vite dev --mode development",
     "build": "vite build",
     "gen": "npx tsx scripts/gen-routes.ts",
-    "beta": "vite build --mode beta && node scripts/post-build.js beta",
-    "prod": "vite build --mode prod && node scripts/post-build.js prod",
+    "beta": "node scripts/clean.js beta && vite build --mode beta && node scripts/post-build.js beta",
+    "prod": "node scripts/clean.js prod && vite build --mode prod && node scripts/post-build.js prod",
     "preview": "vite preview",
     "preview:dev": "vite preview --mode development --outDir dist",
     "preview:beta": "vite preview --mode beta --outDir beta",
@@ -71,6 +71,7 @@
     "uid": "^2.0.2",
     "usehooks-ts": "^3.1.1",
     "xlsx": "^0.18.5",
+    "zod": "^4.3.5",
     "zustand": "^5.0.10"
   },
   "devDependencies": {

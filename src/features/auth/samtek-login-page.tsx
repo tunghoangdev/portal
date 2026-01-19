@@ -8,7 +8,7 @@ import { toast } from 'sonner';
 import { useClientIp } from '~/hooks';
 import axiosClient from '~/lib/api';
 import { InputPassword } from '~/features/shared/components/form-fields';
-export default function SamteckLoginForm() {
+export default function SamteckLoginPage() {
 	const { ip } = useClientIp();
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const navigate = useNavigate();
@@ -101,80 +101,81 @@ export default function SamteckLoginForm() {
 	};
 
 	return (
-		<>
-			<Grid container spacing={4} className="w-full h-full relative z-index-1">
-				<Grid item xs={12} sm={8} className="hidden sm:flex">
-						<div className="w-full h-full bg-cover bg-center" />
-				</Grid>
-				<Grid item xs={12} sm={4} className="rounded-lg bg-white">
-					<Form
-						className="md:w-full flex flex-col gap-4 mx-2.5 sm:mx-0 p-6 items-center md:px-10 justify-center bg-white h-full rounded-lg"
-						onSubmit={handlerSubmit}
-					>
-						<div className="flex flex-col items-center text-center mb-2">
-							<MyImage 
-										src="/images/logo.png" 
-										alt="Logo Full" 
-										className="h-12 w-auto transition-all duration-300"
-										width={120} 
-										height={48} 
-									/>
-							<h1 className="text-2xl font-bold mt-5">Chào mừng</h1>
-							<p className="text-content2 text-balance text-sm flex flex-col items-center gap-x-1">
-								Đăng nhập hệ thống
-								{/* <LogoText className="text-sm" /> */}
-							</p>
-						</div>
-						<Input
-							isRequired
-							errorMessage="Vui lòng nhập mã đăng nhập"
-							label="Mã đăng nhập"
-							labelPlacement="outside"
-							name="code"
-							placeholder="Nhập mã đăng nhập"
-							type="text"
-							variant="bordered"
-							radius="sm"
-							classNames={{
-								label: 'font-semibold',
-								inputWrapper: 'border shadow-xs',
-							}}
-						/>
-
-						<InputPassword
-							isRequired
-							errorMessage="Vui lòng nhập mật khẩu"
-							label="Mật khẩu"
-							labelPlacement="outside"
-							name="password"
-							placeholder="Nhập mật khẩu"
-							radius="sm"
-							classNames={{
-								label: 'font-semibold',
-								inputWrapper: 'border shadow-xs',
-							}}
-							variant="bordered"
-						/>
-						<Stack
-							className="w-full gap-y-2.5"
-							alignItems={'center'}
-							direction={'col'}
-						>
-							<Button
-								color="secondary"
-								type="submit"
-								radius="sm"
-								fullWidth
-								className="mt-2"
-								isDisabled={isLoading}
-								isLoading={isLoading}
-							>
-								Đăng nhập
-							</Button>
-						</Stack>
-					</Form>
-				</Grid>
+	<div className="flex h-svh flex-col items-center justify-center gap-6 p-2.5 md:p-10 overflow-hidden relative">
+		<MyImage src={`/images/bg1.png`} alt="bg" className="absolute top-0 left-0 w-full h-full" />
+		<Grid container spacing={4} className="w-full h-full relative z-index-1">
+			<Grid item xs={12} sm={8} className="hidden sm:flex">
+					<div className="w-full h-full bg-cover bg-center" />
 			</Grid>
-		</>
+			<Grid item xs={12} sm={4} className="rounded-lg bg-white">
+				<Form
+					className="md:w-full flex flex-col gap-4 mx-2.5 sm:mx-0 p-6 items-center md:px-10 justify-center bg-white h-full rounded-lg"
+					onSubmit={handlerSubmit}
+				>
+					<div className="flex flex-col items-center text-center mb-2">
+						<MyImage 
+									src="/images/logo.png" 
+									alt="Logo Full" 
+									className="h-12 w-auto transition-all duration-300"
+									width={120} 
+									height={48} 
+								/>
+						<h1 className="text-2xl font-bold mt-5">Chào mừng</h1>
+						<p className="text-content2 text-balance text-sm flex flex-col items-center gap-x-1">
+							Đăng nhập hệ thống
+							{/* <LogoText className="text-sm" /> */}
+						</p>
+					</div>
+					<Input
+						isRequired
+						errorMessage="Vui lòng nhập mã đăng nhập"
+						label="Mã đăng nhập"
+						labelPlacement="outside"
+						name="code"
+						placeholder="Nhập mã đăng nhập"
+						type="text"
+						variant="bordered"
+						radius="sm"
+						classNames={{
+							label: 'font-semibold',
+							inputWrapper: 'border shadow-xs',
+						}}
+					/>
+
+					<InputPassword
+						isRequired
+						errorMessage="Vui lòng nhập mật khẩu"
+						label="Mật khẩu"
+						labelPlacement="outside"
+						name="password"
+						placeholder="Nhập mật khẩu"
+						radius="sm"
+						classNames={{
+							label: 'font-semibold',
+							inputWrapper: 'border shadow-xs',
+						}}
+						variant="bordered"
+					/>
+					<Stack
+						className="w-full gap-y-2.5"
+						alignItems={'center'}
+						direction={'col'}
+					>
+						<Button
+							color="secondary"
+							type="submit"
+							radius="sm"
+							fullWidth
+							className="mt-2"
+							isDisabled={isLoading}
+							isLoading={isLoading}
+						>
+							Đăng nhập
+						</Button>
+					</Stack>
+				</Form>
+			</Grid>
+		</Grid>
+	</div>
 	);
 }

@@ -15,7 +15,7 @@ import { toast } from "sonner";
 import { Icons } from "~/components/icons";
 import { getColumns } from "~/features/shared/common";
 import { CustomerForm } from "~/features/shared/components/customer.form";
-import { StaffCustomerForm } from "~/components/common/forms";
+import { StaffCustomerForm } from "./staff-customer.form";
 import { customerColumns } from "./columns";
 import OrderHistory from "./order-history";
 

@@ -1,21 +1,20 @@
-"use client";
 import { Grid, MyImage } from "@/components/ui";
 import { ERROR_CODES, ROLES } from "@/constant";
 import { API_ENDPOINTS } from "@/constant/api-endpoints";
 import { useCrud } from "@/hooks/use-crud-v2";
 import { useCommonStore } from "@/stores";
 import { Alert } from "@heroui/react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { toast } from "sonner";
 import RegisterView from "./register-view";
 
 export const RegisterPage = () => {
-  const searchQueryParams = useSearchParams();
-  const companyCode = searchQueryParams.get("code") || "";
-  const parentPhone = searchQueryParams.get("staff") || "";
+  const { code, staff }: any = useSearch({ strict: false });
+  const companyCode = code || "";
+  const parentPhone = staff || "";
   const { setData } = useCommonStore();
-  const router = useRouter();
+  const navigate = useNavigate();
   // CHECK PARENT
   const { getAll, create } = useCrud(
     [API_ENDPOINTS.agent.search.byParent, parentPhone, companyCode],
@@ -96,7 +95,7 @@ export const RegisterPage = () => {
             return;
           }
           toast.success("Đăng ký tài khoản thành công");
-          router.push("/login");
+          navigate({ to: "/login" });
         },
       }
     );

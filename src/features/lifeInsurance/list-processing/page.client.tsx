@@ -11,7 +11,6 @@ import {
 import { API_ENDPOINTS } from '~/constant/api-endpoints';
 import { toast } from 'sonner';
 import type { TItemFormFields } from '~/types/form-field';
-import { LifeContractStatusForm } from '~/components/common/forms';
 import { lifeContractStateSchema } from '~/schema-validations';
 import type { CrudActionType, ToolbarAction } from '~/types/data-table-type';
 import { DataTable } from '~/features/shared/components/data-table';
@@ -21,6 +20,7 @@ import { formSchema, initialFormValues } from './form.schema';
 import { Icons } from '~/components/icons';
 import { FormView } from './form-view';
 import { createColumnUserDef } from '~/features/shared/common/create-column';
+import { LifeContractStatusForm } from './life-contract-status.form';
 const newColumns = [...processingColumns, ...columnMonthYears()];
 const columns = getColumns<any>(newColumns, {
 	omitKeys: ['period_name', 'commission_date'],
