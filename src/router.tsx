@@ -16,6 +16,7 @@ export function getRouter() {
     scrollRestoration: true,
     context: {
       auth: useAuthStore.getState(), // Use the real store state
+      queryClient,
     },
   });
   setupRouterSsrQueryIntegration({

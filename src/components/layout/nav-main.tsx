@@ -15,9 +15,13 @@ import {
 } from "~/components/ui";
 import { ROLES } from "~/constant";
 import { useSidebar } from "~/context";
-import { useAuth, useCommon } from "~/hooks";
+import { useAuth } from "~/hooks";
 import { useIsMobile } from "~/hooks/use-mobile";
 import { cn } from "~/lib/utils";
+import { useQuery } from "@tanstack/react-query";
+import { API_ENDPOINTS } from "~/constant/api-endpoints";
+import api from "~/lib/api";
+
 const itemMenuClass = cn(
   "py-2.5 [&>svg]:size-3 text-content2 rounded-sm text-sm flex items-center px-1.5 font-medium hover:bg-[#f4f4f5] hover:text-black h-9"
 );
@@ -58,7 +62,26 @@ export function NavMain({ items }: Props) {
   const { isExpanded, toggleSidebar } = useSidebar();
   const { user, role } = useAuth();
   const isMobile = useIsMobile();
-  const { formIds } = useCommon();
+  
+  // Lấy dữ quyền từ React Query cache (đã được fetch ở _authed beforeLoad)
+  const { data: formAccess } = useQuery({
+    queryKey: [API_ENDPOINTS.permission.getAccessForm, user?.id, role],
+    queryFn: async () => {
+      return await api.post<any[]>(
+        API_ENDPOINTS.permission.getAccessForm,
+        {
+          id: user?.id,
+        }
+      );
+    },
+    staleTime: 1000 * 60 * 5,
+    enabled: !!user?.id && role === ROLES.STAFF,
+  });
+
+  const formIds = useMemo(() => {
+    return Array.isArray(formAccess) ? formAccess.map((item: any) => item.id_form) : [];
+  }, [formAccess]);
+
   const location = useLocation();
   const pathname = location.pathname;
   const activeParentName = useMemo(() => {
@@ -79,151 +102,6 @@ export function NavMain({ items }: Props) {
     }
   }, [isExpanded, activeParentName]);
 
-  // let newItems: NavItem[] = useMemo(() => {
-  // 	let items2 = [...items];
-  // 	if (role === ROLES.AGENT) {
-  // 		// items2.splice(1, 0, fwdObj);
-  // 		items2.splice(1, 0, fwdObj, bivObj);
-  // 		if (user?.econtract_data_pdf) {
-  // 			const newLink: string = downloadFileObject(
-  // 				user.econtract_data_pdf,
-  // 				'Hop_dong_dien_tu.pdf',
-  // 				'link',
-  // 			) as string;
-  // 			const newItem: NavItem = {
-  // 				name: 'econtract_data_pdf',
-  // 				label: 'Tải hợp đồng điện tử',
-  // 				url: newLink,
-  // 				icon: 'file',
-  // 				children: [],
-  // 				download: true,
-  // 				fileName: 'Hop_dong_dien_tu.pdf',
-  // 			};
-
-  // 			const updatedItems2 = items2.map((item) => {
-  // 				if (item.name === 'member') {
-  // 					const newChildren = [...item.children, newItem];
-  // 					return {
-  // 						...item,
-  // 						children: newChildren,
-  // 					};
-  // 				}
-  // 				return item;
-  // 			});
-  // 			items2 = [...updatedItems2];
-  // 			// items2.splice(index, 0, newItem);
-  // 		}
-  // 		if (user?.econtract_option_data_pdf) {
-  // 			const newLink: string = downloadFileObject(
-  // 				user.econtract_option_data_pdf,
-  // 				'Hop_dong_lua_chon.pdf',
-  // 				'link',
-  // 			) as string;
-  // 			const newItem: NavItem = {
-  // 				name: 'option_contract_pdf',
-  // 				label: 'Tải hợp đồng lựa chọn',
-  // 				url: newLink,
-  // 				icon: 'file',
-  // 				children: [],
-  // 				download: true,
-  // 				fileName: 'Hop_dong_lua_chon.pdf',
-  // 			};
-
-  // 			const updatedItems2 = items2.map((item) => {
-  // 				if (item.name === 'member') {
-  // 					const newChildren = [...item.children, newItem];
-  // 					return {
-  // 						...item,
-  // 						children: newChildren,
-  // 					};
-  // 				}
-  // 				return item;
-  // 			});
-  // 			items2 = [...updatedItems2];
-  // 		}
-  // 	}
-  // 	//
-  // 	return items2;
-  // }, [items]);
-  // let newItems: NavItem[] = useMemo(() => {
-  // 	let currentItems = [...items];
-  // 	if (role === 'samtek') {
-  // 		return currentItems.filter((item) => item.name === 'samtek-staffs');
-  // 	}
-  // 	// if (role === ROLES.AGENT) {
-  // 	// 	const fwdObj: NavItem = {
-  // 	// 		name: 'domain_fwd',
-  // 	// 		label: 'Bảng minh họa FWD',
-  // 	// 		url: user?.domain_fwd,
-  // 	// 		icon: 'folder',
-  // 	// 		children: [],
-  // 	// 		external: true,
-  // 	// 	};
-
-  // 	// 	const bivObj: NavItem = {
-  // 	// 		name: 'domain_bhv',
-  // 	// 		label: ' Bán hàng Hùng Vương',
-  // 	// 		url: user?.domain_bhv,
-  // 	// 		icon: 'folder',
-  // 	// 		children: [],
-  // 	// 		external: true,
-  // 	// 	};
-  // 	// 	currentItems.splice(1, 0, fwdObj, bivObj);
-  // 	// 	const contractItemsToInsert: NavItem[] = [];
-  // 	// 	if (user?.econtract_data_pdf) {
-  // 	// 		// 2. Tạo Item cho Hợp đồng Điện tử (nếu có)
-  // 	// 		const newLink: string = downloadFileObject(
-  // 	// 			user.econtract_data_pdf,
-  // 	// 			'Hop_dong_dien_tu.pdf',
-  // 	// 			'link',
-  // 	// 		) as string;
-
-  // 	// 		contractItemsToInsert.push({
-  // 	// 			name: 'econtract_data_pdf',
-  // 	// 			label: 'Tải hợp đồng hợp tác',
-  // 	// 			url: newLink,
-  // 	// 			icon: 'file',
-  // 	// 			children: [],
-  // 	// 			download: true,
-  // 	// 			fileName: 'Hop_dong_dien_tu.pdf',
-  // 	// 		});
-  // 	// 	}
-
-  // 	// 	if (user?.econtract_option_data_pdf) {
-  // 	// 		// 3. Tạo Item cho Hợp đồng Lựa chọn (nếu có)
-  // 	// 		const newLink: string = downloadFileObject(
-  // 	// 			user.econtract_option_data_pdf,
-  // 	// 			'Hop_dong_lua_chon.pdf',
-  // 	// 			'link',
-  // 	// 		) as string;
-
-  // 	// 		contractItemsToInsert.push({
-  // 	// 			name: 'option_contract_pdf',
-  // 	// 			label: 'Tải hợp đồng kinh doanh',
-  // 	// 			url: newLink,
-  // 	// 			icon: 'file',
-  // 	// 			children: [],
-  // 	// 			download: true,
-  // 	// 			fileName: 'Hop_dong_kinh_doanh_chon.pdf',
-  // 	// 		});
-  // 	// 	}
-
-  // 	// 	if (contractItemsToInsert.length > 0) {
-  // 	// 		currentItems = currentItems.map((item) => {
-  // 	// 			if (item.name === 'member') {
-  // 	// 				const newChildren = [...item.children, ...contractItemsToInsert];
-  // 	// 				return {
-  // 	// 					...item,
-  // 	// 					children: newChildren,
-  // 	// 				};
-  // 	// 			}
-  // 	// 			return item;
-  // 	// 		});
-  // 	// 	}
-  // 	// }
-
-  // 	return currentItems;
-  // }, [items, role, user]);
   return (
     <SidebarMenu className="gap-y-1">
       {items.map((item, index) => {

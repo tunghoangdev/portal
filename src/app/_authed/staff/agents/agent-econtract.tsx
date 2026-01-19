@@ -1,27 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { lazy, Suspense } from 'react'
+const Page = lazy(() => import('@/features/agents/agent-econtract/page-client'))
 
 export const Route = createFileRoute('/_authed/staff/agents/agent-econtract')({
-  component: StaffAgentsAgentEcontractPage,
+  component: () => <Suspense fallback={null}><Page /></Suspense>,
 })
-
-function StaffAgentsAgentEcontractPage() {
-  return (
-    <div className="flex flex-col gap-4 p-8">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight">Hợp đồng hợp tác</h1>
-        <p className="text-muted-foreground">
-          Đường dẫn: <code className="bg-muted px-1.1 rounded">/staff/agents/agent-econtract</code>
-        </p>
-      </div>
-      
-      <div className="min-h-[400px] flex items-center justify-center rounded-lg border border-dashed shadow-sm">
-        <div className="flex flex-col items-center gap-1 text-center">
-          <h3 className="text-xl font-semibold tracking-tight">Trang đang phát triển</h3>
-          <p className="text-sm text-muted-foreground">
-            Bạn có thể bắt đầu chỉnh sửa file <code>src/routes/_authed/staff/agents/agent-econtract.tsx</code>
-          </p>
-        </div>
-      </div>
-    </div>
-  )
-}

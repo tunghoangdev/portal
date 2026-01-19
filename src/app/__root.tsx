@@ -14,12 +14,14 @@ import { SidebarProvider, ThemeProvider } from "~/context";
 import AuthGuard from "~/features/auth/auth-guard";
 import { MediaQueryProvider, NextUiProvider, QueryProvider } from "~/providers";
 import { ProcessProvider } from "~/providers/process-provider";
+import { QueryClient } from "@tanstack/react-query";
 import type { AuthState } from "~/stores/auth-store";
 import appCss from "~/styles/main.css?url";
 import { seo } from "~/utils/seo";
 
 export const Route = createRootRouteWithContext<{
   auth: AuthState;
+  queryClient: QueryClient;
 }>()({
   head: () => ({
     meta: [

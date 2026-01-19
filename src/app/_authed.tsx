@@ -22,29 +22,29 @@ export const Route = createFileRoute("/_authed")({
   
       const { user, role } = context.auth;
   
-      // Check permission for Staff via API (thay thế AuthGuard logic cũ)
+      // Check permission for Staff via API
       if (role === ROLES.STAFF && user && typeof window !== "undefined") {
         try {
-          const queryClient = (context as any).queryClient;
+          const { queryClient } = context;
           const formAccess = await queryClient.ensureQueryData({
-            queryKey: [API_ENDPOINTS.permission.getAccessForm, "permission-check", user.id],
+            queryKey: [API_ENDPOINTS.permission.getAccessForm, user?.id, role],
             queryFn: async () => {
-               return await api.post<any[]>(
-                  `/${API_ENDPOINTS.permission.getAccessForm}`,
-                  {
-                    id: user.id,
-                    id_staff: user.id,
-                    id_staff_action: user.id,
-                    secret_key: user.secret_key,
-                    token: user.token
-                  }
-               );
+              return await api.post<any[]>(
+                API_ENDPOINTS.permission.getAccessForm,
+                {
+                  id: user.id,
+                  // id_staff: user.id,
+                  // id_staff_action: user.id,
+                  // secret_key: user.secret_key,
+                  // token: user.token,
+                  // role: role,
+                }
+              );
             },
-            staleTime: 1000 * 60 * 5, // Cache 5 phút
+            staleTime: 1000 * 60 * 5,
           });
   
           const idForm = getIdFormFromPathname(location.pathname);
-          
           if (idForm !== 0) {
              const hasPermission = Array.isArray(formAccess) && formAccess.some((item: any) => item.id_form === idForm);
              if (!hasPermission) {
@@ -52,6 +52,7 @@ export const Route = createFileRoute("/_authed")({
              }
           }
         } catch (error) {
+          if (error instanceof Error && error.name === 'Redirect') throw error;
           console.error("Permission check failed in beforeLoad:", error);
         }
       }

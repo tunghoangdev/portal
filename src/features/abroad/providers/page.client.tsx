@@ -1,0 +1,145 @@
+"use client";
+import { useCallback, useMemo } from "react";
+import { useAuth, useDataQuery, useModal } from "@/hooks";
+import { DataTable } from "@/features/shared/components/data-table";
+import { CRUD_ACTIONS } from "@/constant";
+import { getColumns } from "@/features/shared/common";
+import { API_ENDPOINTS } from "@/constant/api-endpoints";
+import { noneLifeProviderColumns } from "./columns";
+import {
+  generateDefaultValues,
+  lifeProviderSchema,
+  providerFormFields,
+} from "@/schema-validations";
+import { useFormModalStore } from "@/stores";
+import { CrudActionType, ToolbarAction } from "@/types/data-table-type";
+import { TItemFormFields } from "@/types/form-field";
+import { toast } from "sonner";
+import { useCrud } from "@/hooks/use-crud-v2";
+import { LifeProviderForm } from "./life-provider.form";
+
+const columns = getColumns<any>(noneLifeProviderColumns, {
+  actions: [CRUD_ACTIONS.LOG, CRUD_ACTIONS.EDIT, CRUD_ACTIONS.DELETE],
+});
+
+const logColumns = getColumns<any>(noneLifeProviderColumns, { isLog: true });
+
+export default function PageClient() {
+  // Global state
+  const { role } = useAuth();
+  const { openFormModal, openDetailModal } = useModal();
+  const basePath = API_ENDPOINTS[role].abroad.providers;
+  const initialFormValues = useMemo(
+    () => generateDefaultValues(providerFormFields),
+    [providerFormFields]
+  );
+  const { queryParams, queryKey } = useDataQuery({
+    basePath: basePath.list,
+  });
+  const { getInfinite, create, update, deleteConfirm } = useCrud(
+    queryKey,
+    queryParams
+  );
+
+  const {
+    listData,
+    isFetching,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    total,
+  }: any = getInfinite();
+  const { mutateAsync: createProductMutation } = create();
+  const { mutateAsync: updateProductMutation } = update();
+
+  // HANDLERS
+  const handleCrudAction = useCallback(
+    async (action: CrudActionType, formData?: TItemFormFields) => {
+      const payload =
+        action === CRUD_ACTIONS.ADD ? initialFormValues : formData;
+      if (action === CRUD_ACTIONS.DELETE) {
+        await deleteConfirm(formData);
+        return;
+      }
+      const isForm = (
+        [
+          CRUD_ACTIONS.ADD,
+          CRUD_ACTIONS.EDIT,
+          CRUD_ACTIONS.CONFIG_POLICY,
+        ] as string[]
+      ).includes(action as string);
+      if (isForm) {
+        const titleMap: any = {
+          [CRUD_ACTIONS.EDIT]: `Chỉnh sửa nhà cung cấp ${
+            payload?.provider_name || ""
+          }`,
+          [CRUD_ACTIONS.ADD]: "Thêm nhà cung cấp",
+        };
+        openFormModal(action as ToolbarAction, {
+          itemSchema: lifeProviderSchema,
+          renderFormContent: LifeProviderForm,
+          formData: payload,
+          title: titleMap[action],
+          onItemSubmit: async (
+            values: TItemFormFields,
+            currentAction: string
+          ) => {
+            try {
+              if (currentAction === CRUD_ACTIONS.ADD) {
+                await createProductMutation(
+                  values as Omit<TItemFormFields, "id">
+                );
+              } else if (currentAction === CRUD_ACTIONS.EDIT) {
+                if (!values.id && !payload?.id) {
+                  toast.error("Không tìm thấy nhà cung cấp");
+                  return;
+                }
+                const updateData = {
+                  ...payload,
+                  ...values,
+                };
+                await updateProductMutation(updateData);
+              }
+            } catch (error) {
+              console.error("Failed to submit item:", error);
+              throw error;
+            }
+          },
+          onFormSubmitSuccess: () => {
+            useFormModalStore.getState().closeModal();
+          },
+        });
+      } else {
+        openDetailModal(formData, {
+          title: `Lịch sử nhà cung cấp ${formData?.provider_name || ""}`,
+          tableColumns: logColumns,
+          detailUrl: basePath.logList,
+        });
+      }
+    },
+    [
+      openFormModal,
+      openDetailModal,
+      createProductMutation,
+      updateProductMutation,
+    ]
+  );
+  return (
+    <DataTable
+      data={listData}
+      columns={columns}
+      loading={isFetching}
+      isFetchingNextPage={isFetchingNextPage}
+      columnPinningConfig={{
+        left: ["provider_name"],
+      }}
+      total={total || 0}
+      hasNextPage={hasNextPage}
+      fetchNextPage={fetchNextPage}
+      onAction={handleCrudAction}
+      toolbar={{
+        canAdd: true,
+      }}
+    />
+  );
+}

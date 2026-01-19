@@ -1,7 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { lazy, Suspense } from 'react'
+
+const Page = lazy(() => import('@/features/abroad/paidout-list/page.client'))
 
 export const Route = createFileRoute('/_authed/staff/abroad/paidout-list')({
-  component: StaffAbroadPaidoutListPage,
+  component: () => <Suspense fallback={null}><Page /></Suspense>,
 })
 
 function StaffAbroadPaidoutListPage() {
