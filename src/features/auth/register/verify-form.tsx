@@ -1,4 +1,3 @@
-
 import {
   Button,
   InputOtp,
@@ -16,7 +15,7 @@ import { Captcha } from "@/features/shared/common";
 import { FormField } from "@/features/shared/components/form-fields";
 import { useCrud } from "@/hooks/use-crud-v2";
 import { testValidPhone } from "@/utils/util";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -41,7 +40,7 @@ const PhoneForm = ({ onSubmit, isLoading }: any) => {
   // *** HOOK FORM ***
   const { control, handleSubmit }: any = useForm({
     mode: "onChange",
-    resolver: yupResolver(schema),
+    resolver: zodResolver(schema),
     defaultValues,
   });
   return (
@@ -154,7 +153,7 @@ const VerifyForm = ({ setVerify }: any) => {
             setOpenModalVerifyOtp(false);
             toast.success("Xác thực thành công");
           },
-        }
+        },
       );
     }
   }, [data, otpCode, setVerify]);
@@ -212,7 +211,7 @@ const VerifyForm = ({ setVerify }: any) => {
         onSuccess(data: any) {
           if (data?.error_code) {
             toast.error(
-              (ERROR_CODES?.[data?.error_code] as string) || "Có lỗi xảy ra"
+              (ERROR_CODES?.[data?.error_code] as string) || "Có lỗi xảy ra",
             );
             return;
           }
@@ -220,7 +219,7 @@ const VerifyForm = ({ setVerify }: any) => {
           setOtpCountDown(120);
           setIsFirstSendOtp(true);
         },
-      }
+      },
     );
   };
 

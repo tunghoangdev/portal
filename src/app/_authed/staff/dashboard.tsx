@@ -1,5 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import DashboardPageClient from "~/features/dashboard/page.client";
+import { lazy, Suspense } from "react";
+const DashboardPageClient = lazy(
+  () => import("~/features/dashboard/page.client"),
+);
 export const Route = createFileRoute("/_authed/staff/dashboard")({
-  component: DashboardPageClient,
+  component: () => (
+    <Suspense fallback={null}>
+      <DashboardPageClient />
+    </Suspense>
+  ),
 });

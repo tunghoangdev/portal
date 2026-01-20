@@ -1,14 +1,14 @@
-import { useAuth, useCrud, useDataQuery, useTableColumns } from "~/hooks";
-import { nonLifeCommissionColumns } from "~/components/table-columns";
 import { API_ENDPOINTS } from "~/constant/api-endpoints";
+import { baseCommissionColumns as nonLifeCommissionColumns } from "~/features/abroad/commission-columns";
 import { DataTable } from "~/features/shared/components/data-table";
+import { useAuth, useCrud, useDataQuery, useTableColumns } from "~/hooks";
 
 export default function PageClient() {
   const { user, role } = useAuth();
   const { columns } = useTableColumns(nonLifeCommissionColumns, {
-			showCommission: true,
-			hiddenPercent: true,
-		});
+    showCommission: true,
+    hiddenPercent: true,
+  });
   // const { getAll } = useCrud([API_ENDPOINTS.dic.agentLevel], {
   //   endpoint: "",
   // });
