@@ -1,4 +1,6 @@
 /// <reference types="vite/client" />
+import "@fontsource-variable/montserrat";
+import { QueryClient } from "@tanstack/react-query";
 import {
   HeadContent,
   Outlet,
@@ -7,14 +9,12 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import * as React from "react";
-import "@fontsource-variable/montserrat";
 import { DefaultCatchBoundary } from "~/components/DefaultCatchBoundary";
 import { NotFound } from "~/components/NotFound";
 import { SidebarProvider, ThemeProvider } from "~/context";
 import AuthGuard from "~/features/auth/auth-guard";
 import { MediaQueryProvider, NextUiProvider, QueryProvider } from "~/providers";
 import { ProcessProvider } from "~/providers/process-provider";
-import { QueryClient } from "@tanstack/react-query";
 import type { AuthState } from "~/stores/auth-store";
 import appCss from "~/styles/main.css?url";
 import { seo } from "~/utils/seo";
@@ -70,19 +70,19 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <meta name="google" content="notranslate" />
       </head>
       <body className="font-montserrat">
-       <NextUiProvider>
-					<ThemeProvider>
-						<QueryProvider>
-							<MediaQueryProvider>
-								<AuthGuard>
-								<ProcessProvider>
-									<SidebarProvider>{children}</SidebarProvider>
-								</ProcessProvider>
-								</AuthGuard>
-							</MediaQueryProvider>
-						</QueryProvider>
-					</ThemeProvider>
-				</NextUiProvider>
+        <NextUiProvider>
+          <ThemeProvider>
+            <QueryProvider>
+              <MediaQueryProvider>
+                <AuthGuard>
+                  <ProcessProvider>
+                    <SidebarProvider>{children}</SidebarProvider>
+                  </ProcessProvider>
+                </AuthGuard>
+              </MediaQueryProvider>
+            </QueryProvider>
+          </ThemeProvider>
+        </NextUiProvider>
         <TanStackRouterDevtools position="bottom-right" />
         <Scripts />
       </body>

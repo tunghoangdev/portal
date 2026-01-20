@@ -1,12 +1,12 @@
-import { useCallback } from "react"; // Thêm useRef, useCallback
-import { useAuth, useDataQuery, useModal, useTableColumns } from "@/hooks";
-import { DataTable } from "@/features/shared/components/data-table";
 import { CRUD_ACTIONS, ROLES } from "@/constant";
 import { API_ENDPOINTS } from "@/constant/api-endpoints";
+import { getColumns } from "@/features/shared/common";
+import { DataTable } from "@/features/shared/components/data-table";
+import { useAuth, useDataQuery, useModal, useTableColumns } from "@/hooks";
 import { useCrud } from "@/hooks/use-crud-v2";
 import { CrudActionType } from "@/types/data-table-type";
 import { TItemFormFields } from "@/types/form-field";
-import { getColumns } from "@/features/shared/common";
+import { useCallback } from "react"; // Thêm useRef, useCallback
 import { noneLifeBaseColumns } from "../none-life-base-columns";
 import { noneLifeProductDetailColumns } from "../none-life-product-detail-columns";
 const detailColumns = getColumns<any>(noneLifeProductDetailColumns);
@@ -34,7 +34,7 @@ export default function ListProcessingPageClient() {
     queryParams,
     {
       enabled: isQueryEnabled,
-    }
+    },
   );
 
   const {
@@ -59,7 +59,7 @@ export default function ListProcessingPageClient() {
         },
       });
     },
-    [openFormModal, openDetailModal, createProductMutation, updateConfirm]
+    [openFormModal, openDetailModal, createProductMutation, updateConfirm],
   );
 
   return (

@@ -1,13 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
-import FormList from "./form-list";
-import FormAccess from "./fform-access";
-import FormButton from "./form-button";
 import { Grid } from "@/components/ui";
-import { useCommon, usePermissionAction } from "@/hooks";
-import { API_ENDPOINTS } from "@/constant/api-endpoints";
-import { useCrud } from "@/hooks/use-crud-v2";
 import { CRUD_ACTIONS } from "@/constant";
+import { API_ENDPOINTS } from "@/constant/api-endpoints";
+import { useCommon, usePermissionAction } from "@/hooks";
+import { useCrud } from "@/hooks/use-crud-v2";
+import { useEffect, useState } from "react";
+import FormAccess from "./form-access";
+import FormButton from "./form-button";
+import FormList from "./form-list";
 
 const checkIsAccessForm = (forms: any[], idForm: any) =>
   forms?.find((f: any) => f.id === idForm)?.access || false;
@@ -28,7 +28,7 @@ export const RoleList = ({ idPermission }: any) => {
     },
     {
       enabled: !!idPermission,
-    }
+    },
   );
   const { data: formListQuery, isFetching }: any = getAll();
 
@@ -41,7 +41,7 @@ export const RoleList = ({ idPermission }: any) => {
     },
     {
       enabled: !!idPermission,
-    }
+    },
   );
   const { data: formButtonQuery }: any = getAllButton();
 
@@ -94,7 +94,7 @@ export const RoleList = ({ idPermission }: any) => {
           message: `Bạn có chắc chắn muốn ${message} toàn bộ form không?`,
           _customUrl: url,
           _customMessage: customMessage,
-        }
+        },
       );
       return;
     }
@@ -115,7 +115,7 @@ export const RoleList = ({ idPermission }: any) => {
           _customMessage: buttonCheck
             ? "Phân quyền toàn bộ nút thành công!"
             : "Bỏ phân quyền toàn bộ nút thành công!",
-        }
+        },
       );
       return;
     }
@@ -137,7 +137,7 @@ export const RoleList = ({ idPermission }: any) => {
         _customMessage: isAccess
           ? "Cho phép truy cập vào form thành công!"
           : "Không cho phép truy cập vào form thành công!",
-      }
+      },
     );
   };
 
@@ -157,7 +157,7 @@ export const RoleList = ({ idPermission }: any) => {
         _customMessage: check
           ? "Cho phép truy cập vào nút thành công!"
           : "Không cho phép truy cập vào nút thành công!",
-      }
+      },
     );
   };
   return (
@@ -173,14 +173,14 @@ export const RoleList = ({ idPermission }: any) => {
             runAction(
               checked
                 ? CRUD_ACTIONS.PERMISSION_FORM
-                : CRUD_ACTIONS.REMOVE_PERMISSION_FORM
+                : CRUD_ACTIONS.REMOVE_PERMISSION_FORM,
             )
           }
           handleCheckAllButton={(checked: boolean) =>
             runAction(
               checked
                 ? CRUD_ACTIONS.PERMISSION_BUTTON
-                : CRUD_ACTIONS.REMOVE_PERMISSION_BUTTON
+                : CRUD_ACTIONS.REMOVE_PERMISSION_BUTTON,
             )
           }
         />
@@ -202,7 +202,7 @@ export const RoleList = ({ idPermission }: any) => {
                 runAction(
                   checked
                     ? CRUD_ACTIONS.PERMISSION_BUTTON
-                    : CRUD_ACTIONS.REMOVE_PERMISSION_BUTTON
+                    : CRUD_ACTIONS.REMOVE_PERMISSION_BUTTON,
                 )
               }
             />

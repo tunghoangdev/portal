@@ -17,7 +17,7 @@ type EndpointConfig = {
  */
 const createCrudEndpoints = (
   basePath: string,
-  config: EndpointConfig = {}
+  config: EndpointConfig = {},
 ): CrudEndpoints => {
   const { prefix = "", suffix = "" } = config;
   return {
@@ -39,7 +39,7 @@ const createDicEndpoint = (path: string): string => `/${path}/dic`;
  */
 const createBasicEndpoints = <T extends Record<string, string>>(
   basePath: string,
-  endpoints: T
+  endpoints: T,
 ): T => {
   const result: Record<string, string> = {};
   for (const key in endpoints) {
@@ -516,6 +516,7 @@ export const API_ENDPOINTS: Record<string, any> = {
       },
       processing: {
         list: "/none_life_processing/list",
+        processingList: "/none_life_processing/list",
         approve: "/staff/none_life_contract_status/update",
         update: "/agent/none_life_contract/update",
         delete: "/agent/none_life_contract/delete",

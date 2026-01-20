@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { Icons } from "~/components/icons";
@@ -14,22 +15,21 @@ import {
   SidebarMenuSubItem,
 } from "~/components/ui";
 import { ROLES } from "~/constant";
+import { API_ENDPOINTS } from "~/constant/api-endpoints";
 import { useSidebar } from "~/context";
 import { useAuth } from "~/hooks";
 import { useIsMobile } from "~/hooks/use-mobile";
-import { cn } from "~/lib/utils";
-import { useQuery } from "@tanstack/react-query";
-import { API_ENDPOINTS } from "~/constant/api-endpoints";
 import api from "~/lib/api";
+import { cn } from "~/lib/utils";
 
 const itemMenuClass = cn(
-  "py-2.5 [&>svg]:size-3 text-content2 rounded-sm text-sm flex items-center px-1.5 font-medium hover:bg-[#f4f4f5] hover:text-black h-9"
+  "py-2.5 [&>svg]:size-3 text-content2 rounded-sm text-sm flex items-center px-1.5 font-medium hover:bg-[#f4f4f5] hover:text-black h-9",
 );
 const iconClass = cn(
   "size-4 stroke-[1.2px]",
   "transition-all duration-300 ease-in-out",
   "group-data-[state=collapsed]:mx-1",
-  "group-data-[state=expanded]:mr-1.5"
+  "group-data-[state=expanded]:mr-1.5",
 );
 
 type NavItem = {
@@ -62,31 +62,35 @@ export function NavMain({ items }: Props) {
   const { isExpanded, toggleSidebar } = useSidebar();
   const { user, role } = useAuth();
   const isMobile = useIsMobile();
-  
+
   // Lấy dữ quyền từ React Query cache (đã được fetch ở _authed beforeLoad)
   const { data: formAccess } = useQuery({
     queryKey: [API_ENDPOINTS.permission.getAccessForm, user?.id, role],
     queryFn: async () => {
-      return await api.post<any[]>(
-        API_ENDPOINTS.permission.getAccessForm,
-        {
-          id: user?.id,
-        }
-      );
+      return await api.post<any[]>(API_ENDPOINTS.permission.getAccessForm, {
+        id: user?.id,
+        id_staff: user?.id,
+        id_staff_action: user?.id,
+        secret_key: user?.secret_key,
+        token: user?.token,
+        role: role,
+      });
     },
     staleTime: 1000 * 60 * 5,
     enabled: !!user?.id && role === ROLES.STAFF,
   });
 
   const formIds = useMemo(() => {
-    return Array.isArray(formAccess) ? formAccess.map((item: any) => item.id_form) : [];
+    return Array.isArray(formAccess)
+      ? formAccess.map((item: any) => item.id_form)
+      : [];
   }, [formAccess]);
 
   const location = useLocation();
   const pathname = location.pathname;
   const activeParentName = useMemo(() => {
     const parent = items?.find((item) =>
-      item.children.some((child) => child.url === pathname)
+      item.children.some((child) => child.url === pathname),
     );
     return parent ? parent.name : null;
   }, [items, pathname]);
@@ -107,7 +111,7 @@ export function NavMain({ items }: Props) {
       {items.map((item, index) => {
         const IconComponent = Icons[item.icon];
         const isParentActive = item.children.some(
-          (child) => child.url === pathname
+          (child) => child.url === pathname,
         );
         return (
           <Collapsible
@@ -131,7 +135,7 @@ export function NavMain({ items }: Props) {
                         {
                           "bg-[#f4f4f5] [&>svg]:text-default-900 [&>span]:text-default-900":
                             isParentActive,
-                        }
+                        },
                       )}
                       onClick={() => {
                         if (!isExpanded) toggleSidebar();
@@ -206,7 +210,7 @@ export function NavMain({ items }: Props) {
                     {
                       "bg-secondary [&>svg]:text-white [&>span]:text-white":
                         item?.url === pathname,
-                    }
+                    },
                   )}
                 >
                   <Link

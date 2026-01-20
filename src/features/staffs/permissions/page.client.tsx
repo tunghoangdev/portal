@@ -3,9 +3,8 @@ import { PermissionList } from "./permission-list";
 import { RoleList } from "./role-list";
 
 import { Grid } from "@/components/ui";
-import { MENU_SETTINGS } from "~/constant/site-menu";
 
-const ID_FORM = MENU_SETTINGS.staff.staffs.permissions.idForm;
+// const ID_FORM = MENU_SETTINGS.staff.staffs.permissions.idForm;
 
 const PageClient = () => {
   // Check access page
@@ -22,7 +21,7 @@ const PageClient = () => {
           <PermissionList
             idPermission={idPermission}
             setPermission={setPermission}
-            idForm={ID_FORM}
+            idForm={3}
           />
         </Grid>
         <Grid item sm={12}>

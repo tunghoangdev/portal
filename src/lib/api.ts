@@ -54,7 +54,7 @@ axiosClient.interceptors.response.use(
         toast.error("Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại");
       }
       toast.error(
-        (ERROR_CODES?.[errorCode] as string) || "Có lỗi xảy ra trong hệ thống"
+        (ERROR_CODES?.[errorCode] as string) || "Có lỗi xảy ra trong hệ thống",
       );
       // return Promise.reject();
       // return Promise.reject(new Error(ERROR_CODES?.[errorCode] as string));
@@ -71,7 +71,7 @@ axiosClient.interceptors.response.use(
       toast.error(err.response?.data?.message || "Có lỗi xảy ra");
     }
     return Promise.reject(err);
-  }
+  },
 );
 
 export const api = {
