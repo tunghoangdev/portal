@@ -64,15 +64,15 @@ export const Route = createFileRoute("/_authed")({
 
 function AuthedLayout() {
   return (
-    <SidebarProvider className="gap-x-2.5">
-      <AppSidebar />
+    <SidebarProvider className="min-h-screen xl:flex bg-default-50 p-2.5">
+      <AppSidebar className="border-0 data-[slot=sidebar-container]:border-none pl-2.5" />
       <SidebarInset className="bg-white overflow-x-hidden shadow-sm px-2.5 md:px-5 pt-2.5 rounded-md md:rounded-xl md:m-2">
         <Header />
         <Outlet />
+        <ModalManager />
+        <ModalNotice />
+        <RowActionsDropdownPortal />
       </SidebarInset>
-      <ModalManager />
-      <ModalNotice />
-      <RowActionsDropdownPortal />
     </SidebarProvider>
   );
 }

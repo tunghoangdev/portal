@@ -9,7 +9,7 @@ export const MENU_SETTINGS: Record<string, any> = {
 		},
 		{
 			icon: 'bookImage',
-			name: 'abroad',
+			name: 'abroadBusiness',
 			label: 'Di trú',
 			children: [
 				{
@@ -900,18 +900,24 @@ export const MENU_SETTINGS: Record<string, any> = {
 			icon: 'usersRounded',
 			name: 'samtek-customers',
 			label: 'Khách hàng',
-			url: '/samtek/customers',
 			id_form: 4,
 			children: [
-				// {
-				// 	icon: 'circle',
-				// 	name: 'list',
-				// 	label: 'Danh sách',
-				// 	url: '/samtek/customers',
-				// 	id_form: 1,
-				// 	children: [],
-				// },
-				
+				{
+					icon: 'circle',
+					name: 'list',
+					label: 'Danh sách',
+					url: '/samtek/customers',
+					id_form: 1,
+					children: [],
+				},
+				{
+					icon: 'circle',
+					name: 'order-list',
+					label: 'Đơn hàng',
+					url: '/samtek/customers/order-list',
+					id_form: 5,
+					children: [],
+				},
 			],
 		},
 		{

@@ -135,6 +135,9 @@ export default function ProcessingClient() {
 
 	const handleCrudAction = useCallback(
 		async (action: CrudActionType, formData?: TItemFormFields) => {
+			console.log('action', action);
+			console.log('formData', formData);
+			
 			if (action === CRUD_ACTIONS.EDIT) {
 				setEditItemId(String(formData?.id));
 				return;
@@ -270,52 +273,7 @@ export default function ProcessingClient() {
 	);
 
 	return (
-		<>
-			{/* <InfiniteRevoGrid
-				data={listData}
-				columns={columns}
-				onAction={handleCrudAction}
-				total={total}
-				loading={isFetching}
-				isFetchingNextPage={isFetchingNextPage}
-				hasNextPage={hasNextPage}
-				fetchNextPage={fetchNextPage}
-				columnPinningConfig={{
-					left: ['agent_name'],
-					right: [],
-				}}
-				toolbar={{
-					// showReport: true,
-					customAdd: true,
-					addLabel: 'Tạo hợp đồng mới',
-				}}
-				customActions={[
-					{
-						type: CRUD_ACTIONS.EDIT,
-						label: 'Cập nhật',
-						isHidden: (formData: any) => formData?.id_life_status > 1,
-					},
-					{
-						type: CRUD_ACTIONS.DELETE,
-						label: 'Xóa',
-						isHidden: (formData: any) => formData?.id_life_status > 1,
-					},
-					{
-						type: CRUD_ACTIONS.UPDATE_CONTRACT_STATUS,
-						label: 'Tiến trình hợp đồng',
-						icon: <Icons.circleCheck size={16} strokeWidth={1.5} />,
-					},
-					{
-						type: CRUD_ACTIONS.CANCEL_CONTRACT,
-						label: 'Hủy hợp đồng',
-						icon: <Icons.close size={16} strokeWidth={1.5} />,
-						isHidden: (formData: any) =>
-							formData?.id_life_status !== 2 && formData?.id_life_status !== 3,
-					},
-				]}
-				filterFields={['provider', 'contractType']}
-			/> */}
-			<DataTable
+		<DataTable
 				data={listData}
 				columns={columns}
 				onAction={handleCrudAction}
@@ -359,6 +317,5 @@ export default function ProcessingClient() {
 				]}
 				filterFields={['provider', 'contractType']}
 			/>
-		</>
 	);
 }

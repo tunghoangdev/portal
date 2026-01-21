@@ -105,10 +105,41 @@ export function NavMain({ items }: Props) {
       setIsOpenMenu(null);
     }
   }, [isExpanded, activeParentName]);
+	let newItems: NavItem[] = useMemo(() => {
+		let currentItems = [...items];
+		if(role === ROLES.SAMTEK) {
+			return currentItems;
+		}
+		if (user?.life_no <= 0) {
+			currentItems = currentItems.filter((item) => item.name !== 'lifeInsurance');
+		}
+		if (user?.abroad_no <= 0) {
+			currentItems = currentItems.filter(
+				(item) => !['abroadBusiness', 'emigrant'].includes(item.name),
+			);
+		}
+		if (user?.none_life_no <= 0) {
+			currentItems = currentItems.filter(
+				(item) => item.name !== 'nonLifeInsurance',
+			);
+		}
 
+		if (role === ROLES.STAFF) {
+			currentItems.push({
+				name: 'samStore',
+				label: 'Samtek Store',
+				url: '/staff/samtek-store',
+				icon: 'folder',
+				children: [],
+				id_form: 10
+			})
+		}
+		return currentItems;
+	}, [items, role, user]);
+  
   return (
     <SidebarMenu className="gap-y-1">
-      {items.map((item, index) => {
+      {newItems.map((item, index) => {
         const IconComponent = Icons[item.icon];
         const isParentActive = item.children.some(
           (child) => child.url === pathname,

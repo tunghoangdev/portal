@@ -18,6 +18,17 @@ export function getUser(): User {
 	return data?.state?.user;
 }
 
+export const getFullFtpStoreUrl = (
+	fileName: string | null,
+) => {
+	const userData = getUser();
+	const ftp = userData?.ftp_web_samtek || '';
+	if (fileName) {
+		return `${ftp}/${fileName}`;
+	}
+	return BRAND_LOGO_ICON;
+};
+
 export const getFullFtpUrl = (
 	folderPath: string | 'notify',
 	fileName: string | null,

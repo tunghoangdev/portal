@@ -14,6 +14,8 @@ import { Route as LoginRouteImport } from './app/login'
 import { Route as AuthedRouteImport } from './app/_authed'
 import { Route as IndexRouteImport } from './app/index'
 import { Route as SamtekLoginRouteImport } from './app/samtek/login'
+import { Route as AuthedStaffSamtekStoreRouteImport } from './app/_authed/staff/samtek-store'
+import { Route as AuthedStaffOrderListRouteImport } from './app/_authed/staff/order-list'
 import { Route as AuthedStaffMeetingRouteImport } from './app/_authed/staff/meeting'
 import { Route as AuthedStaffEscrowReturnRouteImport } from './app/_authed/staff/escrow-return'
 import { Route as AuthedStaffEscrowReportRouteImport } from './app/_authed/staff/escrow-report'
@@ -26,6 +28,7 @@ import { Route as AuthedStaffCommissionTypeRouteImport } from './app/_authed/sta
 import { Route as AuthedStaffCommissionTableRouteImport } from './app/_authed/staff/commission-table'
 import { Route as AuthedStaffCommissionPeriodRouteImport } from './app/_authed/staff/commission-period'
 import { Route as AuthedStaffCommissionManualRouteImport } from './app/_authed/staff/commission-manual'
+import { Route as AuthedSamtekOrderListRouteImport } from './app/_authed/samtek/order-list'
 import { Route as AuthedSamtekCustomersRouteImport } from './app/_authed/samtek/customers'
 import { Route as AuthedAgentProfileRouteImport } from './app/_authed/agent/profile'
 import { Route as AuthedAgentDocumentsRouteImport } from './app/_authed/agent/documents'
@@ -142,6 +145,16 @@ const SamtekLoginRoute = SamtekLoginRouteImport.update({
   path: '/samtek/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthedStaffSamtekStoreRoute = AuthedStaffSamtekStoreRouteImport.update({
+  id: '/staff/samtek-store',
+  path: '/staff/samtek-store',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedStaffOrderListRoute = AuthedStaffOrderListRouteImport.update({
+  id: '/staff/order-list',
+  path: '/staff/order-list',
+  getParentRoute: () => AuthedRoute,
+} as any)
 const AuthedStaffMeetingRoute = AuthedStaffMeetingRouteImport.update({
   id: '/staff/meeting',
   path: '/staff/meeting',
@@ -207,6 +220,11 @@ const AuthedStaffCommissionManualRoute =
     path: '/staff/commission-manual',
     getParentRoute: () => AuthedRoute,
   } as any)
+const AuthedSamtekOrderListRoute = AuthedSamtekOrderListRouteImport.update({
+  id: '/samtek/order-list',
+  path: '/samtek/order-list',
+  getParentRoute: () => AuthedRoute,
+} as any)
 const AuthedSamtekCustomersRoute = AuthedSamtekCustomersRouteImport.update({
   id: '/samtek/customers',
   path: '/samtek/customers',
@@ -752,6 +770,7 @@ export interface FileRoutesByFullPath {
   '/agent/documents': typeof AuthedAgentDocumentsRoute
   '/agent/profile': typeof AuthedAgentProfileRoute
   '/samtek/customers': typeof AuthedSamtekCustomersRoute
+  '/samtek/order-list': typeof AuthedSamtekOrderListRoute
   '/staff/commission-manual': typeof AuthedStaffCommissionManualRoute
   '/staff/commission-period': typeof AuthedStaffCommissionPeriodRoute
   '/staff/commission-table': typeof AuthedStaffCommissionTableRoute
@@ -764,6 +783,8 @@ export interface FileRoutesByFullPath {
   '/staff/escrow-report': typeof AuthedStaffEscrowReportRoute
   '/staff/escrow-return': typeof AuthedStaffEscrowReturnRoute
   '/staff/meeting': typeof AuthedStaffMeetingRoute
+  '/staff/order-list': typeof AuthedStaffOrderListRoute
+  '/staff/samtek-store': typeof AuthedStaffSamtekStoreRoute
   '/agent/abroad/individual': typeof AuthedAgentAbroadIndividualRoute
   '/agent/abroad/list-done': typeof AuthedAgentAbroadListDoneRoute
   '/agent/abroad/list-processing': typeof AuthedAgentAbroadListProcessingRoute
@@ -861,6 +882,7 @@ export interface FileRoutesByTo {
   '/agent/documents': typeof AuthedAgentDocumentsRoute
   '/agent/profile': typeof AuthedAgentProfileRoute
   '/samtek/customers': typeof AuthedSamtekCustomersRoute
+  '/samtek/order-list': typeof AuthedSamtekOrderListRoute
   '/staff/commission-manual': typeof AuthedStaffCommissionManualRoute
   '/staff/commission-period': typeof AuthedStaffCommissionPeriodRoute
   '/staff/commission-table': typeof AuthedStaffCommissionTableRoute
@@ -873,6 +895,8 @@ export interface FileRoutesByTo {
   '/staff/escrow-report': typeof AuthedStaffEscrowReportRoute
   '/staff/escrow-return': typeof AuthedStaffEscrowReturnRoute
   '/staff/meeting': typeof AuthedStaffMeetingRoute
+  '/staff/order-list': typeof AuthedStaffOrderListRoute
+  '/staff/samtek-store': typeof AuthedStaffSamtekStoreRoute
   '/agent/abroad/individual': typeof AuthedAgentAbroadIndividualRoute
   '/agent/abroad/list-done': typeof AuthedAgentAbroadListDoneRoute
   '/agent/abroad/list-processing': typeof AuthedAgentAbroadListProcessingRoute
@@ -972,6 +996,7 @@ export interface FileRoutesById {
   '/_authed/agent/documents': typeof AuthedAgentDocumentsRoute
   '/_authed/agent/profile': typeof AuthedAgentProfileRoute
   '/_authed/samtek/customers': typeof AuthedSamtekCustomersRoute
+  '/_authed/samtek/order-list': typeof AuthedSamtekOrderListRoute
   '/_authed/staff/commission-manual': typeof AuthedStaffCommissionManualRoute
   '/_authed/staff/commission-period': typeof AuthedStaffCommissionPeriodRoute
   '/_authed/staff/commission-table': typeof AuthedStaffCommissionTableRoute
@@ -984,6 +1009,8 @@ export interface FileRoutesById {
   '/_authed/staff/escrow-report': typeof AuthedStaffEscrowReportRoute
   '/_authed/staff/escrow-return': typeof AuthedStaffEscrowReturnRoute
   '/_authed/staff/meeting': typeof AuthedStaffMeetingRoute
+  '/_authed/staff/order-list': typeof AuthedStaffOrderListRoute
+  '/_authed/staff/samtek-store': typeof AuthedStaffSamtekStoreRoute
   '/_authed/agent/abroad/individual': typeof AuthedAgentAbroadIndividualRoute
   '/_authed/agent/abroad/list-done': typeof AuthedAgentAbroadListDoneRoute
   '/_authed/agent/abroad/list-processing': typeof AuthedAgentAbroadListProcessingRoute
@@ -1083,6 +1110,7 @@ export interface FileRouteTypes {
     | '/agent/documents'
     | '/agent/profile'
     | '/samtek/customers'
+    | '/samtek/order-list'
     | '/staff/commission-manual'
     | '/staff/commission-period'
     | '/staff/commission-table'
@@ -1095,6 +1123,8 @@ export interface FileRouteTypes {
     | '/staff/escrow-report'
     | '/staff/escrow-return'
     | '/staff/meeting'
+    | '/staff/order-list'
+    | '/staff/samtek-store'
     | '/agent/abroad/individual'
     | '/agent/abroad/list-done'
     | '/agent/abroad/list-processing'
@@ -1192,6 +1222,7 @@ export interface FileRouteTypes {
     | '/agent/documents'
     | '/agent/profile'
     | '/samtek/customers'
+    | '/samtek/order-list'
     | '/staff/commission-manual'
     | '/staff/commission-period'
     | '/staff/commission-table'
@@ -1204,6 +1235,8 @@ export interface FileRouteTypes {
     | '/staff/escrow-report'
     | '/staff/escrow-return'
     | '/staff/meeting'
+    | '/staff/order-list'
+    | '/staff/samtek-store'
     | '/agent/abroad/individual'
     | '/agent/abroad/list-done'
     | '/agent/abroad/list-processing'
@@ -1302,6 +1335,7 @@ export interface FileRouteTypes {
     | '/_authed/agent/documents'
     | '/_authed/agent/profile'
     | '/_authed/samtek/customers'
+    | '/_authed/samtek/order-list'
     | '/_authed/staff/commission-manual'
     | '/_authed/staff/commission-period'
     | '/_authed/staff/commission-table'
@@ -1314,6 +1348,8 @@ export interface FileRouteTypes {
     | '/_authed/staff/escrow-report'
     | '/_authed/staff/escrow-return'
     | '/_authed/staff/meeting'
+    | '/_authed/staff/order-list'
+    | '/_authed/staff/samtek-store'
     | '/_authed/agent/abroad/individual'
     | '/_authed/agent/abroad/list-done'
     | '/_authed/agent/abroad/list-processing'
@@ -1446,6 +1482,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SamtekLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authed/staff/samtek-store': {
+      id: '/_authed/staff/samtek-store'
+      path: '/staff/samtek-store'
+      fullPath: '/staff/samtek-store'
+      preLoaderRoute: typeof AuthedStaffSamtekStoreRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/staff/order-list': {
+      id: '/_authed/staff/order-list'
+      path: '/staff/order-list'
+      fullPath: '/staff/order-list'
+      preLoaderRoute: typeof AuthedStaffOrderListRouteImport
+      parentRoute: typeof AuthedRoute
+    }
     '/_authed/staff/meeting': {
       id: '/_authed/staff/meeting'
       path: '/staff/meeting'
@@ -1528,6 +1578,13 @@ declare module '@tanstack/react-router' {
       path: '/staff/commission-manual'
       fullPath: '/staff/commission-manual'
       preLoaderRoute: typeof AuthedStaffCommissionManualRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/samtek/order-list': {
+      id: '/_authed/samtek/order-list'
+      path: '/samtek/order-list'
+      fullPath: '/samtek/order-list'
+      preLoaderRoute: typeof AuthedSamtekOrderListRouteImport
       parentRoute: typeof AuthedRoute
     }
     '/_authed/samtek/customers': {
@@ -2177,6 +2234,7 @@ interface AuthedRouteChildren {
   AuthedAgentDocumentsRoute: typeof AuthedAgentDocumentsRoute
   AuthedAgentProfileRoute: typeof AuthedAgentProfileRoute
   AuthedSamtekCustomersRoute: typeof AuthedSamtekCustomersRoute
+  AuthedSamtekOrderListRoute: typeof AuthedSamtekOrderListRoute
   AuthedStaffCommissionManualRoute: typeof AuthedStaffCommissionManualRoute
   AuthedStaffCommissionPeriodRoute: typeof AuthedStaffCommissionPeriodRoute
   AuthedStaffCommissionTableRoute: typeof AuthedStaffCommissionTableRoute
@@ -2189,6 +2247,8 @@ interface AuthedRouteChildren {
   AuthedStaffEscrowReportRoute: typeof AuthedStaffEscrowReportRoute
   AuthedStaffEscrowReturnRoute: typeof AuthedStaffEscrowReturnRoute
   AuthedStaffMeetingRoute: typeof AuthedStaffMeetingRoute
+  AuthedStaffOrderListRoute: typeof AuthedStaffOrderListRoute
+  AuthedStaffSamtekStoreRoute: typeof AuthedStaffSamtekStoreRoute
   AuthedAgentAbroadIndividualRoute: typeof AuthedAgentAbroadIndividualRoute
   AuthedAgentAbroadListDoneRoute: typeof AuthedAgentAbroadListDoneRoute
   AuthedAgentAbroadListProcessingRoute: typeof AuthedAgentAbroadListProcessingRoute
@@ -2283,6 +2343,7 @@ const AuthedRouteChildren: AuthedRouteChildren = {
   AuthedAgentDocumentsRoute: AuthedAgentDocumentsRoute,
   AuthedAgentProfileRoute: AuthedAgentProfileRoute,
   AuthedSamtekCustomersRoute: AuthedSamtekCustomersRoute,
+  AuthedSamtekOrderListRoute: AuthedSamtekOrderListRoute,
   AuthedStaffCommissionManualRoute: AuthedStaffCommissionManualRoute,
   AuthedStaffCommissionPeriodRoute: AuthedStaffCommissionPeriodRoute,
   AuthedStaffCommissionTableRoute: AuthedStaffCommissionTableRoute,
@@ -2295,6 +2356,8 @@ const AuthedRouteChildren: AuthedRouteChildren = {
   AuthedStaffEscrowReportRoute: AuthedStaffEscrowReportRoute,
   AuthedStaffEscrowReturnRoute: AuthedStaffEscrowReturnRoute,
   AuthedStaffMeetingRoute: AuthedStaffMeetingRoute,
+  AuthedStaffOrderListRoute: AuthedStaffOrderListRoute,
+  AuthedStaffSamtekStoreRoute: AuthedStaffSamtekStoreRoute,
   AuthedAgentAbroadIndividualRoute: AuthedAgentAbroadIndividualRoute,
   AuthedAgentAbroadListDoneRoute: AuthedAgentAbroadListDoneRoute,
   AuthedAgentAbroadListProcessingRoute: AuthedAgentAbroadListProcessingRoute,

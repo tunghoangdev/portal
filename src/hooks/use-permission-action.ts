@@ -25,6 +25,8 @@ export function usePermissionAction({ onAction }: UsePermissionActionProps) {
     permission: pendingAction?.data?.permission,
     action: pendingAction?.action,
   };
+console.log('pendingAction?.data?.permission',pendingAction?.data?.permission);
+console.log('idForm?.action',idForm);
 
   // Gọi API check quyền
   const { getAll } = useCrud(
