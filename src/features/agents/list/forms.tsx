@@ -1,4 +1,3 @@
-import React from 'react';
 import { formFields } from './form.schema';
 import { FormField } from '@/features/shared/components/form-fields';
 import { Grid, MyImage, Typography } from '@/components/ui';

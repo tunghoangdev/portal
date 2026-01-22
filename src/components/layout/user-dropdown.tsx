@@ -21,6 +21,7 @@ import { useAuthStore } from "~/stores";
 import ChangePasswordView from "./change-password-view";
 import { changePasswordSchema } from "./change-password.schema";
 import { ResetDataForm } from "./reset-data-form";
+import OrderList from "~/features/orders/page-client";
 export default function UserDropdown() {
   const { user, logoutAction, role, avatar: avatarImg } = useAuth();
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ export default function UserDropdown() {
   const { mutateAsync } = update();
   // *** VARIABLES ***
   const canRunCommission =
-    user?.isStaff && user?.permission_name?.toLowerCase() === ROLES.ADMIN;
+    user?.isStaff && user?.permission_name?.toLowerCase() === 'admin';
 
   // *** HOOKS ***
   useEffect(() => {
@@ -160,7 +161,16 @@ export default function UserDropdown() {
       },
     });
   };
-
+const handleShowOrderData = async () => {
+		openDetailModal('', {
+			title: 'Danh sách đơn hàng',
+			renderContent: () => <OrderList />,
+			size: '5xl',
+			modalProps: {
+				scrollBehavior: 'inside',
+			},
+		});
+	};
   // useEffect(() => {
   // 	if (confirmResetData) {
   // 		openDetailModal('', {
@@ -242,6 +252,22 @@ export default function UserDropdown() {
             Reset dữ liệu
           </DropdownItem>
         ) : null}
+        {user?.isStaff && user?.is_root ? (
+						<DropdownItem
+							key={'show-order-data'}
+							className="text-xs hover:*:text-secondary"
+							color="secondary"
+							onClick={handleShowOrderData}
+							startContent={
+								<Icons.list
+									size={16}
+									className="text-default-800 hover:text-secondary"
+								/>
+							}
+						>
+							Đơn hàng của tôi
+						</DropdownItem>
+					) : null}
         {canRunCommission ? (
           <DropdownItem
             key={"run-commission"}

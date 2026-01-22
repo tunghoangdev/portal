@@ -1,4 +1,4 @@
-'use client';
+
 import { useAuth, useDataQuery } from '@/hooks';
 import { DataTable } from '@/features/shared/components/data-table';
 import { getColumns } from '@/features/shared/common/get-columns';

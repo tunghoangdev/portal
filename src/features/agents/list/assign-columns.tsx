@@ -1,5 +1,4 @@
 import type { BaseColumnOptions } from '@/types/data-table-type';
-import { Chip } from '@/components/ui';
 import { LabelCell, LevelCell } from '@/features/shared/components/cells';
 
 export const assignColumns: BaseColumnOptions<any>[] = [
