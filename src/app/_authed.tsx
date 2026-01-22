@@ -1,9 +1,10 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
+import { toast } from "sonner";
 import { AppSidebar } from "~/components/layout";
 import Header from "~/components/layout/header";
 import { SidebarInset, SidebarProvider } from "~/components/ui";
 import { ROLES } from "~/constant";
-import { API_ENDPOINTS } from "~/constant/api-endpoints";
+import { API_ENDPOINTS, NORMALIZE_URLS } from "~/constant/api-endpoints";
 import {
   ModalManager,
   RowActionsDropdownPortal,
@@ -45,13 +46,14 @@ export const Route = createFileRoute("/_authed")({
         });
 
         const idForm = getIdFormFromPathname(location.pathname);
-        if (idForm !== 0) {
+        if (idForm !== 0 && !NORMALIZE_URLS.includes(location.pathname)) {
           context.auth.setIdForm(idForm);
           const hasPermission =
             Array.isArray(formAccess) &&
             formAccess.some((item: any) => item.id_form === idForm);
           if (!hasPermission) {
-            throw redirect({ to: "/staff/dashboard" as any });
+            toast.warning("Bạn không có quyền truy cập vào trang này!");
+            throw redirect({ to: `/${role}/dashboard` as any });
           }
         }
       } catch (error) {

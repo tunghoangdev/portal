@@ -1,8 +1,6 @@
-import { toast } from "sonner";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { HIDE_NOTIFICATION, ROLES, USER_DATA } from "~/constant";
-import { NORMALIZE_URLS } from "~/constant/api-endpoints";
 import type { User } from "~/types/user";
 
 export interface AuthState {
@@ -22,11 +20,6 @@ export interface AuthState {
   ) => void;
   logoutAction: (navigate: any, redirect?: boolean) => void; // navigate để điều hướng sau khi logout
   checkAuthStatusAction: (pathname: string, navigate: any) => Promise<void>; // navigate để điều hướng
-  checkAuthPermission: (
-    pathname: string,
-    navigate: any,
-    formIds: number[],
-  ) => Promise<void>; // navigate để điều hướng
   setLoadingAuthAction: (loading: boolean) => void;
   _hasHydrated: boolean;
   setHasHydrated: (state: boolean) => void;
@@ -173,23 +166,6 @@ export const useAuthStore = create<AuthState>()(
         if (!currentToken) {
           get().logoutAction(navigate); // Gọi logout của store để xử lý state và redirect
           return;
-        }
-      },
-
-      checkAuthPermission: async (pathname, navigate, formIds) => {
-        const idForm = get().idForm;
-        const role = get().role;
-        if (idForm === 0) {
-          return;
-        }
-        set({ idForm });
-        if (
-          formIds?.length &&
-          !formIds?.some((item: any) => item === idForm) &&
-          !NORMALIZE_URLS.includes(pathname)
-        ) {
-          toast.warning("Bạn không có quyền truy cập vào trang này!");
-          navigate({ to: `/${role}/dashboard` });
         }
       },
     }),
