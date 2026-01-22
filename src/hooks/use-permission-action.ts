@@ -1,7 +1,7 @@
-import { useEffect, useState, useCallback } from 'react';
-import { useAuth, useCommon, useCrud } from '~/hooks';
-import { API_ENDPOINTS } from '~/constant/api-endpoints';
-import { CRUD_ACTION_TO_PERMISSION, EXCLUDE_ACTIONS, ROLES } from '~/constant';
+import { useCallback, useEffect, useState } from "react";
+import { CRUD_ACTION_TO_PERMISSION, EXCLUDE_ACTIONS, ROLES } from "~/constant";
+import { API_ENDPOINTS } from "~/constant/api-endpoints";
+import { useAuth, useCommon, useCrud } from "~/hooks";
 
 interface PermissionAction {
   action: any;
@@ -14,9 +14,9 @@ interface UsePermissionActionProps {
 
 export function usePermissionAction({ onAction }: UsePermissionActionProps) {
   const { idForm, role, user } = useAuth();
-  const { selectedFormId}  = useCommon()
+  const { selectedFormId } = useCommon();
   const [pendingAction, setPendingAction] = useState<PermissionAction | null>(
-    null
+    null,
   );
 
   // Tạo query object
@@ -25,8 +25,6 @@ export function usePermissionAction({ onAction }: UsePermissionActionProps) {
     permission: pendingAction?.data?.permission,
     action: pendingAction?.action,
   };
-console.log('pendingAction?.data?.permission',pendingAction?.data?.permission);
-console.log('idForm?.action',idForm);
 
   // Gọi API check quyền
   const { getAll } = useCrud(
@@ -35,12 +33,12 @@ console.log('idForm?.action',idForm);
       id_form: selectedFormId || idForm,
       id_button: pendingAction?.data?.permission,
       id_staff: role === ROLES.SAMTEK ? user?.id : undefined,
-      endpoint: role === ROLES.SAMTEK ? 'root' : '',
+      endpoint: role === ROLES.SAMTEK ? "root" : "",
     },
     {
       enabled: !!pendingAction?.data?.permission && !!idForm,
       staleTime: 1,
-    }
+    },
   );
 
   const { data: accessAction, isFetching }: any = getAll();

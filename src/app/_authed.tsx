@@ -46,6 +46,7 @@ export const Route = createFileRoute("/_authed")({
 
         const idForm = getIdFormFromPathname(location.pathname);
         if (idForm !== 0) {
+          context.auth.setIdForm(idForm);
           const hasPermission =
             Array.isArray(formAccess) &&
             formAccess.some((item: any) => item.id_form === idForm);

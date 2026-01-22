@@ -2,7 +2,6 @@ import { toast } from "sonner";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { HIDE_NOTIFICATION, ROLES, USER_DATA } from "~/constant";
-import { getIdFormFromPathname } from "~/utils/auth-utils";
 import { NORMALIZE_URLS } from "~/constant/api-endpoints";
 import type { User } from "~/types/user";
 
@@ -19,18 +18,19 @@ export interface AuthState {
   loginAction: (
     userData: User,
     accessToken: string,
-    newRefreshToken?: string
+    newRefreshToken?: string,
   ) => void;
   logoutAction: (navigate: any, redirect?: boolean) => void; // navigate để điều hướng sau khi logout
   checkAuthStatusAction: (pathname: string, navigate: any) => Promise<void>; // navigate để điều hướng
   checkAuthPermission: (
     pathname: string,
     navigate: any,
-    formIds: number[]
+    formIds: number[],
   ) => Promise<void>; // navigate để điều hướng
   setLoadingAuthAction: (loading: boolean) => void;
   _hasHydrated: boolean;
   setHasHydrated: (state: boolean) => void;
+  setIdForm: (idForm: number) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -48,6 +48,7 @@ export const useAuthStore = create<AuthState>()(
       setHasHydrated: (state) => set({ _hasHydrated: state }),
       setLoadingAuthAction: (loading) => set({ isLoadingAuth: loading }),
       setAvatar: (avatar) => set({ avatar }),
+      setIdForm: (idForm) => set({ idForm }),
       // ... (các action khác giữ nguyên)
       loginAction: (userData, accessToken) => {
         set({
@@ -70,7 +71,7 @@ export const useAuthStore = create<AuthState>()(
         if (typeof window !== "undefined") {
           localStorage.removeItem(HIDE_NOTIFICATION);
           if (redirect) {
-            console.log('navigate', navigate);
+            console.log("navigate", navigate);
 
             if (navigate) navigate({ to: "/login" });
             window.location.href = "/login";
@@ -107,7 +108,12 @@ export const useAuthStore = create<AuthState>()(
               token,
               role: user.role,
             });
-            navigate({ to: user?.role === ROLES.SAMTEK ? "/samtek/dashboard" : "/dashboard" });
+            navigate({
+              to:
+                user?.role === ROLES.SAMTEK
+                  ? "/samtek/dashboard"
+                  : "/dashboard",
+            });
             return;
           }
           // No user logged in, don't redirect anywhere
@@ -133,7 +139,12 @@ export const useAuthStore = create<AuthState>()(
               token,
               role: user.role || "",
             });
-            navigate({ to: user?.role === ROLES.SAMTEK ? "/samtek/customers" : `/${user.role}/dashboard` });
+            navigate({
+              to:
+                user?.role === ROLES.SAMTEK
+                  ? "/samtek/customers"
+                  : `/${user.role}/dashboard`,
+            });
             return;
           }
           set({
@@ -166,8 +177,7 @@ export const useAuthStore = create<AuthState>()(
       },
 
       checkAuthPermission: async (pathname, navigate, formIds) => {
-        // ... (giữ nguyên logic checkAuthPermission)
-        const idForm = getIdFormFromPathname(pathname);
+        const idForm = get().idForm;
         const role = get().role;
         if (idForm === 0) {
           return;
@@ -188,6 +198,6 @@ export const useAuthStore = create<AuthState>()(
       onRehydrateStorage: () => (state) => {
         state?.setHasHydrated(true);
       },
-    }
-  )
+    },
+  ),
 );
