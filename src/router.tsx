@@ -14,6 +14,7 @@ export function getRouter() {
     defaultErrorComponent: DefaultCatchBoundary,
     defaultNotFoundComponent: () => <NotFound />,
     scrollRestoration: true,
+    defaultViewTransition: true, // Enable View Transitions API
     context: {
       auth: useAuthStore.getState(), // Use the real store state
       queryClient,

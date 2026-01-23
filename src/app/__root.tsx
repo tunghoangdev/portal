@@ -16,7 +16,8 @@ import AuthGuard from "~/features/auth/auth-guard";
 import { MediaQueryProvider, NextUiProvider, QueryProvider } from "~/providers";
 import { ProcessProvider } from "~/providers/process-provider";
 import type { AuthState } from "~/stores/auth-store";
-import appCss from "~/styles/main.css?url";
+import appCss from "~/styles/app.css?url";
+import mainCss from "~/styles/main.scss?url";
 import { seo } from "~/utils/seo";
 
 export const Route = createRootRouteWithContext<{
@@ -39,6 +40,7 @@ export const Route = createRootRouteWithContext<{
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "stylesheet", href: mainCss },
       { rel: "manifest", href: "/site.webmanifest", color: "#fffff" },
       { rel: "icon", href: "/favicon.ico" },
     ],
