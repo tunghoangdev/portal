@@ -1,4 +1,10 @@
-import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
+import {
+  createFileRoute,
+  Outlet,
+  redirect,
+  useLocation,
+} from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 import { toast } from "sonner";
 import { AppSidebar } from "~/components/layout";
 import Header from "~/components/layout/header";
@@ -11,6 +17,7 @@ import {
 } from "~/features/shared/components";
 import ModalNotice from "~/features/shared/components/modal-notice";
 import api from "~/lib/api";
+import { filterStore } from "~/stores/filter-store";
 import { getIdFormFromPathname } from "~/utils/auth-utils";
 
 export const Route = createFileRoute("/_authed")({
@@ -66,6 +73,22 @@ export const Route = createFileRoute("/_authed")({
 });
 
 function AuthedLayout() {
+  const location = useLocation();
+  const previousPathRef = useRef<string | null>(null);
+
+  // Reset filters when navigating to a different page
+  useEffect(() => {
+    const currentPath = location.pathname;
+
+    // Reset filters if navigating to a different page (not just query params change)
+    if (previousPathRef.current && previousPathRef.current !== currentPath) {
+      filterStore.getState().resetAllFilters();
+    }
+
+    // Update previous path for next navigation
+    previousPathRef.current = currentPath;
+  }, [location.pathname]);
+
   return (
     <SidebarProvider className="min-h-screen xl:flex bg-default-50 p-2.5">
       <AppSidebar className="border-0 data-[slot=sidebar-container]:border-none pl-2.5" />
